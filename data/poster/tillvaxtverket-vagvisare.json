@@ -2,12 +2,18 @@
   "id": "tillvaxtverket-vagvisare",
   "typ": "vagvisare",
   "titel": "Tillväxtverket och regionala stöd: vilken väg gäller för dig?",
-  "finansiar": { "id": "tillvaxtverket", "namn": "Tillväxtverket", "partner": ["Regionerna", "Länsstyrelserna"] },
+  "finansiar": {
+    "id": "tillvaxtverket",
+    "namn": "Tillväxtverket",
+    "partner": [
+      "Regionerna",
+      "Länsstyrelserna"
+    ]
+  },
   "program": null,
   "diarienummer": null,
   "sammanfattning": "Tillväxtverkets och regionernas stöd styrs av var verksamheten finns, vilken typ av organisation som söker och vad pengarna ska användas till. Verktyget pekar ut vilka vägar som kan vara aktuella och var du läser vidare. Det kan inte avgöra om du är behörig.",
   "status": "vagvisare",
-
   "kallor": [
     {
       "url": "https://northsweden.eu/media/5664/programblad-europeiska-regionala-utvecklingsfonden-2021-2027.pdf",
@@ -31,19 +37,15 @@
       "anmarkning": "Hänvisar till förordning (2022:1467) om statligt stöd till regionala investeringar."
     }
   ],
-
   "kontroll": {
     "senast": "2026-10-14",
     "metod": "manuell",
     "godkand_av": "Dan Engström",
     "anmarkning": "Tillväxtverkets webbplats tillåter inte automatisk hämtning (robots.txt). Bevakningen får därför inte hämta sidorna; posten kontrolleras för hand, förslagsvis en gång per kvartal. Uppgifterna här bygger på sökträffar och PDF-filer, inte på genomläsning av Tillväxtverkets webbsidor."
   },
-
   "precision": "ingen",
   "precision_motivering": "Behörighet avgörs av kommun, bransch, företagets situation och aktuella utlysningar i respektive region. Verktyget kan bara visa vilka vägar som är värda att undersöka.",
-
   "besked": "Verktyget kan inte avgöra om du är behörig. Vägarna nedan är ställen att läsa vidare eller ta kontakt; beslutet om stöd fattas av Tillväxtverket, regionen eller länsstyrelsen.",
-
   "vagar": [
     {
       "id": "regionalfonden",
@@ -51,31 +53,117 @@
       "beskrivning": "Projektstöd till insatser som stärker den regionala utvecklingen, till exempel innovation, digitalisering, företags konkurrenskraft och klimatomställning. Sverige är indelat i åtta regionala programområden och ett nationellt program. Varje program har egna utlysningar. Projekten drivs oftast av regioner, kommuner, lärosäten och organisationer, och företag deltar som målgrupp snarare än som sökande.",
       "villkor": {
         "organisationstyp": {
-          "passar": ["kommun_region", "universitet_hogskola", "forskningsinstitut", "ideell", "statlig_myndighet"],
-          "kanske": ["foretag", "vet_ej"],
+          "passar": [
+            "kommun_region",
+            "universitet_hogskola",
+            "forskningsinstitut",
+            "ideell",
+            "statlig_myndighet"
+          ],
+          "kanske": [
+            "foretag",
+            "vet_ej"
+          ],
           "skal": {
             "foretag": "Företag kan söka som juridisk person, men programmen riktar sig främst till projekt som gynnar många företag.",
             "privatperson": "Sökande ska vara juridisk person."
           }
         },
         "mognad": {
-          "passar": ["forstudie", "fou", "test_demo", "implementering"],
-          "kanske": ["ide", "vet_ej"]
+          "passar": [
+            "forstudie",
+            "fou",
+            "test_demo",
+            "implementering"
+          ],
+          "kanske": [
+            "ide",
+            "vet_ej"
+          ]
         }
       },
       "fordelning": {
         "fraga": "lan",
         "kontrollerad": false,
         "utfall": [
-          { "namn": "Övre Norrland", "svar": ["norrbotten", "vasterbotten"], "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/ovrenorrland.1733.html" },
-          { "namn": "Mellersta Norrland", "svar": ["jamtland", "vasternorrland"], "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/mellerstanorrland.1740.html" },
-          { "namn": "Norra Mellansverige", "svar": ["gavleborg", "dalarna", "varmland"], "url": null },
-          { "namn": "Stockholm", "svar": ["stockholm"], "url": null, "anmarkning": "Regionalfonden finansierar högst 40 procent av projektets kostnader." },
-          { "namn": "Östra Mellansverige", "svar": ["uppsala", "sodermanland", "ostergotland", "orebro", "vastmanland"], "url": null },
-          { "namn": "Småland och öarna", "svar": ["jonkoping", "kronoberg", "kalmar", "gotland"], "url": null },
-          { "namn": "Sydsverige", "svar": ["skane", "blekinge"], "url": null },
-          { "namn": "Västsverige", "svar": ["vastra_gotaland", "halland"], "url": null },
-          { "namn": "Nationella regionalfondsprogrammet", "svar": ["flera"], "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/nationellaregionalfondsprogrammet.1747.html", "anmarkning": "För insatser som spänner över flera regioner." }
+          {
+            "namn": "Övre Norrland",
+            "svar": [
+              "norrbotten",
+              "vasterbotten"
+            ],
+            "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/ovrenorrland.1733.html"
+          },
+          {
+            "namn": "Mellersta Norrland",
+            "svar": [
+              "jamtland",
+              "vasternorrland"
+            ],
+            "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/mellerstanorrland.1740.html"
+          },
+          {
+            "namn": "Norra Mellansverige",
+            "svar": [
+              "gavleborg",
+              "dalarna",
+              "varmland"
+            ],
+            "url": null
+          },
+          {
+            "namn": "Stockholm",
+            "svar": [
+              "stockholm"
+            ],
+            "url": null,
+            "anmarkning": "Regionalfonden finansierar högst 40 procent av projektets kostnader."
+          },
+          {
+            "namn": "Östra Mellansverige",
+            "svar": [
+              "uppsala",
+              "sodermanland",
+              "ostergotland",
+              "orebro",
+              "vastmanland"
+            ],
+            "url": null
+          },
+          {
+            "namn": "Småland och öarna",
+            "svar": [
+              "jonkoping",
+              "kronoberg",
+              "kalmar",
+              "gotland"
+            ],
+            "url": null
+          },
+          {
+            "namn": "Sydsverige",
+            "svar": [
+              "skane",
+              "blekinge"
+            ],
+            "url": null
+          },
+          {
+            "namn": "Västsverige",
+            "svar": [
+              "vastra_gotaland",
+              "halland"
+            ],
+            "url": null
+          },
+          {
+            "namn": "Nationella regionalfondsprogrammet",
+            "svar": [
+              "flera"
+            ],
+            "url": "https://tillvaxtverket.se/tillvaxtverket/omtillvaxtverket/eufonder/regionalfonden/nationellaregionalfondsprogrammet.1747.html",
+            "anmarkning": "För insatser som spänner över flera regioner."
+          }
         ]
       },
       "leder_till": {
@@ -84,7 +172,8 @@
         "hur_hitta": "Sök på 'Regionalfonden' och programområdets namn på tillvaxtverket.se. Där finns aktuella utlysningar och kontaktpersoner.",
         "url_verifierad": false
       },
-      "besked": "Ditt län hör till programområdet ovan. Se om det finns en öppen utlysning som passar idén, och kontakta programansvarig innan ni skriver ansökan."
+      "besked": "Ert län hör till programområdet ovan. Se om det finns en öppen utlysning som passar idén, och kontakta programansvarig innan ni skriver ansökan.",
+      "besked_utan_fordelning": "Vilket programområde som gäller beror på län. Ta reda på var verksamheten ska bedrivas, och kontakta sedan programansvarig i det programområdet."
     },
     {
       "id": "regionalt-investeringsstod",
@@ -92,8 +181,13 @@
       "beskrivning": "Stöd till företag som investerar i materiella eller immateriella tillgångar, till exempel för att etablera eller bygga ut verksamhet. Får bara lämnas inom så kallade stödområden, som består av vissa kommuner, främst i norra Sverige. Alla branscher är inte behöriga.",
       "villkor": {
         "organisationstyp": {
-          "passar": ["foretag"],
-          "kanske": ["kommun_region", "vet_ej"],
+          "passar": [
+            "foretag"
+          ],
+          "kanske": [
+            "kommun_region",
+            "vet_ej"
+          ],
           "skal": {
             "kommun_region": "Kommunägda bolag kan i vissa fall få stöd, till exempel för lokaler för uthyrning.",
             "ovrigt": "Stödet riktar sig till verksamhet på marknadsmässiga villkor."
@@ -101,7 +195,18 @@
         },
         "lan": {
           "passar": [],
-          "kanske": ["norrbotten", "vasterbotten", "jamtland", "vasternorrland", "gavleborg", "dalarna", "varmland", "vastra_gotaland", "flera", "vet_ej"],
+          "kanske": [
+            "norrbotten",
+            "vasterbotten",
+            "jamtland",
+            "vasternorrland",
+            "gavleborg",
+            "dalarna",
+            "varmland",
+            "vastra_gotaland",
+            "flera",
+            "vet_ej"
+          ],
           "skal": {
             "norrbotten": "Stödområdet omfattar många kommuner i länet. Kontrollera kommunen.",
             "vastra_gotaland": "Endast enstaka kommuner har historiskt ingått. Kontrollera kommunen.",
@@ -109,9 +214,16 @@
           }
         },
         "mognad": {
-          "passar": ["implementering"],
-          "kanske": ["test_demo", "vet_ej"],
-          "skal": { "ovrigt": "Stödet gäller investeringar, inte forskning eller förstudier." }
+          "passar": [
+            "implementering"
+          ],
+          "kanske": [
+            "test_demo",
+            "vet_ej"
+          ],
+          "skal": {
+            "ovrigt": "Stödet gäller investeringar, inte forskning eller förstudier."
+          }
         }
       },
       "leder_till": {
@@ -128,14 +240,28 @@
       "beskrivning": "Regionerna fördelar stöd till små och medelstora företag, till exempel konsultcheckar, affärsutvecklingscheckar och stöd till investeringar och utveckling. Utbud, belopp och villkor skiljer sig mellan regionerna och ändras ofta.",
       "villkor": {
         "organisationstyp": {
-          "passar": ["foretag"],
-          "kanske": ["vet_ej"],
-          "skal": { "ovrigt": "Stöden riktar sig till företag." }
+          "passar": [
+            "foretag"
+          ],
+          "kanske": [
+            "vet_ej"
+          ],
+          "skal": {
+            "ovrigt": "Stöden riktar sig till företag."
+          }
         },
         "foretagsstorlek": {
-          "passar": ["mikro", "liten", "medel"],
-          "kanske": ["vet_ej"],
-          "skal": { "stor": "Regionala företagsstöd riktar sig i regel till små och medelstora företag." }
+          "passar": [
+            "mikro",
+            "liten",
+            "medel"
+          ],
+          "kanske": [
+            "vet_ej"
+          ],
+          "skal": {
+            "stor": "Regionala företagsstöd riktar sig i regel till små och medelstora företag."
+          }
         }
       },
       "leder_till": {
@@ -147,7 +273,6 @@
       "besked": "Kontakta regionen i ert län. De vet vilka stöd som är öppna just nu och om er idé kan passa."
     }
   ],
-
   "osakerheter": [
     "Kopplingen mellan län och programområde bygger på allmän kunskap om programperioden 2021–2027 och är inte avstämd mot Tillväxtverkets sidor.",
     "Länkarna till programområdenas sidor kommer från ett äldre programblad och kan ha flyttats.",

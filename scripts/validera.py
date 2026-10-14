@@ -31,6 +31,14 @@ for fil in sorted((ROT / "data/poster").glob("*.json")):
         fel.append(f"{fil.name}: filnamnet ska vara id + .json")
     for fraga, regel in post.get("filter", {}).items():
         kolla_regel(fil.name, "filter", fraga, regel, fel)
+    for i, k in enumerate(post.get("kombinationer", [])):
+        for fraga, svar in k["nar"].items():
+            if fraga not in giltiga:
+                fel.append(f"{fil.name}: kombinationer[{i}] har okänd fråga '{fraga}'")
+                continue
+            for s in svar:
+                if s not in giltiga[fraga]:
+                    fel.append(f"{fil.name}: kombinationer[{i}].{fraga} har okänt svar '{s}'")
     for v in post.get("vagar", []):
         for fraga, regel in v.get("villkor", {}).items():
             kolla_regel(fil.name, f"vagar[{v['id']}].villkor", fraga, regel, fel)

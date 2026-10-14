@@ -102,6 +102,18 @@ export function bedomPost(post, svar, idag) {
     skal.push({ fraga, utfall: r.utfall, text: r.text });
   }
 
+  for (const k of post.kombinationer || []) {
+    const traffar = Object.entries(k.nar).every(([fraga, varden]) => {
+      const s = svar[fraga];
+      const lista = Array.isArray(s) ? s : [s];
+      return lista.some((v) => varden.includes(v));
+    });
+    if (traffar) {
+      utfall = varst(utfall, k.utfall);
+      skal.push({ fraga: "kombination", utfall: k.utfall, text: k.skal });
+    }
+  }
+
   const tid = bedomTid(post, svar.tidshorisont, idag);
   if (tid) {
     utfall = varst(utfall, tid.utfall);

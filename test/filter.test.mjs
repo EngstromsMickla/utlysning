@@ -56,6 +56,17 @@ test("flerval: bästa svaret räknas", () => {
   assert.equal(r.utfall, "passar");
 });
 
+test("Eureka: ensam på idéstadiet faller bort via kombinationsregel", () => {
+  const r = bedomPost(post("vinnova-eureka-smart-call10"), { partners: "ensam", mognad: "ide" }, IDAG);
+  assert.equal(r.utfall, "passar_inte");
+  assert.ok(r.skal.some((s) => s.fraga === "kombination"));
+});
+
+test("Eureka: hälsa utan tillverkning faller bort", () => {
+  const r = bedomPost(post("vinnova-eureka-smart-call10"), { sektor: ["halsa"] }, IDAG);
+  assert.equal(r.utfall, "passar_inte");
+});
+
 test("privatperson faller bort och får förklaring", () => {
   const { bortfallna } = filtrera(poster, { organisationstyp: "privatperson" }, IDAG);
   assert.ok(bortfallna.some((b) => b.post.id === "vinnova-eureka-smart-call10"));
@@ -66,4 +77,9 @@ test("stort företag i Norrbotten som ska investera: investeringsstöd värt att
     { organisationstyp: "foretag", foretagsstorlek: "stor", lan: "norrbotten", mognad: "implementering" }, IDAG);
   assert.equal(r.vagar.find((v) => v.id === "regionalt-investeringsstod").utfall, "kanske");
   assert.equal(r.vagar.find((v) => v.id === "regionala-foretagsstod").utfall, "passar_inte");
+});
+
+test("resultat: egen produkt utesluter SBUF men passar Eureka", () => {
+  assert.equal(bedomPost(post("sbuf-projektbidrag"), { resultat: "egen_produkt" }, IDAG).utfall, "passar_inte");
+  assert.equal(bedomPost(post("vinnova-eureka-smart-call10"), { resultat: "egen_produkt" }, IDAG).utfall, "passar");
 });

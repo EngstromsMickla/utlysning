@@ -5,245 +5,708 @@
   "description": "En finansieringsmöjlighet. Tre typer delar samma grund: utlysning (tidsbunden), lopande (stående kanal) och vagvisare (leder vidare när kraven beror på region, storlek eller insats).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "typ", "titel", "finansiar", "sammanfattning", "kallor", "kontroll", "precision", "status"],
+  "required": [
+    "id",
+    "typ",
+    "titel",
+    "finansiar",
+    "sammanfattning",
+    "kallor",
+    "kontroll",
+    "precision",
+    "status"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Stabilt id. Ändras aldrig, även om titeln ändras." },
-    "typ": { "enum": ["utlysning", "lopande", "vagvisare"] },
-    "titel": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Stabilt id. Ändras aldrig, även om titeln ändras."
+    },
+    "typ": {
+      "enum": [
+        "utlysning",
+        "lopande",
+        "vagvisare"
+      ]
+    },
+    "titel": {
+      "type": "string"
+    },
     "finansiar": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "namn"],
+      "required": [
+        "id",
+        "namn"
+      ],
       "properties": {
-        "id": { "enum": ["formas", "vinnova", "sbuf", "shiftsweden", "resource", "energimyndigheten", "tillvaxtverket", "horizon-europe", "smart-built", "ovrig"] },
-        "namn": { "type": "string" },
-        "partner": { "type": "array", "items": { "type": "string" }, "description": "Andra organisationer som står bakom, t.ex. ett Eureka-kluster." }
+        "id": {
+          "enum": [
+            "formas",
+            "vinnova",
+            "sbuf",
+            "shiftsweden",
+            "resource",
+            "energimyndigheten",
+            "tillvaxtverket",
+            "horizon-europe",
+            "smart-built",
+            "ovrig"
+          ]
+        },
+        "namn": {
+          "type": "string"
+        },
+        "partner": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Andra organisationer som står bakom, t.ex. ett Eureka-kluster."
+        }
       }
     },
-    "program": { "type": ["string", "null"] },
-    "diarienummer": { "type": ["string", "null"] },
-    "sammanfattning": { "type": "string", "maxLength": 600, "description": "Egen formulering i klartext. Aldrig kopierad text från källan." },
-    "status": { "enum": ["kommande", "oppen", "stangd", "lopande", "vagvisare"] },
-
+    "program": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diarienummer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sammanfattning": {
+      "type": "string",
+      "maxLength": 600,
+      "description": "Egen formulering i klartext. Aldrig kopierad text från källan."
+    },
+    "status": {
+      "enum": [
+        "kommande",
+        "oppen",
+        "stangd",
+        "lopande",
+        "vagvisare"
+      ]
+    },
     "kallor": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["url", "titel", "roll"],
+        "required": [
+          "url",
+          "titel",
+          "roll"
+        ],
         "properties": {
-          "url": { "type": "string", "format": "uri" },
-          "titel": { "type": "string" },
-          "roll": { "enum": ["primar", "kompletterande", "sekundar"], "description": "primar = finansiärens egen sida. sekundar = annan aktörs återgivning, används bara när primärkällan saknar uppgiften." },
-          "sprak": { "enum": ["sv", "en"] },
-          "anmarkning": { "type": "string" }
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "titel": {
+            "type": "string"
+          },
+          "roll": {
+            "enum": [
+              "primar",
+              "kompletterande",
+              "sekundar"
+            ],
+            "description": "primar = finansiärens egen sida. sekundar = annan aktörs återgivning, används bara när primärkällan saknar uppgiften."
+          },
+          "sprak": {
+            "enum": [
+              "sv",
+              "en"
+            ]
+          },
+          "anmarkning": {
+            "type": "string"
+          }
         }
       }
     },
-
     "kontroll": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["senast", "metod", "godkand_av"],
+      "required": [
+        "senast",
+        "metod",
+        "godkand_av"
+      ],
       "properties": {
-        "senast": { "type": "string", "format": "date", "description": "Datum då uppgifterna senast stämdes av mot källan." },
-        "metod": { "enum": ["automatisk", "manuell"], "description": "manuell när källan inte tillåter automatisk hämtning (robots.txt) eller saknar maskinläsbar data." },
-        "godkand_av": { "type": "string" },
-        "anmarkning": { "type": "string" }
+        "senast": {
+          "type": "string",
+          "format": "date",
+          "description": "Datum då uppgifterna senast stämdes av mot källan."
+        },
+        "metod": {
+          "enum": [
+            "automatisk",
+            "manuell"
+          ],
+          "description": "manuell när källan inte tillåter automatisk hämtning (robots.txt) eller saknar maskinläsbar data."
+        },
+        "godkand_av": {
+          "type": "string"
+        },
+        "anmarkning": {
+          "type": "string"
+        }
       }
     },
-
     "precision": {
-      "enum": ["hog", "medel", "lag", "ingen"],
+      "enum": [
+        "hog",
+        "medel",
+        "lag",
+        "ingen"
+      ],
       "description": "Hur skarp bedömning underlaget tillåter. hog = publicerade, viktade kriterier. lag = mål och prioriteringar men inga bedömningskriterier. ingen = vägvisare, verktyget kan inte bedöma."
     },
-    "precision_motivering": { "type": "string" },
-
+    "precision_motivering": {
+      "type": "string"
+    },
     "filter": {
       "description": "Koppling till de fasta frågorna. Nyckel = fråge-id i fragor.json. Svar som finns i 'passar' ger passar, i 'kanske' ger kanske, övriga ger passar_inte. Saknas nyckeln filtrerar frågan inte alls.",
       "type": "object",
-      "propertyNames": { "enum": ["organisationstyp", "foretagsstorlek", "lan", "sektor", "mognad", "bidragsbehov", "partners", "branschorganisation"] },
-      "additionalProperties": { "$ref": "#/$defs/filterregel" }
+      "propertyNames": {
+        "enum": [
+          "organisationstyp",
+          "foretagsstorlek",
+          "lan",
+          "sektor",
+          "mognad",
+          "resultat",
+          "bidragsbehov",
+          "partners",
+          "branschorganisation"
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/filterregel"
+      }
     },
-
     "krav": {
       "type": "array",
       "description": "Behörighets- och formkrav. 'skarpt' = ansökan avvisas om kravet inte uppfylls.",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "kategori", "text", "skarpt"],
+        "required": [
+          "id",
+          "kategori",
+          "text",
+          "skarpt",
+          "skede"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "kategori": { "enum": ["sokande", "konsortium", "medfinansiering", "budget", "tid", "formalia", "statsstod"] },
-          "text": { "type": "string" },
-          "skarpt": { "type": "boolean" },
-          "kalla": { "type": "string", "description": "Index eller url till den källa i 'kallor' som kravet bygger på." }
+          "id": {
+            "type": "string"
+          },
+          "kategori": {
+            "enum": [
+              "sokande",
+              "konsortium",
+              "medfinansiering",
+              "budget",
+              "tid",
+              "formalia",
+              "statsstod"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "skarpt": {
+            "type": "boolean"
+          },
+          "kalla": {
+            "type": "string",
+            "description": "Index eller url till den källa i 'kallor' som kravet bygger på."
+          },
+          "skede": {
+            "enum": [
+              "behorighet",
+              "ansokan"
+            ],
+            "description": "behorighet = måste vara sant om sökande och projekt redan nu (bedöms mot idén). ansokan = görs eller visas i ansökan eller senare steg (listas som att göra, bedöms inte)."
+          }
         }
       }
     },
-
     "belopp": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
       "properties": {
-        "min_sek": { "type": ["integer", "null"] },
-        "max_sek": { "type": ["integer", "null"] },
-        "galler": { "type": "string", "description": "Vad beloppet avser, t.ex. 'svenska delen per projekt'." },
+        "min_sek": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max_sek": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "galler": {
+          "type": "string",
+          "description": "Vad beloppet avser, t.ex. 'svenska delen per projekt'."
+        },
         "stodniva": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["aktor", "max_andel"],
+            "required": [
+              "aktor",
+              "max_andel"
+            ],
             "properties": {
-              "aktor": { "type": "string" },
-              "max_andel": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
-              "anmarkning": { "type": "string" }
+              "aktor": {
+                "type": "string"
+              },
+              "max_andel": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              },
+              "anmarkning": {
+                "type": "string"
+              }
             }
           }
         },
-        "total_budget_sek": { "type": ["integer", "null"] },
-        "loptid_max_manader": { "type": ["integer", "null"] },
-        "anmarkning": { "type": "string" }
+        "total_budget_sek": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "loptid_max_manader": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "anmarkning": {
+          "type": "string"
+        }
       }
     },
-
     "bedomning": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false,
-      "required": ["typ"],
+      "required": [
+        "typ"
+      ],
       "properties": {
-        "typ": { "enum": ["viktade_kriterier", "kriterier", "mal_och_prioriteringar", "ingen"] },
-        "galler_steg": { "type": "string", "description": "Om utlysningen har flera steg: vilket steg kriterierna gäller." },
+        "typ": {
+          "enum": [
+            "viktade_kriterier",
+            "kriterier",
+            "mal_och_prioriteringar",
+            "ingen"
+          ]
+        },
+        "galler_steg": {
+          "type": "string",
+          "description": "Om utlysningen har flera steg: vilket steg kriterierna gäller."
+        },
         "kriterier": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "rubrik", "aspekter"],
+            "required": [
+              "id",
+              "rubrik",
+              "aspekter"
+            ],
             "properties": {
-              "id": { "type": "string" },
-              "rubrik": { "type": "string" },
-              "vikt": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
-              "aspekter": { "type": "array", "items": { "type": "string" } }
+              "id": {
+                "type": "string"
+              },
+              "rubrik": {
+                "type": "string"
+              },
+              "vikt": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              },
+              "aspekter": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
             }
           }
         },
-        "oversattning": { "type": "string", "description": "Anges om kriterierna är översatta från källans språk." }
+        "oversattning": {
+          "type": "string",
+          "description": "Anges om kriterierna är översatta från källans språk."
+        }
       }
     },
-
     "tidpunkter": {
       "type": "array",
       "description": "Krävs för utlysning. Kan finnas för lopande (fasta inlämningstider).",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["typ", "datum"],
+        "required": [
+          "typ",
+          "datum"
+        ],
         "properties": {
-          "typ": { "enum": ["oppnar", "sista_dag", "informationsmote", "besked", "beslut", "projektstart_senast", "projektslut_senast"] },
-          "datum": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-          "tid": { "type": ["string", "null"], "pattern": "^\\d{2}:\\d{2}$" },
-          "tidszon": { "type": "string" },
-          "steg": { "type": ["string", "null"], "description": "Vilket steg datumet gäller vid flerstegsansökan." },
-          "preliminar": { "type": "boolean" },
-          "beskrivning": { "type": "string" }
+          "typ": {
+            "enum": [
+              "oppnar",
+              "sista_dag",
+              "informationsmote",
+              "besked",
+              "beslut",
+              "projektstart_senast",
+              "projektslut_senast"
+            ]
+          },
+          "datum": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "tid": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{2}:\\d{2}$"
+          },
+          "tidszon": {
+            "type": "string"
+          },
+          "steg": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Vilket steg datumet gäller vid flerstegsansökan."
+          },
+          "preliminar": {
+            "type": "boolean"
+          },
+          "beskrivning": {
+            "type": "string"
+          }
         }
       }
     },
-
-    "beslutsrytm": { "type": ["string", "null"], "description": "Krävs för lopande. Hur ofta och när beslut fattas." },
-    "finansierar": { "type": "array", "items": { "type": "string" }, "description": "Krävs för lopande. Vad kanalen finansierar, i klartext." },
-
+    "beslutsrytm": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Krävs för lopande. Hur ofta och när beslut fattas."
+    },
+    "finansierar": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Krävs för lopande. Vad kanalen finansierar, i klartext."
+    },
     "vagar": {
       "type": "array",
       "description": "Krävs för vagvisare. Varje väg har villkor kopplade till de fasta frågorna och leder till en sida eller kontakt.",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "namn", "beskrivning", "villkor", "leder_till"],
+        "required": [
+          "id",
+          "namn",
+          "beskrivning",
+          "villkor",
+          "leder_till"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "namn": { "type": "string" },
-          "beskrivning": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "namn": {
+            "type": "string"
+          },
+          "beskrivning": {
+            "type": "string"
+          },
           "villkor": {
             "type": "object",
-            "propertyNames": { "enum": ["organisationstyp", "foretagsstorlek", "lan", "sektor", "mognad", "bidragsbehov", "partners", "branschorganisation"] },
-            "additionalProperties": { "$ref": "#/$defs/filterregel" }
+            "propertyNames": {
+              "enum": [
+                "organisationstyp",
+                "foretagsstorlek",
+                "lan",
+                "sektor",
+                "mognad",
+                "resultat",
+                "bidragsbehov",
+                "partners",
+                "branschorganisation"
+              ]
+            },
+            "additionalProperties": {
+              "$ref": "#/$defs/filterregel"
+            }
           },
           "fordelning": {
             "type": "object",
             "description": "Valfri uppslagstabell: svar på en fråga pekar ut en underväg, t.ex. län -> programområde.",
             "additionalProperties": false,
-            "required": ["fraga", "utfall"],
+            "required": [
+              "fraga",
+              "utfall"
+            ],
             "properties": {
-              "fraga": { "type": "string" },
+              "fraga": {
+                "type": "string"
+              },
               "utfall": {
                 "type": "array",
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["namn", "svar"],
+                  "required": [
+                    "namn",
+                    "svar"
+                  ],
                   "properties": {
-                    "namn": { "type": "string" },
-                    "svar": { "type": "array", "items": { "type": "string" } },
-                    "url": { "type": ["string", "null"] },
-                    "anmarkning": { "type": "string" }
+                    "namn": {
+                      "type": "string"
+                    },
+                    "svar": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "anmarkning": {
+                      "type": "string"
+                    }
                   }
                 }
               },
-              "kontrollerad": { "type": "boolean", "description": "false = tabellen bygger på allmän kunskap och är inte avstämd mot källan än." }
+              "kontrollerad": {
+                "type": "boolean",
+                "description": "false = tabellen bygger på allmän kunskap och är inte avstämd mot källan än."
+              }
             }
           },
           "leder_till": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "url": { "type": ["string", "null"] },
-              "kontakt": { "type": ["string", "null"] },
-              "hur_hitta": { "type": "string" },
-              "url_verifierad": { "type": "boolean" }
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "kontakt": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hur_hitta": {
+                "type": "string"
+              },
+              "url_verifierad": {
+                "type": "boolean"
+              }
             }
           },
-          "besked": { "type": "string", "description": "Vad verktyget säger när vägen är aktuell." }
+          "besked": {
+            "type": "string",
+            "description": "Vad verktyget säger när vägen är aktuell."
+          },
+          "besked_utan_fordelning": {
+            "type": "string",
+            "description": "Besked när fördelningsfrågan är obesvarad eller saknar träff."
+          }
         }
       }
     },
-    "besked": { "type": "string", "description": "Gemensamt besked för posten, t.ex. att verktyget inte kan avgöra behörighet." },
-
+    "besked": {
+      "type": "string",
+      "description": "Gemensamt besked för posten, t.ex. att verktyget inte kan avgöra behörighet."
+    },
     "osakerheter": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Det som är oklart eller inte kontrollerat. Visas för användaren och följer med in i prompten."
+    },
+    "kombinationer": {
+      "type": "array",
+      "description": "Regler som slår till när flera svar sammanfaller, t.ex. inga partner och idéstadium. Kan bara skärpa utfallet.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "nar",
+          "utfall",
+          "skal"
+        ],
+        "properties": {
+          "nar": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Alla villkor måste vara uppfyllda. Nyckel = fråge-id, värde = svar som räknas."
+          },
+          "utfall": {
+            "enum": [
+              "kanske",
+              "passar_inte"
+            ]
+          },
+          "skal": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
-
   "$defs": {
     "filterregel": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "passar": { "type": "array", "items": { "type": "string" } },
-        "kanske": { "type": "array", "items": { "type": "string" } },
-        "skal": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Förklaring per svar, visas i resultatet. Nyckel = svars-id eller 'ovrigt'." }
+        "passar": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "kanske": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skal": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Förklaring per svar, visas i resultatet. Nyckel = svars-id eller 'ovrigt'."
+        }
       }
     }
   },
-
   "allOf": [
     {
-      "if": { "properties": { "typ": { "const": "utlysning" } } },
-      "then": { "required": ["tidpunkter", "krav", "belopp", "bedomning", "filter"], "properties": { "status": { "enum": ["kommande", "oppen", "stangd"] } } }
+      "if": {
+        "properties": {
+          "typ": {
+            "const": "utlysning"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "tidpunkter",
+          "krav",
+          "belopp",
+          "bedomning",
+          "filter"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "kommande",
+              "oppen",
+              "stangd"
+            ]
+          }
+        }
+      }
     },
     {
-      "if": { "properties": { "typ": { "const": "lopande" } } },
-      "then": { "required": ["beslutsrytm", "finansierar", "krav", "filter", "osakerheter"], "properties": { "status": { "const": "lopande" } } }
+      "if": {
+        "properties": {
+          "typ": {
+            "const": "lopande"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "beslutsrytm",
+          "finansierar",
+          "krav",
+          "filter",
+          "osakerheter"
+        ],
+        "properties": {
+          "status": {
+            "const": "lopande"
+          }
+        }
+      }
     },
     {
-      "if": { "properties": { "typ": { "const": "vagvisare" } } },
-      "then": { "required": ["vagar", "besked"], "properties": { "status": { "const": "vagvisare" }, "precision": { "const": "ingen" } } }
+      "if": {
+        "properties": {
+          "typ": {
+            "const": "vagvisare"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "vagar",
+          "besked"
+        ],
+        "properties": {
+          "status": {
+            "const": "vagvisare"
+          },
+          "precision": {
+            "const": "ingen"
+          }
+        }
+      }
     }
   ]
 }

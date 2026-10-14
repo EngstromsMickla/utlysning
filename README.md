@@ -9,9 +9,12 @@ Steg 1 av 3: hur finansieringsmöjligheterna beskrivs och hur de fasta frågorna
 | `schema/post.schema.json` | Reglerna för hur en post får se ut. Allt i `data/poster/` kontrolleras mot den. |
 | `schema/fragor.json` | De fasta frågorna i idéverktyget med svarsalternativ. |
 | `data/poster/*.json` | En fil per finansieringsmöjlighet. Filnamnet är postens id. |
+| `publik/index.html`, `app.js`, `style.css` | Själva sidan: idéverktyget, radarn och om-sidan. |
 | `publik/filter.js` | Reglerna som körs i besökarens webbläsare. Skickar ingenting någonstans. |
+| `publik/prompt.js` | Bygger prompten som användaren kopierar till sin egen AI. |
+| `scripts/bygg.py` | Slår ihop posterna till `publik/data/`, som sidan läser. |
 | `scripts/validera.py` | Kontrollerar alla poster. Körs före varje publicering. |
-| `test/filter.test.mjs` | Prövar filtreringen med åtta påhittade användare. |
+| `test/` | Prövar filtreringen och prompten. |
 
 Kör kontrollerna:
 
@@ -66,7 +69,9 @@ Vägvisaren använder samma regelformat per väg, plus en uppslagstabell (`forde
 
 - **Bidragsbehov** i stället för budget: frågan gäller hur mycket bidrag man söker, eftersom det är det beloppstaken avser.
 - **Tidshorisont** är formulerad som "när kan ni tidigast lämna in" och jämförs med datum.
-- **Branschorganisation** (Byggföretagen, Installatörsföretagen) är ny. SBUF kräver medlemsföretag som sökande, och utan frågan kan verktyget aldrig ge mer än kanske för SBUF. Den kan tas bort om du vill hålla nere antalet frågor.
+- **Branschorganisation** gäller den sökande organisationen. SBUF kräver att just den sökande är medlem.
+- **Resultat** (egen produkt, delvis öppet, öppet) avgör bland annat SBUF, som kräver öppna resultat.
+- **Kombinationsregler** (`kombinationer` i en post) skärper urvalet när flera svar sammanfaller, till exempel inga partner och idéstadium.
 
 ## Vad exemplen visade om bevakningen
 

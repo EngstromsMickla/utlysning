@@ -2,43 +2,81 @@
   "id": "sbuf-projektbidrag",
   "typ": "lopande",
   "titel": "SBUF: bidrag till forsknings-, utvecklings- och kunskapsprojekt i byggbranschen",
-  "finansiar": { "id": "sbuf", "namn": "SBUF, Svenska Byggbranschens Utvecklingsfond" },
+  "finansiar": {
+    "id": "sbuf",
+    "namn": "SBUF, Svenska Byggbranschens Utvecklingsfond"
+  },
   "program": null,
   "diarienummer": null,
   "sammanfattning": "Byggföretagens egen fond. Finansierar projekt som ger tydlig nytta för medlemsföretagen och vars resultat blir öppna för hela branschen. Sökande ska vara ett medlemsföretag i Byggföretagen eller Installatörsföretagen (eller organisationerna och deras arbetsmarknadsparter). Forskare, konsulter och andra kan driva projektet om ett medlemsföretag står som sökande. Ansökningar tas emot vid sex fasta tillfällen per år.",
   "status": "lopande",
-
   "kallor": [
-    { "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering", "titel": "SBUF: Sök finansiering", "roll": "primar", "sprak": "sv" },
-    { "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vem-kan-soka", "titel": "SBUF: Vem kan söka?", "roll": "primar", "sprak": "sv" },
-    { "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vilka-projekt-kan-fa-bidrag", "titel": "SBUF: Vilka projekt kan få bidrag? Mål och kriterier", "roll": "primar", "sprak": "sv" },
-    { "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider", "titel": "SBUF: Ansökningstider och besked", "roll": "primar", "sprak": "sv" },
-    { "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/checklista-for-projektbeskrivningen-ansokan", "titel": "SBUF: Checklista för projektbeskrivning", "roll": "kompletterande", "sprak": "sv", "anmarkning": "Utskotten använder checklistan i sin bedömning. Inte genomgången än." },
-    { "url": "https://www.sbuf.se/media/pwtjp2zv/2026-sbuf-allmanna-villkor-for-projektbidrag-20260415.pdf", "titel": "SBUF: Allmänna villkor för projektbidrag 2026", "roll": "kompletterande", "sprak": "sv", "anmarkning": "Inte genomläst än. Kan innehålla regler om bidragsandel och egeninsats." }
+    {
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering",
+      "titel": "SBUF: Sök finansiering",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vem-kan-soka",
+      "titel": "SBUF: Vem kan söka?",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vilka-projekt-kan-fa-bidrag",
+      "titel": "SBUF: Vilka projekt kan få bidrag? Mål och kriterier",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider",
+      "titel": "SBUF: Ansökningstider och besked",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/checklista-for-projektbeskrivningen-ansokan",
+      "titel": "SBUF: Checklista för projektbeskrivning",
+      "roll": "kompletterande",
+      "sprak": "sv",
+      "anmarkning": "Utskotten använder checklistan i sin bedömning. Inte genomgången än."
+    },
+    {
+      "url": "https://www.sbuf.se/media/pwtjp2zv/2026-sbuf-allmanna-villkor-for-projektbidrag-20260415.pdf",
+      "titel": "SBUF: Allmänna villkor för projektbidrag 2026",
+      "roll": "kompletterande",
+      "sprak": "sv",
+      "anmarkning": "Inte genomläst än. Kan innehålla regler om bidragsandel och egeninsats."
+    }
   ],
-
   "kontroll": {
     "senast": "2026-10-14",
     "metod": "automatisk",
     "godkand_av": "Dan Engström",
     "anmarkning": "Utkast 2026-10-14. Checklistan och de allmänna villkoren ska läsas innan publicering."
   },
-
   "precision": "lag",
   "precision_motivering": "SBUF publicerar mål, fokusområden och behörighet, men inga viktade bedömningskriterier. Utskottens bedömning bygger på en checklista och på entreprenörsnytta. Passformen blir därför grövre än för en utlysning med viktade kriterier.",
-
   "finansierar": [
     "Forskningsprojekt med tydlig relevans och förankring i branschen, även långsiktig forskning och doktorander.",
     "Utvecklingsprojekt som går från forskning till praktisk tillämpning, till exempel vägledningar, checklistor, färdplaner och prototyper.",
     "Kunskapsprojekt: kunskapsinhämtning och omvärldsbevakning."
   ],
-
   "beslutsrytm": "Sex inlämningstillfällen per år. Preliminärt besked ges cirka fem till åtta veckor efter inlämning. Utvecklingsprojekt kan lämnas vid alla tillfällen; forskningsprojekt vid fyra av sex.",
-
   "filter": {
     "organisationstyp": {
-      "passar": ["foretag"],
-      "kanske": ["universitet_hogskola", "forskningsinstitut", "ideell", "kommun_region", "statlig_myndighet", "vet_ej"],
+      "passar": [
+        "foretag"
+      ],
+      "kanske": [
+        "universitet_hogskola",
+        "forskningsinstitut",
+        "ideell",
+        "kommun_region",
+        "statlig_myndighet",
+        "vet_ej"
+      ],
       "skal": {
         "foretag": "Företaget måste vara medlem i Byggföretagen eller Installatörsföretagen för att stå som sökande.",
         "universitet_hogskola": "Kan driva projektet, men ett medlemsföretag måste stå som sökande och beställare.",
@@ -50,39 +88,105 @@
       }
     },
     "branschorganisation": {
-      "passar": ["byggforetagen", "installatorsforetagen"],
-      "kanske": ["ingen", "vet_ej"],
+      "passar": [
+        "byggforetagen",
+        "installatorsforetagen"
+      ],
+      "kanske": [
+        "ingen",
+        "vet_ej"
+      ],
       "skal": {
-        "ingen": "Ni behöver ett medlemsföretag i Byggföretagen eller Installatörsföretagen som sökande. SBUF tar också emot intresseanmälningar från den som vill delta i projekt.",
-        "vet_ej": "Kontrollera medlemskap i Byggföretagen eller Installatörsföretagen."
+        "ingen": "Den sökande måste vara medlem i Byggföretagen eller Installatörsföretagen. Ni behöver ett medlemsföretag som tar rollen som sökande.",
+        "vet_ej": "Kontrollera om den sökande är medlem i Byggföretagen eller Installatörsföretagen."
       }
     },
     "sektor": {
-      "passar": ["bygg_fastighet"],
-      "kanske": ["energi", "transport", "digitalisering", "vatten_miljo", "tillverkning", "offentlig_verksamhet", "annat"],
+      "passar": [
+        "bygg_fastighet"
+      ],
+      "kanske": [
+        "energi",
+        "transport",
+        "digitalisering",
+        "vatten_miljo",
+        "tillverkning",
+        "offentlig_verksamhet",
+        "annat"
+      ],
       "skal": {
         "bygg_fastighet": "Fokusområden är digitalisering, hållbarhet och klimat, säkerhet och arbetsmiljö samt management.",
         "ovrigt": "Passar bara om resultatet ger nytta för bygg- och installationsföretagen."
       }
     },
     "mognad": {
-      "passar": ["forstudie", "fou", "test_demo"],
-      "kanske": ["ide", "implementering", "vet_ej"],
+      "passar": [
+        "forstudie",
+        "fou",
+        "test_demo"
+      ],
+      "kanske": [
+        "ide",
+        "implementering",
+        "vet_ej"
+      ],
       "skal": {
         "ide": "SBUF välkomnar kontakt för att diskutera en projektidé före formell ansökan.",
         "implementering": "Resultaten ska vara branschgemensamma och öppna. Ett enskilt företags införande eller investering passar sannolikt inte."
       }
+    },
+    "resultat": {
+      "passar": [
+        "oppet"
+      ],
+      "kanske": [
+        "blandat",
+        "vet_ej"
+      ],
+      "skal": {
+        "blandat": "Resultaten ska vara branschgemensamma och öppna för alla. Det som behålls som affär kan inte finansieras av SBUF.",
+        "egen_produkt": "SBUF kräver att resultaten blir branschgemensamma och öppna för alla. En produkt som ett företag äger passar inte.",
+        "vet_ej": "SBUF kräver att resultaten blir öppna för hela branschen."
+      }
     }
   },
-
   "krav": [
-    { "id": "medlemsforetag", "kategori": "sokande", "skarpt": true, "text": "Sökande ska vara medlemsföretag i Byggföretagen eller Installatörsföretagen, eller någon av organisationerna själva eller arbetsmarknadsparterna Byggnads, Ledarna och Seko." },
-    { "id": "extern-projektledare", "kategori": "sokande", "skarpt": false, "text": "Projektledaren behöver inte vara anställd hos det sökande företaget." },
-    { "id": "foretagsnytta", "kategori": "formalia", "skarpt": true, "text": "Projektets innehåll och mål ska ge uttrycklig nytta och relevans för medlemsföretagen. Projektet ska vara företagsdrivet och väl förankrat hos företagen." },
-    { "id": "oppna-resultat", "kategori": "formalia", "skarpt": true, "text": "Resultaten ska vara branschgemensamma och öppna för alla att ta del av." },
-    { "id": "projektbeskrivning", "kategori": "formalia", "skarpt": true, "text": "Ansökan ska innehålla en projektbeskrivning med syfte, genomförande, tidplan, organisation och kostnader, och registreras via Mina sidor." }
+    {
+      "id": "medlemsforetag",
+      "kategori": "sokande",
+      "skarpt": true,
+      "text": "Sökande ska vara medlemsföretag i Byggföretagen eller Installatörsföretagen, eller någon av organisationerna själva eller arbetsmarknadsparterna Byggnads, Ledarna och Seko.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "extern-projektledare",
+      "kategori": "sokande",
+      "skarpt": false,
+      "text": "Projektledaren behöver inte vara anställd hos det sökande företaget.",
+      "skede": "ansokan"
+    },
+    {
+      "id": "foretagsnytta",
+      "kategori": "formalia",
+      "skarpt": true,
+      "text": "Projektets innehåll och mål ska ge uttrycklig nytta och relevans för medlemsföretagen. Projektet ska vara företagsdrivet och väl förankrat hos företagen.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "oppna-resultat",
+      "kategori": "formalia",
+      "skarpt": true,
+      "text": "Resultaten ska vara branschgemensamma och öppna för alla att ta del av.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "projektbeskrivning",
+      "kategori": "formalia",
+      "skarpt": true,
+      "text": "Ansökan ska innehålla en projektbeskrivning med syfte, genomförande, tidplan, organisation och kostnader, och registreras via Mina sidor.",
+      "skede": "ansokan"
+    }
   ],
-
   "belopp": {
     "min_sek": null,
     "max_sek": null,
@@ -92,7 +196,6 @@
     "loptid_max_manader": null,
     "anmarkning": "SBUF anger inte beloppsgränser eller bidragsandel på de sidor som kontrollerats."
   },
-
   "bedomning": {
     "typ": "mal_och_prioriteringar",
     "kriterier": [
@@ -131,16 +234,44 @@
       }
     ]
   },
-
   "tidpunkter": [
-    { "typ": "sista_dag", "datum": "2026-01-15", "steg": "Nr 1", "beskrivning": "Utvecklingsprojekt. Preliminärt besked vecka 8." },
-    { "typ": "sista_dag", "datum": "2026-03-12", "steg": "Nr 2", "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 16." },
-    { "typ": "sista_dag", "datum": "2026-05-06", "steg": "Nr 3", "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 24." },
-    { "typ": "sista_dag", "datum": "2026-08-12", "steg": "Nr 4", "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 40." },
-    { "typ": "sista_dag", "datum": "2026-10-01", "steg": "Nr 5", "beskrivning": "Utvecklingsprojekt. Preliminärt besked vecka 44." },
-    { "typ": "sista_dag", "datum": "2026-11-04", "steg": "Nr 6", "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 50." }
+    {
+      "typ": "sista_dag",
+      "datum": "2026-01-15",
+      "steg": "Nr 1",
+      "beskrivning": "Utvecklingsprojekt. Preliminärt besked vecka 8."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-03-12",
+      "steg": "Nr 2",
+      "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 16."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-05-06",
+      "steg": "Nr 3",
+      "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 24."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-08-12",
+      "steg": "Nr 4",
+      "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 40."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-10-01",
+      "steg": "Nr 5",
+      "beskrivning": "Utvecklingsprojekt. Preliminärt besked vecka 44."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-11-04",
+      "steg": "Nr 6",
+      "beskrivning": "Utvecklings- och forskningsprojekt. Preliminärt besked vecka 50."
+    }
   ],
-
   "osakerheter": [
     "Belopp, bidragsandel och krav på egeninsats framgår inte av de sidor som kontrollerats; de kan stå i de allmänna villkoren.",
     "Inlämningstider för 2027 är inte publicerade än.",

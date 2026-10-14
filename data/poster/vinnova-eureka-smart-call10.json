@@ -2,12 +2,17 @@
   "id": "vinnova-eureka-smart-call10",
   "typ": "utlysning",
   "titel": "Eureka SMART Call 10: internationella samverkansprojekt inom avancerad tillverkning",
-  "finansiar": { "id": "vinnova", "namn": "Vinnova", "partner": ["Eureka-klustret SMART"] },
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova",
+    "partner": [
+      "Eureka-klustret SMART"
+    ]
+  },
   "program": "Eureka-kluster inom hållbara värdekedjor",
   "diarienummer": "2026-01106",
   "sammanfattning": "Finansierar den svenska delen av internationella forsknings- och utvecklingsprojekt inom avancerad tillverkning, med målet en konkurrenskraftig och resilient industri med nettonollutsläpp. Ansökan sker i steg: först en projektskiss till SMART, sedan en fullständig ansökan, och först med SMART-märkning kan de svenska parterna bjudas in att söka pengar från Vinnova. Kräver minst ett svenskt företag och partner i minst ett annat Eureka-land.",
   "status": "oppen",
-
   "kallor": [
     {
       "url": "https://www.vinnova.se/en/calls-for-proposals/eureka-cluster-within-sustainable-development/eureka-smart-international-2026-01106/",
@@ -37,21 +42,27 @@
       "anmarkning": "Används endast för datumen för fullständig ansökan och inbjudan, som saknas på Vinnovas sida."
     }
   ],
-
   "kontroll": {
     "senast": "2026-10-14",
     "metod": "automatisk",
     "godkand_av": "Dan Engström",
     "anmarkning": "Utkast framtaget 2026-10-14. Bedömningskriterierna är översatta från Vinnovas maskinöversatta engelska sida och ska stämmas av mot den svenska utlysningstexten innan publicering."
   },
-
   "precision": "hog",
   "precision_motivering": "Vinnova publicerar fyra bedömningskriterier med vikter och konkreta aspekter för den nationella ansökan.",
-
   "filter": {
     "organisationstyp": {
-      "passar": ["foretag"],
-      "kanske": ["universitet_hogskola", "forskningsinstitut", "kommun_region", "statlig_myndighet", "ideell", "vet_ej"],
+      "passar": [
+        "foretag"
+      ],
+      "kanske": [
+        "universitet_hogskola",
+        "forskningsinstitut",
+        "kommun_region",
+        "statlig_myndighet",
+        "ideell",
+        "vet_ej"
+      ],
       "skal": {
         "foretag": "Minst ett svenskt företag krävs, och företagen ska stå för minst 60 procent av den svenska arbetsinsatsen.",
         "universitet_hogskola": "Kan delta, men bara tillsammans med minst ett svenskt företag som bär huvuddelen av arbetet.",
@@ -63,16 +74,30 @@
       }
     },
     "foretagsstorlek": {
-      "passar": ["liten", "medel", "stor"],
-      "kanske": ["mikro", "vet_ej"],
+      "passar": [
+        "liten",
+        "medel",
+        "stor"
+      ],
+      "kanske": [
+        "mikro",
+        "vet_ej"
+      ],
       "skal": {
         "mikro": "Små och medelstora företag måste ha minst 1 miljon kronor i nettoomsättning (utan offentliga bidrag) och motsvarande minst tre heltidsanställda.",
         "stor": "Stora företag kan få högst 30 procent av sina stödberättigande kostnader."
       }
     },
     "mognad": {
-      "passar": ["fou", "test_demo"],
-      "kanske": ["forstudie", "ide", "vet_ej"],
+      "passar": [
+        "fou",
+        "test_demo"
+      ],
+      "kanske": [
+        "forstudie",
+        "ide",
+        "vet_ej"
+      ],
       "skal": {
         "ide": "Utlysningen finansierar industriell forskning eller experimentell utveckling. En idé behöver bli ett genomarbetat projekt med internationellt konsortium före januari 2027.",
         "forstudie": "Ingen förstudieform finns; projekten löper normalt upp till tre år.",
@@ -80,8 +105,15 @@
       }
     },
     "bidragsbehov": {
-      "passar": ["0_5_till_2", "2_till_5"],
-      "kanske": ["under_0_5", "5_till_20", "vet_ej"],
+      "passar": [
+        "0_5_till_2",
+        "2_till_5"
+      ],
+      "kanske": [
+        "under_0_5",
+        "5_till_20",
+        "vet_ej"
+      ],
       "skal": {
         "under_0_5": "Möjligt, men ett treårigt internationellt projekt brukar kräva mer.",
         "5_till_20": "Taket är 5 miljoner kronor för den svenska delen per projekt.",
@@ -89,8 +121,14 @@
       }
     },
     "partners": {
-      "passar": ["internationella"],
-      "kanske": ["svenska", "ensam", "vet_ej"],
+      "passar": [
+        "internationella"
+      ],
+      "kanske": [
+        "svenska",
+        "ensam",
+        "vet_ej"
+      ],
       "skal": {
         "svenska": "Ni behöver hitta minst en oberoende partner i ett annat Eureka-land. SMART ordnar matchmaking.",
         "ensam": "Kräver ett internationellt konsortium med minst två oberoende organisationer från minst två Eureka-länder, och minst ett svenskt företag.",
@@ -98,46 +136,149 @@
       }
     },
     "sektor": {
-      "passar": ["tillverkning"],
-      "kanske": ["bygg_fastighet", "energi", "transport", "digitalisering", "vatten_miljo", "livsmedel_jordbruk", "halsa", "offentlig_verksamhet", "annat"],
+      "passar": [
+        "tillverkning"
+      ],
+      "kanske": [
+        "bygg_fastighet",
+        "digitalisering",
+        "energi"
+      ],
       "skal": {
-        "bygg_fastighet": "Passar om idén gäller tillverkning, till exempel industriellt byggande, prefabricering eller produktionssystem.",
-        "digitalisering": "Passar om idén gäller digitala eller adaptiva tillverkningssystem.",
-        "ovrigt": "Bedöms efter om idén bidrar till avancerad tillverkning."
+        "bygg_fastighet": "Passar bara om idén gäller tillverkning, till exempel industriellt byggande, prefabricering eller produktionssystem. Projektering och förvaltning faller utanför.",
+        "digitalisering": "Passar bara om idén gäller digitala eller adaptiva tillverkningssystem.",
+        "energi": "Passar bara om idén gäller energieffektiv eller klimatneutral tillverkning.",
+        "ovrigt": "Utlysningen gäller avancerad tillverkning."
+      }
+    },
+    "resultat": {
+      "passar": [
+        "egen_produkt",
+        "blandat"
+      ],
+      "kanske": [
+        "oppet",
+        "vet_ej"
+      ],
+      "skal": {
+        "oppet": "Utlysningen förväntar sig att de svenska företagen får ökad konkurrenskraft och nya affärsmöjligheter. Helt öppna resultat behöver kombineras med tydlig affärsnytta.",
+        "blandat": "Spridning utanför konsortiet bedöms positivt, liksom affärsnytta för de svenska företagen."
       }
     }
   },
-
   "krav": [
-    { "id": "intl-konsortium", "kategori": "konsortium", "skarpt": true, "text": "Projektet ska omfatta minst två oberoende organisationer från minst två länder som deltar i Eureka SMART." },
-    { "id": "svenskt-foretag", "kategori": "konsortium", "skarpt": true, "text": "Det svenska konsortiet ska ha minst ett svenskt företag." },
-    { "id": "koordinator", "kategori": "sokande", "skarpt": true, "text": "Den svenska koordinatorn ska vara en svensk juridisk person med verksamhet i Sverige." },
-    { "id": "juridisk-person", "kategori": "sokande", "skarpt": true, "text": "Alla parter ska vara juridiska personer. Utländska parter som får pengar från Vinnova måste ha filial eller driftställe i Sverige." },
-    { "id": "smf-trosklar", "kategori": "sokande", "skarpt": true, "text": "Små och medelstora företag ska ha minst 1 miljon kronor i nettoomsättning (offentliga bidrag räknas inte) och motsvarande minst tre heltidsanställda, intygat i modellförsäkran." },
-    { "id": "foretagsinsats-60", "kategori": "konsortium", "skarpt": true, "text": "Företagens arbetsinsats i tid ska vara minst 60 procent av det svenska konsortiets totala insats." },
-    { "id": "landsandel-60", "kategori": "konsortium", "skarpt": true, "text": "Inget enskilt lands konsortium får stå för mer än 60 procent av projektets totala budget." },
-    { "id": "smart-label", "kategori": "formalia", "skarpt": true, "text": "Den nationella ansökan till Vinnova kräver giltig SMART-märkning, vilket förutsätter godkänd projektskiss och fullständig ansökan till SMART." },
-    { "id": "konsult-20", "kategori": "budget", "skarpt": true, "text": "Konsult- och licenskostnader får vara högst 20 procent av en organisations budget, eller 30 procent om behovet motiveras." },
-    { "id": "ej-startat", "kategori": "tid", "skarpt": true, "text": "Projektet får inte ha startat innan ansökan lämnats in. Projektet får starta när minst två länder beviljat finansiering." },
-    { "id": "medfin-50", "kategori": "medfinansiering", "skarpt": true, "text": "Vinnova finansierar högst 50 procent av det svenska konsortiets stödberättigande kostnader; resten står parterna för." },
-    { "id": "sprak", "kategori": "formalia", "skarpt": true, "text": "Ansökan skrivs på svenska eller engelska." }
+    {
+      "id": "intl-konsortium",
+      "kategori": "konsortium",
+      "skarpt": true,
+      "text": "Projektet ska omfatta minst två oberoende organisationer från minst två länder som deltar i Eureka SMART.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "svenskt-foretag",
+      "kategori": "konsortium",
+      "skarpt": true,
+      "text": "Det svenska konsortiet ska ha minst ett svenskt företag.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "koordinator",
+      "kategori": "sokande",
+      "skarpt": true,
+      "text": "Den svenska koordinatorn ska vara en svensk juridisk person med verksamhet i Sverige.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "juridisk-person",
+      "kategori": "sokande",
+      "skarpt": true,
+      "text": "Alla parter ska vara juridiska personer. Utländska parter som får pengar från Vinnova måste ha filial eller driftställe i Sverige.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "smf-trosklar",
+      "kategori": "sokande",
+      "skarpt": true,
+      "text": "Små och medelstora företag ska ha minst 1 miljon kronor i nettoomsättning (offentliga bidrag räknas inte) och motsvarande minst tre heltidsanställda, intygat i modellförsäkran.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "foretagsinsats-60",
+      "kategori": "konsortium",
+      "skarpt": true,
+      "text": "Företagens arbetsinsats i tid ska vara minst 60 procent av det svenska konsortiets totala insats.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "landsandel-60",
+      "kategori": "konsortium",
+      "skarpt": true,
+      "text": "Inget enskilt lands konsortium får stå för mer än 60 procent av projektets totala budget.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "smart-label",
+      "kategori": "formalia",
+      "skarpt": true,
+      "text": "Den nationella ansökan till Vinnova kräver giltig SMART-märkning, vilket förutsätter godkänd projektskiss och fullständig ansökan till SMART.",
+      "skede": "ansokan"
+    },
+    {
+      "id": "konsult-20",
+      "kategori": "budget",
+      "skarpt": true,
+      "text": "Konsult- och licenskostnader får vara högst 20 procent av en organisations budget, eller 30 procent om behovet motiveras.",
+      "skede": "ansokan"
+    },
+    {
+      "id": "ej-startat",
+      "kategori": "tid",
+      "skarpt": true,
+      "text": "Projektet får inte ha startat innan ansökan lämnats in. Projektet får starta när minst två länder beviljat finansiering.",
+      "skede": "ansokan"
+    },
+    {
+      "id": "medfin-50",
+      "kategori": "medfinansiering",
+      "skarpt": true,
+      "text": "Vinnova finansierar högst 50 procent av det svenska konsortiets stödberättigande kostnader; resten står parterna för.",
+      "skede": "behorighet"
+    },
+    {
+      "id": "sprak",
+      "kategori": "formalia",
+      "skarpt": true,
+      "text": "Ansökan skrivs på svenska eller engelska.",
+      "skede": "ansokan"
+    }
   ],
-
   "belopp": {
     "min_sek": null,
     "max_sek": 5000000,
     "galler": "Bidrag till den svenska delen per projekt",
     "stodniva": [
-      { "aktor": "Små och medelstora företag", "max_andel": 0.5 },
-      { "aktor": "Stora företag och andra med ekonomisk verksamhet", "max_andel": 0.3 },
-      { "aktor": "Svenska konsortiet totalt", "max_andel": 0.5 },
-      { "aktor": "Universitet, högskolor och institut", "max_andel": null, "anmarkning": "Framgår inte av Vinnovas sida för denna utlysning." }
+      {
+        "aktor": "Små och medelstora företag",
+        "max_andel": 0.5
+      },
+      {
+        "aktor": "Stora företag och andra med ekonomisk verksamhet",
+        "max_andel": 0.3
+      },
+      {
+        "aktor": "Svenska konsortiet totalt",
+        "max_andel": 0.5
+      },
+      {
+        "aktor": "Universitet, högskolor och institut",
+        "max_andel": null,
+        "anmarkning": "Framgår inte av Vinnovas sida för denna utlysning."
+      }
     ],
     "total_budget_sek": null,
     "loptid_max_manader": 36,
     "anmarkning": "Projekt löper normalt upp till tre år."
   },
-
   "bedomning": {
     "typ": "viktade_kriterier",
     "galler_steg": "Vinnovas bedömning av den svenska nationella ansökan (steg 4). SMART:s egna kriterier för projektskiss och fullständig ansökan ingår inte här.",
@@ -194,24 +335,96 @@
       }
     ]
   },
-
   "tidpunkter": [
-    { "typ": "oppnar", "datum": "2026-09-28", "beskrivning": "Vinnovas omgång öppnar." },
-    { "typ": "informationsmote", "datum": "2026-10-08", "beskrivning": "SMART Project Outline Day i Wien, matchmaking för konsortier." },
-    { "typ": "sista_dag", "datum": "2027-01-26", "tid": "11:00", "tidszon": "CET", "steg": "1. Projektskiss till SMART", "beskrivning": "Sista dag för projektskiss (Project Outline) till SMART." },
-    { "typ": "besked", "datum": "2027-03-12", "steg": "2. Inbjudan", "beskrivning": "Besked om inbjudan att lämna fullständig ansökan.", "preliminar": true },
-    { "typ": "sista_dag", "datum": "2027-04-15", "tid": "11:00", "tidszon": "CEST", "steg": "3. Fullständig ansökan till SMART", "beskrivning": "Sista dag för fullständig ansökan (Full Project Proposal).", "preliminar": true },
-    { "typ": "besked", "datum": "2027-06-02", "steg": "3. SMART-märkning", "beskrivning": "Besked om SMART-märkning. Därefter kan svenska parter bjudas in att söka hos Vinnova.", "preliminar": true },
-    { "typ": "beslut", "datum": "2027-10-28", "steg": "4. Vinnovas beslut", "beskrivning": "Vinnovas beslut om finansiering av den svenska delen." },
-    { "typ": "projektstart_senast", "datum": "2027-11-01" },
-    { "typ": "projektslut_senast", "datum": "2030-11-01" }
+    {
+      "typ": "oppnar",
+      "datum": "2026-09-28",
+      "beskrivning": "Vinnovas omgång öppnar."
+    },
+    {
+      "typ": "informationsmote",
+      "datum": "2026-10-08",
+      "beskrivning": "SMART Project Outline Day i Wien, matchmaking för konsortier."
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2027-01-26",
+      "tid": "11:00",
+      "tidszon": "CET",
+      "steg": "1. Projektskiss till SMART",
+      "beskrivning": "Sista dag för projektskiss (Project Outline) till SMART."
+    },
+    {
+      "typ": "besked",
+      "datum": "2027-03-12",
+      "steg": "2. Inbjudan",
+      "beskrivning": "Besked om inbjudan att lämna fullständig ansökan.",
+      "preliminar": true
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2027-04-15",
+      "tid": "11:00",
+      "tidszon": "CEST",
+      "steg": "3. Fullständig ansökan till SMART",
+      "beskrivning": "Sista dag för fullständig ansökan (Full Project Proposal).",
+      "preliminar": true
+    },
+    {
+      "typ": "besked",
+      "datum": "2027-06-02",
+      "steg": "3. SMART-märkning",
+      "beskrivning": "Besked om SMART-märkning. Därefter kan svenska parter bjudas in att söka hos Vinnova.",
+      "preliminar": true
+    },
+    {
+      "typ": "beslut",
+      "datum": "2027-10-28",
+      "steg": "4. Vinnovas beslut",
+      "beskrivning": "Vinnovas beslut om finansiering av den svenska delen."
+    },
+    {
+      "typ": "projektstart_senast",
+      "datum": "2027-11-01"
+    },
+    {
+      "typ": "projektslut_senast",
+      "datum": "2030-11-01"
+    }
   ],
-
   "osakerheter": [
     "Vinnovas sida anger 26 januari 2027 som sista ansökningsdag, vilket är SMART:s projektskiss. När den nationella ansökan till Vinnova ska lämnas framgår av inbjudan efter SMART-märkning.",
     "Datumen för inbjudan, fullständig ansökan och SMART-märkning kommer från en belgisk och en turkisk partnerorganisation, inte från Vinnova eller SMART direkt.",
     "Stödnivå för universitet, högskolor och institut anges inte på Vinnovas sida för denna omgång.",
     "SMART:s egna bedömningskriterier för projektskiss och fullständig ansökan är inte inlagda.",
     "Vilka länder som deltar i SMART Call 10 är inte kontrollerat."
+  ],
+  "kombinationer": [
+    {
+      "nar": {
+        "partners": [
+          "ensam"
+        ],
+        "mognad": [
+          "ide",
+          "forstudie"
+        ]
+      },
+      "utfall": "passar_inte",
+      "skal": "Utan partner och på idéstadiet är det osannolikt att hinna bygga ett internationellt konsortium och en projektskiss före 26 januari 2027."
+    },
+    {
+      "nar": {
+        "partners": [
+          "ensam",
+          "svenska"
+        ],
+        "tidshorisont": [
+          "3_till_6_man"
+        ]
+      },
+      "utfall": "passar_inte",
+      "skal": "Ett internationellt konsortium behöver vara på plats till projektskissen 26 januari 2027, vilket inte går ihop med er tidshorisont."
+    }
   ]
 }
