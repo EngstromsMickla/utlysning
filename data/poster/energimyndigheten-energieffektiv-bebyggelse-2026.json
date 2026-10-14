@@ -1,0 +1,120 @@
+{
+  "id": "energimyndigheten-energieffektiv-bebyggelse-2026",
+  "typ": "utlysning",
+  "titel": "Effektiv energianvändning i bebyggelsen för ett hållbart energisystem",
+  "finansiar": { "id": "energimyndigheten", "namn": "Energimyndigheten" },
+  "program": "Resurs- och energieffektiv bebyggelse",
+  "diarienummer": "UT2026-00013",
+  "sammanfattning": "Stöd till forsknings- och innovationsprojekt och innovationskluster som gör energi- och effektanvändningen i bebyggelsen effektivare och gör byggnader till en aktiv och flexibel del av energisystemet. Företag, branschorganisationer, kommuner, offentliga organisationer, lärosäten och institut kan söka. Projekt där flera typer av aktörer samverkar och där behovsägare har en aktiv roll ses som särskilt positiva.",
+  "status": "oppen",
+
+  "kallor": [
+    { "url": "https://www.energimyndigheten.se/utlysningar/effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem/", "titel": "Energimyndigheten: utlysningssidan", "roll": "primar", "sprak": "sv" },
+    { "url": "https://www.energimyndigheten.se/49cb7e/globalassets/utlysningar/resurseffektiv-bebyggelse/fullstandig-utlysningstext-effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem.pdf", "titel": "Energimyndigheten: fullständig utlysningstext (2026-06-09)", "roll": "primar", "sprak": "sv" }
+  ],
+
+  "kontroll": {
+    "senast": "2026-10-14",
+    "metod": "automatisk",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Uppgifterna är hämtade ur utlysningssidan och den fullständiga utlysningstexten."
+  },
+
+  "precision": "medel",
+  "precision_motivering": "Fem publicerade bedömningskriterier med beskrivning, men utan vikter. Myndigheten kan dessutom väga in hur portföljen av projekt blir som helhet.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["foretag", "universitet_hogskola", "forskningsinstitut", "kommun_region", "statlig_myndighet", "ideell"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "ideell": "Branschorganisationer kan söka. Andra ideella organisationer framgår inte.",
+        "privatperson": "Privatpersoner kan inte söka."
+      }
+    },
+    "sektor": {
+      "passar": ["bygg_fastighet", "energi"],
+      "kanske": ["digitalisering", "offentlig_verksamhet", "annat"],
+      "skal": {
+        "digitalisering": "Passar om idén gäller energi- eller effektanvändning i byggnader.",
+        "offentlig_verksamhet": "Passar om idén gäller energi i bebyggelsen, till exempel styrmedel eller kommunala byggnader.",
+        "ovrigt": "Utlysningen gäller energi- och effektanvändning i bebyggelsen."
+      }
+    },
+    "mognad": {
+      "passar": ["forstudie", "fou"],
+      "kanske": ["ide", "test_demo", "vet_ej"],
+      "skal": {
+        "test_demo": "Större pilot- och demonstrationsprojekt finansieras inte i denna utlysning.",
+        "implementering": "Införande, investeringar och affärsutveckling finansieras inte här."
+      }
+    },
+    "bidragsbehov": {
+      "passar": ["under_0_5", "0_5_till_2", "2_till_5"],
+      "kanske": ["5_till_20", "vet_ej"],
+      "skal": {
+        "5_till_20": "Högst 8 miljoner kronor per forsknings- och innovationsprojekt, och högst 3 miljoner för innovationskluster.",
+        "over_20": "Högst 8 miljoner kronor per projekt."
+      }
+    },
+    "partners": {
+      "passar": ["svenska", "internationella"],
+      "kanske": ["ensam", "vet_ej"],
+      "skal": {
+        "ensam": "Inget krav på partner, men samverkan mellan aktörstyper och en aktiv behovsägare bedöms positivt."
+      }
+    }
+  },
+
+  "krav": [
+    { "id": "sokande", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Sökande kan vara företag, branschorganisationer, kommuner och andra offentliga organisationer, universitet, högskolor och forskningsinstitut." },
+    { "id": "svensk-narvaro", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Internationella aktörer utan svensk närvaro finansieras bara i snäva undantagsfall." },
+    { "id": "ej-finansieras", "kategori": "formalia", "skede": "behorighet", "skarpt": true, "text": "Finansierar inte naturvetenskaplig grundforskning, större pilot- och demonstrationsprojekt eller projekt som främst gäller affärsutveckling." },
+    { "id": "foretag-medfin", "kategori": "medfinansiering", "skede": "behorighet", "skarpt": true, "text": "Företag ska själva stå för de kostnader som inte täcks av stödet, med egna pengar eller annan privat finansiering." },
+    { "id": "projekttid", "kategori": "tid", "skede": "ansokan", "skarpt": true, "text": "Projektet ska starta mellan 1 maj och 31 augusti 2027 och vara avslutat senast 31 december 2031." },
+    { "id": "cv", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "CV på högst en A4-sida för projektledare och nyckelpersoner. Kluster ska också lämna en genomförandeplan." },
+    { "id": "kluster-medfin", "kategori": "medfinansiering", "skede": "ansokan", "skarpt": true, "text": "I innovationskluster ska medlemmarna medfinansiera med avgifter eller dokumenterad egen tid, och koordinatorn ska vara en svensk juridisk person eller ha filial i Sverige." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": 8000000,
+    "galler": "Stöd per forsknings- och innovationsprojekt",
+    "stodniva": [
+      { "aktor": "Universitet, högskolor, institut och andra utan ekonomisk verksamhet", "max_andel": 1.0 },
+      { "aktor": "Små företag, industriell forskning eller förstudie", "max_andel": 0.7 },
+      { "aktor": "Medelstora företag, industriell forskning eller förstudie", "max_andel": 0.6 },
+      { "aktor": "Stora företag, industriell forskning eller förstudie", "max_andel": 0.5 },
+      { "aktor": "Små företag, experimentell utveckling", "max_andel": 0.45 },
+      { "aktor": "Medelstora företag, experimentell utveckling", "max_andel": 0.35 },
+      { "aktor": "Stora företag, experimentell utveckling", "max_andel": 0.25 },
+      { "aktor": "Innovationskluster", "max_andel": 0.5, "anmarkning": "Högst 3 miljoner kronor per kluster." }
+    ],
+    "total_budget_sek": 100000000,
+    "loptid_max_manader": null,
+    "anmarkning": "Preliminärt 90 miljoner kronor till forsknings- och innovationsprojekt och 10 miljoner till kluster."
+  },
+
+  "bedomning": {
+    "typ": "kriterier",
+    "kriterier": [
+      { "id": "potential", "rubrik": "Potential att bidra till utlysningens syfte och mål", "vikt": null, "aspekter": ["Hur väl projektet passar utlysningens syfte, programmets mål och utmaningsområden."] },
+      { "id": "nyhet", "rubrik": "Nyhetsvärde och innovationsgrad", "vikt": null, "aspekter": ["Hur nytt projektet är och hur det för kunskapen framåt, med hänsyn till befintlig forskning och marknad."] },
+      { "id": "samverkan", "rubrik": "Samverkan", "vikt": null, "aspekter": ["Hur slutanvändare och behovsägare involveras.", "Hur tydlig samverkan är mellan olika typer av aktörer."] },
+      { "id": "nyttiggorande", "rubrik": "Nyttiggörande", "vikt": null, "aspekter": ["Planer för spridning av resultaten.", "Planer för att resultaten ska komma till användning."] },
+      { "id": "genomforbarhet", "rubrik": "Genomförbarhet", "vikt": null, "aspekter": ["Mätbara mål och realistisk plan.", "Budget, kompetens och metoder.", "Jämställdhet."] }
+    ]
+  },
+
+  "tidpunkter": [
+    { "typ": "informationsmote", "datum": "2026-08-27", "beskrivning": "Informationsmöte via Teams. Presentationen finns på utlysningssidan." },
+    { "typ": "sista_dag", "datum": "2026-11-18", "tid": "23:59", "beskrivning": "Ansökan via Energimyndighetens Mina sidor. Support finns till kl. 16.00 samma dag." },
+    { "typ": "projektstart_senast", "datum": "2027-08-31", "beskrivning": "Tidigast 1 maj 2027." },
+    { "typ": "projektslut_senast", "datum": "2031-12-31" }
+  ],
+
+  "osakerheter": [
+    "Beslut fattas enligt sidan i april 2027; exakt datum anges inte.",
+    "Kriterierna har inga vikter, och portföljen som helhet kan påverka urvalet."
+  ]
+}

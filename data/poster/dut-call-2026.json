@@ -1,0 +1,103 @@
+{
+  "id": "dut-call-2026",
+  "typ": "utlysning",
+  "titel": "Driving Urban Transitions 2026: hållbar urban omställning i europeiskt partnerskap",
+  "finansiar": { "id": "energimyndigheten", "namn": "Energimyndigheten, Formas och Vinnova", "partner": ["Formas", "Vinnova", "Europeiska kommissionen (Horisont Europa)"] },
+  "program": "Driving Urban Transitions (DUT)",
+  "diarienummer": null,
+  "sammanfattning": "Europeisk utlysning för forsknings- och innovationsprojekt som hjälper städer i omställningen. Tre teman: 15-minutersstaden, cirkulära urbana ekonomier och energipositiva stadsdelar. Projekten görs i internationella konsortier med partner från minst tre länder, och minst en kommun eller motsvarande ska delta. Svenska parter finansieras av Energimyndigheten, Formas och Vinnova. Ansökan sker i två steg.",
+  "status": "oppen",
+
+  "kallor": [
+    { "url": "https://www.energimyndigheten.se/utlysningar/driving-urban-transitions-hallbar-urban-omstallning-inom-europeiskt-partnerskap/", "titel": "Energimyndigheten: DUT-utlysningen 2026", "roll": "primar", "sprak": "sv" },
+    { "url": "https://dutpartnership.eu/calls/dut-call-2026", "titel": "DUT Partnership: Call 2026", "roll": "primar", "sprak": "en", "anmarkning": "Den internationella utlysningstexten med bedömningskriterier (avsnitt 4.5) och nationella regler (bilaga A)." }
+  ],
+
+  "kontroll": {
+    "senast": "2026-10-14",
+    "metod": "automatisk",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Formas egen sida om utlysningen har inte kunnat läsas automatiskt."
+  },
+
+  "precision": "lag",
+  "precision_motivering": "Bedömningskriterierna står i den internationella utlysningstexten och är inte inlagda här än. Bedömningen gäller därför krav, teman och mål.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["foretag", "universitet_hogskola", "forskningsinstitut", "kommun_region", "ideell"],
+      "kanske": ["statlig_myndighet", "vet_ej"],
+      "skal": {
+        "kommun_region": "Minst en kommun eller motsvarande lokal myndighet ska delta i varje projekt.",
+        "statlig_myndighet": "Offentliga organisationer kan delta; de nationella reglerna i bilaga A avgör vad svenska myndigheter kan få.",
+        "privatperson": "Enskilda firmor och privatpersoner kan inte söka."
+      }
+    },
+    "sektor": {
+      "passar": ["offentlig_verksamhet", "bygg_fastighet", "energi", "transport"],
+      "kanske": ["vatten_miljo", "digitalisering", "tillverkning", "livsmedel_jordbruk", "annat"],
+      "skal": {
+        "ovrigt": "Passar om idén gäller städers omställning: 15-minutersstaden, cirkulära urbana ekonomier eller energipositiva stadsdelar."
+      }
+    },
+    "mognad": {
+      "passar": ["forstudie", "fou", "test_demo"],
+      "kanske": ["ide", "vet_ej"],
+      "skal": {
+        "ide": "Steg ett är en kortare projektskiss, men konsortiet med partner i tre länder behöver finnas före 17 november.",
+        "implementering": "Utlysningen finansierar forskning och innovation, inte införande eller investeringar."
+      }
+    },
+    "partners": {
+      "passar": ["internationella"],
+      "kanske": ["svenska", "vet_ej"],
+      "skal": {
+        "svenska": "Ni behöver partner från minst två andra länder i partnerskapet, och minst en kommun eller motsvarande.",
+        "ensam": "Kräver ett konsortium med partner från minst tre länder och en lokal myndighet."
+      }
+    }
+  },
+
+  "kombinationer": [
+    { "nar": { "partners": ["ensam"] }, "utfall": "passar_inte", "skal": "Utan partner hinner ni knappast bygga ett konsortium i tre länder med en kommun före 17 november 2026." }
+  ],
+
+  "krav": [
+    { "id": "tre-lander", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "Minst tre finansierade partner från tre olika länder i partnerskapet, varav två från EU-länder eller associerade länder." },
+    { "id": "urban-myndighet", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "Minst en kommun, lokal myndighet eller enhet som ägs av en lokal myndighet ska delta, som sökande eller samarbetspartner." },
+    { "id": "privat-aktor", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "I det tvärgående temat krävs en aktör från privat sektor." },
+    { "id": "ej-enskild-firma", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Sökande kan vara forskningsutförare, offentliga organisationer, företag (ej enskild firma) och civilsamhällesorganisationer." },
+    { "id": "manadsandel", "kategori": "konsortium", "skede": "ansokan", "skarpt": true, "text": "Ingen enskild part får stå för mer än 50 procent av personmånaderna." },
+    { "id": "programaktiviteter", "kategori": "budget", "skede": "ansokan", "skarpt": true, "text": "Upp till 30 000 euro, inklusive resor, ska avsättas för obligatoriska programaktiviteter." },
+    { "id": "nationella-regler", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Varje part ska uppfylla sin nationella finansiärs regler enligt bilaga A i utlysningstexten." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": null,
+    "galler": "Per projekt",
+    "stodniva": [],
+    "total_budget_sek": 53000000,
+    "loptid_max_manader": 36,
+    "anmarkning": "Svenska finansiärer har avsatt cirka 53 miljoner kronor. De flesta projekt väntas söka 1 till 2 miljoner euro totalt för hela konsortiet."
+  },
+
+  "bedomning": {
+    "typ": "ingen",
+    "galler_steg": "Kriterierna för steg ett och steg två står i avsnitt 4.5 i den internationella utlysningstexten och är inte inlagda här.",
+    "kriterier": []
+  },
+
+  "tidpunkter": [
+    { "typ": "oppnar", "datum": "2026-09-01" },
+    { "typ": "informationsmote", "datum": "2026-09-04", "beskrivning": "Svenskt informationsmöte (har varit)." },
+    { "typ": "sista_dag", "datum": "2026-11-17", "tid": "13:00", "tidszon": "CET", "steg": "1. Projektskiss", "beskrivning": "Kortare ansökan i det internationella systemet." },
+    { "typ": "sista_dag", "datum": "2027-04-15", "tid": "13:00", "tidszon": "CEST", "steg": "2. Fullständig ansökan", "beskrivning": "Bara för den som bjuds in efter steg ett, i februari 2027." }
+  ],
+
+  "osakerheter": [
+    "Bedömningskriterierna och de svenska finansiärernas regler (bilaga A) är inte inlagda; läs den internationella utlysningstexten.",
+    "Hur mycket varje svensk part kan få och vilka stödnivåer som gäller framgår inte av de kontrollerade sidorna.",
+    "Beslut väntas i juli 2027 och projektstart i slutet av 2027 eller början av 2028; exakta datum anges inte."
+  ]
+}

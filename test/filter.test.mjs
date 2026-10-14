@@ -83,3 +83,28 @@ test("resultat: egen produkt utesluter SBUF men passar Eureka", () => {
   assert.equal(bedomPost(post("sbuf-projektbidrag"), { resultat: "egen_produkt" }, IDAG).utfall, "passar_inte");
   assert.equal(bedomPost(post("vinnova-eureka-smart-call10"), { resultat: "egen_produkt" }, IDAG).utfall, "passar");
 });
+
+test("nya poster: kommun med bygg och svenska partner", () => {
+  const svar = { organisationstyp: "kommun_region", lan: "stockholm", sektor: ["bygg_fastighet"],
+    mognad: "fou", bidragsbehov: "2_till_5", tidshorisont: "1_till_3_man", partners: "svenska" };
+  assert.equal(bedomPost(post("energimyndigheten-energieffektiv-bebyggelse-2026"), svar, IDAG).utfall, "passar");
+  assert.equal(bedomPost(post("dut-call-2026"), svar, IDAG).utfall, "kanske");      // saknar partner i andra länder
+  assert.equal(bedomPost(post("vinnova-innovativa-startups-2026"), svar, IDAG).utfall, "passar_inte");
+});
+
+test("DUT: ensam sökande passar inte", () => {
+  const r = bedomPost(post("dut-call-2026"), { partners: "ensam" }, IDAG);
+  assert.equal(r.utfall, "passar_inte");
+});
+
+test("Innovativa startups: mikroföretag med idé passar, stort företag passar inte", () => {
+  const p = post("vinnova-innovativa-startups-2026");
+  const bas = { organisationstyp: "foretag", mognad: "ide", resultat: "egen_produkt", bidragsbehov: "under_0_5", tidshorisont: "1_till_3_man" };
+  assert.equal(bedomPost(p, { ...bas, foretagsstorlek: "mikro" }, IDAG).utfall, "passar");
+  assert.equal(bedomPost(p, { ...bas, foretagsstorlek: "stor" }, IDAG).utfall, "passar_inte");
+});
+
+test("utlysning vars sista dag passerat passar inte", () => {
+  const r = bedomPost(post("energimyndigheten-energieffektiv-bebyggelse-2026"), {}, "2026-12-01");
+  assert.equal(r.utfall, "passar_inte");
+});

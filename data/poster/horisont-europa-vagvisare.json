@@ -1,0 +1,111 @@
+{
+  "id": "horisont-europa-vagvisare",
+  "typ": "vagvisare",
+  "titel": "Horisont Europa: vilken väg in passar er?",
+  "finansiar": { "id": "horizon-europe", "namn": "Europeiska kommissionen (Horisont Europa)", "partner": ["Vinnova (nationell kontaktpunkt)"] },
+  "program": "Horisont Europa",
+  "diarienummer": null,
+  "sammanfattning": "EU:s ramprogram för forskning och innovation har hundratals ämnen per år, med egna krav och datum. För samhällsbyggande finns bland annat partnerskapet Built4People. Verktyget pekar ut vägar in och var ni får hjälp. Det kan inte avgöra vilket ämne som passar eller om ni är behöriga.",
+  "status": "vagvisare",
+
+  "kallor": [
+    { "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home", "titel": "EU:s portal för finansiering (Funding & Tenders)", "roll": "primar", "sprak": "en" },
+    { "url": "https://www.vinnova.se/m/horisont-europa/kontakt/", "titel": "Vinnova: nationella kontaktpersoner för Horisont Europa", "roll": "primar", "sprak": "sv" },
+    { "url": "https://fasi.eu/en/articles/in-evidence/30448-horizon-europe-built4people-how-to-apply-for-the-2026-2027-calls-for-proposals.html", "titel": "FASI: Built4People 2026–2027", "roll": "sekundar", "sprak": "en", "anmarkning": "Budget för Built4People 2026 och 2027." }
+  ],
+
+  "kontroll": {
+    "senast": "2026-10-14",
+    "metod": "manuell",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "EU-portalen har ett öppet sökgränssnitt, men enskilda ämnen läggs inte in automatiskt i version ett."
+  },
+
+  "precision": "ingen",
+  "precision_motivering": "Varje ämne i Horisont Europa har egna krav och kriterier. Verktyget visar bara vägar in.",
+
+  "besked": "Verktyget kan inte avgöra vilket ämne som passar eller om ni är behöriga. Vinnovas nationella kontaktpersoner hjälper svenska aktörer utan kostnad.",
+
+  "vagar": [
+    {
+      "id": "samarbetsprojekt",
+      "namn": "Samarbetsprojekt, till exempel Built4People",
+      "beskrivning": "Forsknings- och innovationsprojekt i europeiska konsortier. Built4People är partnerskapet för byggnader och bebyggd miljö, med cirka 74 miljoner euro i 2026 års utlysningar och cirka 27 miljoner euro i 2027 års.",
+      "villkor": {
+        "partners": {
+          "passar": ["internationella"],
+          "kanske": ["svenska", "ensam", "vet_ej"],
+          "skal": { "ovrigt": "Samarbetsprojekt kräver i regel partner från flera europeiska länder." }
+        },
+        "organisationstyp": {
+          "passar": ["foretag", "universitet_hogskola", "forskningsinstitut", "kommun_region", "statlig_myndighet", "ideell"],
+          "kanske": ["vet_ej"],
+          "skal": { "privatperson": "Sökande ska vara juridiska personer." }
+        },
+        "mognad": {
+          "passar": ["fou", "test_demo"],
+          "kanske": ["forstudie", "ide", "implementering", "vet_ej"]
+        }
+      },
+      "leder_till": {
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home",
+        "kontakt": "Vinnovas nationella kontaktperson för klustret klimat, energi och mobilitet",
+        "hur_hitta": "Sök på 'Built4People' eller 'HORIZON-CL5' i portalen och filtrera på öppna och kommande ämnen.",
+        "url_verifierad": false
+      },
+      "besked": "Kontakta en nationell kontaktperson tidigt. Ett europeiskt konsortium tar ofta ett halvår att bygga."
+    },
+    {
+      "id": "eic-smf",
+      "namn": "Stöd för små och medelstora företag (EIC)",
+      "beskrivning": "Europeiska innovationsrådet finansierar innovativa små och medelstora företag med potential att växa internationellt, även utan partner.",
+      "villkor": {
+        "organisationstyp": {
+          "passar": ["foretag"],
+          "kanske": ["vet_ej"],
+          "skal": { "ovrigt": "Riktar sig till företag." }
+        },
+        "foretagsstorlek": {
+          "passar": ["mikro", "liten", "medel"],
+          "kanske": ["vet_ej"],
+          "skal": { "stor": "Riktar sig till små och medelstora företag." }
+        },
+        "resultat": {
+          "passar": ["egen_produkt"],
+          "kanske": ["blandat", "vet_ej"],
+          "skal": { "oppet": "Riktar sig till företag som bygger en affär på innovationen." }
+        }
+      },
+      "leder_till": {
+        "url": "https://www.vinnova.se/m/horisont-europa/finansiering-for-sma-och-medelstora-foretag/",
+        "kontakt": "Vinnovas nationella kontaktperson för EIC",
+        "hur_hitta": "Vinnovas sida om stöd för små och medelstora företag i Horisont Europa.",
+        "url_verifierad": false
+      },
+      "besked": "Läs Vinnovas sida om stöd för små och medelstora företag och ta kontakt innan ni skriver."
+    },
+    {
+      "id": "kontaktpunkt",
+      "namn": "Råd från en nationell kontaktperson",
+      "beskrivning": "Vinnova har nationella kontaktpersoner för varje del av Horisont Europa. De hjälper svenska aktörer att hitta rätt ämne och partner.",
+      "villkor": {
+        "organisationstyp": {
+          "passar": ["foretag", "universitet_hogskola", "forskningsinstitut", "kommun_region", "statlig_myndighet", "ideell"],
+          "kanske": ["vet_ej"]
+        }
+      },
+      "leder_till": {
+        "url": "https://www.vinnova.se/m/horisont-europa/kontakt/",
+        "kontakt": "Vinnovas nationella kontaktpersoner",
+        "url_verifierad": true
+      },
+      "besked": "Börja här om ni är osäkra på om Horisont Europa är rätt väg."
+    }
+  ],
+
+  "osakerheter": [
+    "Enskilda ämnen, krav och datum i Horisont Europa är inte inlagda.",
+    "Uppgifterna om Built4People kommer från en sekundär källa.",
+    "Länkarna till EU-portalen och Vinnovas sida för små och medelstora företag är inte kontrollerade automatiskt."
+  ]
+}

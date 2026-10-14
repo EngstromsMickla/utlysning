@@ -3,7 +3,10 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { byggPrompt, neutralisera, MAX_POSTER } from "../publik/prompt.js";
 
-const poster = readdirSync("data/poster").map((f) => JSON.parse(readFileSync(`data/poster/${f}`, "utf8")));
+const allaPoster = readdirSync("data/poster").map((f) => JSON.parse(readFileSync(`data/poster/${f}`, "utf8")));
+// Testerna nedan bygger på tre fasta exempelposter, så att nya poster inte flyttar dem ur de fem som får plats.
+const GRUND = ["vinnova-eureka-smart-call10", "sbuf-projektbidrag", "tillvaxtverket-vagvisare"];
+const poster = GRUND.map((id) => allaPoster.find((p) => p.id === id));
 const fragor = JSON.parse(readFileSync("schema/fragor.json", "utf8"));
 const IDAG = "2026-10-14";
 const svar = { organisationstyp: "foretag", foretagsstorlek: "medel", lan: "vastra_gotaland",
@@ -56,4 +59,18 @@ test("högst fem poster tas med", () => {
 test("inga tankstreck i den genererade texten", () => {
   const p = byggPrompt({ poster, svar, ide: "x", idag: IDAG, fragor });
   assert.ok(!p.includes("—"));
+});
+
+test("alla poster går att lägga i en prompt", () => {
+  for (const post of allaPoster) {
+    const p = byggPrompt({ poster: [post], svar, ide: "ord ".repeat(50), idag: IDAG, fragor, kort: false });
+    assert.match(p, new RegExp(post.titel.slice(0, 20).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.doesNotMatch(p, /undefined|null|\[object Object\]/);
+  }
+});
+
+test("högst fem poster i prompten", () => {
+  const p = byggPrompt({ poster: allaPoster, svar, ide: "ord ".repeat(50), idag: IDAG, fragor, kort: false });
+  const antal = allaPoster.filter((post) => p.includes(post.titel)).length;
+  assert.ok(antal <= MAX_POSTER);
 });

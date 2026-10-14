@@ -12,12 +12,12 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 ## Fasta principer
 
 - Allt på svenska. Inga tankstreck (varken — eller –) i texter som skrivs nya.
-- Ingen data lämnar besökarens webbläsare: ingen server, ingen statistik, inga kakor, inga externa typsnitt eller CDN, inget sparas i webbläsaren. Content Security Policy i `publik/index.html` tillåter bara sidans egna filer.
+- Inget besökaren skriver lämnar webbläsaren förrän besökaren själv skickar prompten till en AI. Det steget ingår i den fullständiga processen och ska beskrivas så. Sidan har ingen server, ingen statistik, inga kakor, inga externa typsnitt eller CDN, inget sparas i webbläsaren. Content Security Policy i `publik/index.html` tillåter bara sidans egna filer.
 - All text läggs in med DOM-metoder och `textContent`, aldrig `innerHTML`.
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.1.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.2.
 
 ## Struktur
 
@@ -38,21 +38,26 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Högst fem poster. Idéer under 40 ord ger kort läge: återge idén, behörighetskrav, högst åtta frågor, sedan vänta.
 - Fullt läge: återge idén, krav först, vilket steg kriterierna gäller, passform per kriterium, sammanvägning bara om minst halva vikten kunnat bedömas, tidsglapp, låg precision, vägvisare, förslag utanför underlaget i egen märkt sektion, prioriteringar före rangordning.
 
-## Bevakning (nästa steg, inte byggd)
+## Bevakning (veckovis standardsökning)
 
-- GitHub Action varje måndag morgon som föreslår nya eller ändrade poster som pull request. Inget publiceras utan Dans godkännande.
-- Vinnova har öppna data (`data.vinnova.se/api`). SBUF går att läsa automatiskt.
-- Formas och Tillväxtverket tillåter inte automatisk hämtning (robots.txt). Respektera det; deras poster kontrolleras för hand och veckorapporten påminner.
+- `.github/workflows/bevakning.yml` kör `scripts/bevaka.py` varje måndag 05:00 UTC och kan startas för hand. Den körs på GitHubs server och har inget med besökarna att göra.
+- Skriptet läser Vinnovas öppna data (`data.vinnova.se/api`), finansiärernas utlysningssidor (listan i `bevakning/kallor.json`) och de primära källorna till befintliga poster. Det rapporterar nya länkar, nya och borttagna datum och föreslår relevanta Vinnova-utlysningar som utkast i `bevakning/forslag/`.
+- Status rättas direkt i postfilerna: sista dag passerad blir `stangd`, öppningsdag passerad blir `oppen`.
+- Resultatet blir en pull request med `bevakning/rapport.md` som beskrivning. Inget publiceras förrän Dan slagit ihop den. Utkast publiceras aldrig förrän de skrivits klart och flyttats till `data/poster/`.
+- Tillståndet mellan körningarna ligger i `bevakning/tillstand.json` (adresser, fingeravtryck och datum, ingen sidtext).
+- robots.txt respekteras. Formas och Tillväxtverket tillåter inte automatisk hämtning och kontrolleras för hand; rapporten påminner. Horisont Europa väljs också för hand.
+- Nyckelorden i `bevakning/kallor.json` avgör vad som räknas som relevant. De matchas mot början av ord.
+- Tester: `python3 -m unittest discover -s test -p "test_*.py"` med påhittade svar, utan nätet.
 
 ## Formgivning
 
 - Samma formspråk som boost.mickla.se: papper `#f6f4ef`, grön accent `#2f6b5e`, ockra `#a57a12` för "kanske", rost `#b8532c` för nära deadline, serif i rubriker (Iowan Old Style, Palatino), systemets sans-serif i brödtext. Endast ljust läge, som Boost.
 - Micklas logotyp (ormen, `publik/img/mickla.png`) visas diskret i sidfoten tillsammans med upphovsraden.
-- Processkartan bygger på Boosts fasrad och visar tre zoner: i webbläsaren, i den AI-tjänst användaren väljer, och bakom kulisserna.
+- Processkartan bygger på Boosts fasrad och visar tre zoner i ordning: den veckovisa standardsökningen, webbläsaren (inget lämnar datorn) och AI-tjänsten. Gränsen där idén lämnar datorn markeras i ockra.
 
 ## Test
 
-Kör `python3 scripts/validera.py` och `node --test test/*.mjs`. Kör hela flödet i en webbläsare (Playwright med Chromium) i datorstorlek och telefonstorlek innan något föreslås för publicering, och kontrollera att sidan inte gör några anrop utanför den egna domänen.
+Kör `python3 scripts/validera.py`, `node --test test/*.mjs` och `python3 -m unittest discover -s test -p "test_*.py"`. Kör hela flödet i en webbläsare (Playwright med Chromium) i datorstorlek och telefonstorlek innan något föreslås för publicering, och kontrollera att sidan inte gör några anrop utanför den egna domänen.
 
 ## Publicering
 

@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.1";
+const VERSION = "prototyp v0.2";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -110,12 +110,12 @@ function visaSteg1() {
   lagg(
     el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Vilken finansiering passar din idé?"),
-    el("p", { class: "lead" }, "Beskriv idén och svara på några frågor. Du får ett urval av utlysningar med skäl, och en färdig instruktion att klistra in i den AI-tjänst du själv använder för en djupare bedömning."),
-    el("p", { class: "fritt" }, "Ingen inloggning. Fritt att använda för alla. Ingen text lämnar din webbläsare."),
+    el("p", { class: "lead" }, "Beskriv idén och svara på några frågor. Du får ett urval av utlysningar med skäl och en färdig prompt. Hela processen avslutas med att du skickar prompten med din idé till den AI-tjänst du själv använder, för en djupare bedömning."),
+    el("p", { class: "fritt" }, "Ingen inloggning. Fritt att använda för alla. Inget du skriver lämnar din dator förrän du själv skickar prompten till en AI."),
     el("p", {}, "Första gången? ", el("a", { href: "#instruktion" }, "Se hur verktyget fungerar"), " innan du börjar."),
     stegLista(),
     el("label", { class: "falt", for: "ide" }, "Beskriv idén"),
-    el("p", { class: "hjalp", id: "ide-hjalp" }, "Skriv vad ni vill göra, för vem, och vilket resultat det ska ge. Berätta gärna vilka som är med och vad ni redan har gjort. Texten stannar i din webbläsare."),
+    el("p", { class: "hjalp", id: "ide-hjalp" }, "Skriv vad ni vill göra, för vem, och vilket resultat det ska ge. Berätta gärna vilka som är med och vad ni redan har gjort. Texten stannar i din webbläsare tills du själv skickar prompten till en AI."),
     falt,
     raknare,
     el("div", { class: "navrow" },
@@ -299,7 +299,7 @@ function visaSteg4() {
 
   lagg(
     el("h1", {}, "Din prompt är klar"),
-    el("p", { class: "lead" }, "Prompten innehåller din idé, dina svar och underlaget för de utlysningar du valde. Den skickas ingenstans förrän du själv klistrar in den."),
+    el("p", { class: "lead" }, "Prompten innehåller din idé, dina svar och underlaget för de utlysningar du valde. Det sista steget i processen är att skicka den till en AI. Det gör du själv; sidan skickar ingenting."),
     stegLista(),
     el("ol", { class: "instruktion" },
       el("li", {}, "Kopiera prompten."),
@@ -423,26 +423,27 @@ function zon(klass, namn, faser) {
 
 function processkarta() {
   return el("figure", { class: "karta", "aria-label": "Processkarta" },
-    zon("webblasare", "I din webbläsare: inget lämnar din dator", [
+    zon("bakom", "Varje måndag, på GitHubs server: standardsökning", [
+      fas("Sökning", "Finansiärernas webbplatser och Vinnovas öppna data läses efter nya och ändrade utlysningar."),
+      fas("Förslag", "Nyheter och ändrade datum samlas i en rapport. Inget publiceras automatiskt."),
+      fas("Granskning", "Engströms Mickla AB granskar och godkänner varje ändring."),
+      fas("Radarn", "Det godkända publiceras med källa och kontrolldatum."),
+    ]),
+    el("p", { class: "overgang" }, "Det granskade underlaget används i ditt urval"),
+    zon("webblasare", "I din webbläsare: inget du skriver lämnar din dator", [
       fas("Idé", "Du beskriver vad ni vill göra, för vem och vilket resultat det ska ge."),
       fas("Frågor", "Ett tiotal frågor om organisation, mognad, partner, tid och pengar."),
       fas("Urval", "Enkla regler sorterar utlysningarna och visar skälen."),
-      fas("Prompt", "Idén, svaren och underlaget sätts ihop till en färdig instruktion."),
+      fas("Prompt", "Idén, svaren och underlaget sätts ihop till en färdig prompt."),
     ]),
-    el("p", { class: "overgang" }, "Du kopierar prompten och klistrar in den själv"),
+    el("p", { class: "overgang gransen" }, "Du skickar själv prompten med din idé till en AI. Här lämnar idén din dator."),
     zon("ai", "I den AI-tjänst du väljer", [
       fas("Krav", "AI:n prövar behörighetskraven mot det du har berättat."),
       fas("Passform", "Bedömning per kriterium, och frågor där underlaget är tunt."),
       fas("Prioriteringar", "Du berättar vad som väger tyngst för dig."),
       fas("Rangordning", "Först då rangordnas möjligheterna."),
     ]),
-    el("p", { class: "overgang" }, "Bakom kulisserna"),
-    zon("bakom", "Så hålls underlaget aktuellt", [
-      fas("Finansiärerna", "Utlysningar från Vinnova, Formas, SBUF, Tillväxtverket med flera."),
-      fas("Varje vecka", "Sidorna gås igenom och ändringar föreslås."),
-      fas("Granskning", "Engströms Mickla AB godkänner varje ändring."),
-      fas("Radarn", "Det godkända publiceras med källa och kontrolldatum."),
-    ]),
+    el("figcaption", {}, "Den fullständiga processen slutar i AI-tjänsten. Utan det steget har du ett förhandsurval, men ingen bedömning av hur väl idén passar."),
   );
 }
 
@@ -452,7 +453,7 @@ function visaInstruktion() {
   lagg(
     el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Så fungerar verktyget"),
-    el("p", { class: "lead" }, "Utlysningsradarn gör det första sorteringsarbetet åt dig. Den djupare bedömningen gör du sedan tillsammans med den AI-tjänst du själv använder."),
+    el("p", { class: "lead" }, "Processen har tre delar. Varje vecka söks finansiärernas webbplatser igenom efter nya och ändrade utlysningar. När du använder verktyget sorterar det utlysningarna i din webbläsare. Sist skickar du prompten med din idé till den AI-tjänst du själv använder, som gör den djupare bedömningen."),
     processkarta(),
 
     el("h2", {}, "Steg för steg"),
@@ -476,9 +477,9 @@ function visaInstruktion() {
         el("p", {}, "Utlysningarna delas in i passar, kan passa och vägar att undersöka. Under varje finns skälen, till exempel ett krav ni behöver uppfylla eller en partner ni behöver hitta. Det som föll bort visas längst ner med förklaring."),
         el("p", {}, `Välj vilka du vill ta med i prompten, högst ${MAX_POSTER}.`)),
       el("li", {},
-        el("h3", {}, "Kopiera prompten till din AI"),
-        el("p", {}, "Öppna en ny konversation i Claude, ChatGPT eller den AI-tjänst du använder. Klistra in prompten och skicka."),
-        el("p", { class: "hjalp" }, "Din idé hamnar då hos den tjänsten, enligt dess villkor. Använd en tjänst som din organisation har godkänt om idén är känslig.")),
+        el("h3", {}, "Skicka prompten till din AI"),
+        el("p", {}, "Kopiera prompten, öppna en ny konversation i Claude, ChatGPT eller den AI-tjänst du använder, klistra in och skicka. Det här steget ingår i den fullständiga processen; det är här idén bedöms."),
+        el("p", { class: "hjalp" }, "Det är också här din idé lämnar din dator. Den hamnar hos AI-tjänsten, enligt dess villkor. Använd en tjänst som din organisation har godkänt om idén är känslig.")),
       el("li", {},
         el("h3", {}, "Svara på AI:ns frågor"),
         el("p", {}, "AI:n återger först hur den har förstått idén. Rätta den om något är fel. Den går sedan igenom kraven, bedömer passformen mot kriterierna och frågar vad som väger tyngst för dig innan den rangordnar."),
@@ -491,6 +492,7 @@ function visaInstruktion() {
     el("ul", {},
       el("li", {}, "Det avgör inte om du är behörig eller hur en ansökan kommer att bedömas."),
       el("li", {}, "Det täcker inte alla finansiärer. Saknas något du väntat dig, kontrollera direkt hos finansiären."),
+      el("li", {}, "Det söker inte på webben medan du använder det. Sökningen görs en gång i veckan, och resultatet granskas innan det publiceras."),
       el("li", {}, "Det sparar ingenting. Stänger du fliken får du börja om.")),
 
     el("div", { class: "navrow" }, el("a", { class: "btn", href: "#ide" }, "Pröva en idé")),
@@ -507,12 +509,14 @@ function visaOm() {
     el("p", { class: "lead" }, "Utlysningsradarn hjälper forskare, företag och offentliga aktörer att hitta forsknings- och innovationsutlysningar som passar en idé."),
     el("h2", {}, "Det du skriver stannar hos dig"),
     el("p", {}, "Sidan anropar ingen AI och skickar ingenting någonstans. Urvalet och prompten räknas fram i din webbläsare. Inget sparas, och det finns ingen besöksstatistik. När du stänger fliken är allt borta."),
-    el("p", {}, "Först när du själv klistrar in prompten i en AI-tjänst lämnar idén din dator, och då gäller den tjänstens villkor."),
+    el("h2", {}, "Den fullständiga processen inkluderar en AI"),
+    el("p", {}, "Verktyget ger ett förhandsurval och en färdig prompt. Bedömningen av hur väl idén passar görs när du skickar prompten med din idé till en AI-tjänst. Det steget ingår i den fullständiga processen, men du tar det själv. Först då lämnar idén din dator, och då gäller den tjänstens villkor."),
     el("h2", {}, "Vägledning, inte bedömning"),
     el("p", {}, "Underlaget är sammanställt från finansiärernas egna sidor, med länk till källan och datum för senaste kontroll. Det är inte finansiärernas bedömning, och uppgifter kan ha ändrats. Kontrollera alltid mot källan innan du söker."),
     el("p", {}, "Förhandsurvalet bygger på enkla regler. Ett osäkert svar sorterar aldrig bort något, och skälen visas alltid."),
     el("h2", {}, "Hur underlaget hålls aktuellt"),
-    el("p", {}, "Finansiärernas sidor gås igenom varje vecka. Ändringar publiceras först efter manuell granskning. Finansiärer som inte tillåter automatisk hämtning kontrolleras för hand."),
+    el("p", {}, "Varje måndag gör en GitHub-server en standardsökning på finansiärernas webbplatser och i Vinnovas öppna data, efter nya utlysningar och ändrade datum. Sökningen har ingenting med dig som besökare att göra; den görs oavsett om någon använder verktyget, och inget du skriver ingår i den."),
+    el("p", {}, "Resultatet publiceras inte automatiskt. Det blir ett förslag som Engströms Mickla AB granskar och godkänner innan det läggs ut. Formas och Tillväxtverket tillåter inte automatisk hämtning från sina webbplatser, så deras utlysningar kontrolleras för hand. Varje post visar datum för senaste kontroll."),
     el("h2", {}, "Vem står bakom"),
     el("p", {}, "Verktyget är utvecklat av Dan Engström, Engströms Mickla AB. Koden och underlaget är öppna på GitHub."),
     el("p", {}, "Kontakt: ", el("a", { href: "mailto:dan@mickla.se" }, "dan@mickla.se")),

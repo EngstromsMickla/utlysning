@@ -127,7 +127,7 @@ details > summary { cursor: pointer; color: var(--accent); font-weight: 600; mar
 .karta { margin: 8px 0 32px; }
 .zon { border: 1px solid var(--line); border-radius: 10px; background: var(--card); margin: 0 0 10px; overflow: hidden; }
 .zon.webblasare { border-color: var(--accent); }
-.zon-namn { font: 600 13px/1 var(--sans); letter-spacing: .04em; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--paper); color: var(--muted); }
+.zon-namn { font: 600 13px/1.35 var(--sans); letter-spacing: .04em; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--paper); color: var(--muted); }
 .zon.webblasare .zon-namn { background: var(--accent-soft); color: var(--accent); border-bottom-color: var(--accent); }
 .faser { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(var(--antal, 4), 1fr); }
 .fas { position: relative; padding: 16px 18px 14px; display: grid; gap: 2px; align-content: start; }
@@ -140,6 +140,11 @@ details > summary { cursor: pointer; color: var(--accent); font-weight: 600; mar
 .zon.bakom { background: transparent; border-style: dashed; }
 .zon.bakom .fas-namn { color: var(--ink); font-size: 17px; }
 .zon.bakom .fas + .fas::before { background: var(--paper); }
+.zon.ai { border-color: var(--strong); }
+.zon.ai .zon-namn { color: var(--strong); }
+.overgang.gransen { color: var(--strong); font-weight: 600; }
+.overgang.gransen::before { background: var(--strong); width: 2px; }
+.karta figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
 .instr-steg { counter-reset: instr; list-style: none; padding: 0; margin: 0; }
 .instr-steg > li { counter-increment: instr; position: relative; padding: 0 0 6px 46px; margin-bottom: 18px; }

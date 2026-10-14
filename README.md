@@ -1,6 +1,6 @@
 # utlysning.mickla.se: datastruktur
 
-Steg 1 av 3: hur finansieringsmöjligheterna beskrivs och hur de fasta frågorna styr filtreringen. Sidan (steg 2) och bevakningen (steg 3) bygger på det här.
+Utlysningsradarn: datastruktur, sida och veckovis bevakning. Se `CLAUDE.md` för principer och beslut.
 
 ## Filerna
 
@@ -14,13 +14,17 @@ Steg 1 av 3: hur finansieringsmöjligheterna beskrivs och hur de fasta frågorna
 | `publik/prompt.js` | Bygger prompten som användaren kopierar till sin egen AI. |
 | `scripts/bygg.py` | Slår ihop posterna till `publik/data/`, som sidan läser. |
 | `scripts/validera.py` | Kontrollerar alla poster. Körs före varje publicering. |
-| `test/` | Prövar filtreringen och prompten. |
+| `scripts/bevaka.py` | Veckovis standardsökning på finansiärernas webbplatser. Körs av GitHub Actions varje måndag och föreslår ändringar som pull request. |
+| `bevakning/kallor.json` | Vilka sidor bevakningen läser och vilka nyckelord som räknas som relevanta. |
+| `bevakning/rapport.md`, `tillstand.json`, `forslag/` | Senaste rapporten, vad som setts förut och utkast till nya poster. Skrivs av bevakningen. |
+| `test/` | Prövar filtreringen, prompten och bevakningen. |
 
 Kör kontrollerna:
 
 ```
 python3 scripts/validera.py
 node --test test/*.mjs
+python3 -m unittest discover -s test -p "test_*.py"
 ```
 
 ## Tre posttyper, en gemensam grund

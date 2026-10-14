@@ -1,0 +1,81 @@
+{
+  "_om": "Vilka sidor den veckovisa standardsökningen läser. Ändra här för att lägga till eller ta bort en finansiär. Sidor vars robots.txt inte tillåter automatisk hämtning läses aldrig; de listas i rapporten för kontroll för hand.",
+  "anvandaragent": "Utlysningsradarn/1.0 (+https://utlysning.mickla.se/#om)",
+  "nyckelord": [
+    "bygg",
+    "bebygg",
+    "fastighet",
+    "bostad",
+    "bostäder",
+    "städer",
+    "stads",
+    "staden",
+    "urban",
+    "samhällsbygg",
+    "infrastruktur",
+    "anläggning",
+    "energi",
+    "klimat",
+    "cirkulär",
+    "resurseffektiv",
+    "återbruk",
+    "transport",
+    "mobilitet",
+    "vatten"
+  ],
+  "vinnova": {
+    "namn": "Vinnova (öppna data)",
+    "api": "https://data.vinnova.se/api/ansokningsomgangar/",
+    "webb": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/"
+  },
+  "listor": [
+    {
+      "id": "energimyndigheten",
+      "namn": "Energimyndigheten (även RE:Source och DUT)",
+      "url": "https://www.energimyndigheten.se/utlysningar/",
+      "lankmonster": "/utlysningar/[a-z0-9-]+/?$"
+    },
+    {
+      "id": "sbuf",
+      "namn": "SBUF",
+      "url": "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider",
+      "lankmonster": ""
+    },
+    {
+      "id": "smart-built",
+      "namn": "Smart Built Environment",
+      "url": "https://www.smartbuilt.se/",
+      "lankmonster": "utlysning"
+    },
+    {
+      "id": "resource",
+      "namn": "RE:Source",
+      "url": "https://resource-sip.se/",
+      "lankmonster": "utlysning"
+    },
+    {
+      "id": "shiftsweden",
+      "namn": "ShiftSweden",
+      "url": "https://shiftsweden.se/",
+      "lankmonster": "utlysning|call"
+    }
+  ],
+  "for_hand": [
+    {
+      "namn": "Formas",
+      "url": "https://formas.se/finansiering/hitta-finansiering.html",
+      "skal": "Formas robots.txt tillåter inte automatisk hämtning."
+    },
+    {
+      "namn": "Tillväxtverket",
+      "url": "https://tillvaxtverket.se/tillvaxtverket/sokfinansieringochstod.4.html",
+      "skal": "Tillväxtverkets robots.txt tillåter inte automatisk hämtning."
+    },
+    {
+      "namn": "Horisont Europa",
+      "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home",
+      "skal": "Portalen har tusentals ämnen; relevanta ämnen väljs för hand."
+    }
+  ],
+  "_nyckelord": "Ett förslag från Vinnova eller en ny länk markeras som relevant om ett nyckelord står i början av ett ord i titeln eller texten. Ändra listan för att vidga eller smalna av bevakningen."
+}

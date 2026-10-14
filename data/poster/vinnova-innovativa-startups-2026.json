@@ -1,0 +1,103 @@
+{
+  "id": "vinnova-innovativa-startups-2026",
+  "typ": "utlysning",
+  "titel": "Innovativa startups 2026",
+  "finansiar": { "id": "vinnova", "namn": "Vinnova" },
+  "program": "Innovativa startups",
+  "diarienummer": "2025-04831",
+  "sammanfattning": "Upp till 500 000 kronor till unga, kunskapsintensiva aktiebolag med internationell marknadspotential, för att pröva och bekräfta att en innovativ idé har en marknad. Företaget får vara högst tio år gammalt, ha högst tio anställda och högst tio miljoner kronor i omsättning eller balansomslutning.",
+  "status": "oppen",
+
+  "kallor": [
+    { "url": "https://www.vinnova.se/en/calls-for-proposals/innovative-startups/innovative-startups-2026", "titel": "Vinnova: Innovative startups 2026 (engelsk sida)", "roll": "primar", "sprak": "en", "anmarkning": "Maskinöversatt från svenska enligt Vinnova; den svenska texten har företräde." },
+    { "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-05", "titel": "Vinnovas öppna data, ansökningsomgång 2025-04831", "roll": "kompletterande" }
+  ],
+
+  "kontroll": {
+    "senast": "2026-10-14",
+    "metod": "automatisk",
+    "godkand_av": "Dan Engström"
+  },
+
+  "precision": "lag",
+  "precision_motivering": "Behörighet, belopp och datum är tydliga, men bedömningskriterierna står inte på den kontrollerade sidan.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["foretag"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "ovrigt": "Bara svenska aktiebolag kan söka.",
+        "vet_ej": "Bara svenska aktiebolag kan söka."
+      }
+    },
+    "foretagsstorlek": {
+      "passar": ["mikro"],
+      "kanske": ["liten", "vet_ej"],
+      "skal": {
+        "liten": "Företaget får ha högst tio anställda och högst tio miljoner kronor i omsättning eller balansomslutning.",
+        "medel": "Företaget får ha högst tio anställda.",
+        "stor": "Företaget får ha högst tio anställda."
+      }
+    },
+    "mognad": {
+      "passar": ["ide", "forstudie"],
+      "kanske": ["fou", "test_demo", "vet_ej"],
+      "skal": {
+        "fou": "Pengarna gäller att pröva marknaden för idén, inte i första hand teknisk utveckling.",
+        "implementering": "Utlysningen gäller att verifiera att idén har en marknad, inte införande eller skalning."
+      }
+    },
+    "resultat": {
+      "passar": ["egen_produkt", "blandat"],
+      "kanske": ["vet_ej"],
+      "skal": { "oppet": "Utlysningen riktar sig till företag som bygger en affär på sin idé." }
+    },
+    "bidragsbehov": {
+      "passar": ["under_0_5"],
+      "kanske": ["0_5_till_2", "vet_ej"],
+      "skal": {
+        "0_5_till_2": "Högst 500 000 kronor kan sökas.",
+        "2_till_5": "Högst 500 000 kronor kan sökas.",
+        "5_till_20": "Högst 500 000 kronor kan sökas.",
+        "over_20": "Högst 500 000 kronor kan sökas."
+      }
+    }
+  },
+
+  "krav": [
+    { "id": "aktiebolag", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Sökande ska vara ett svenskt aktiebolag." },
+    { "id": "alder", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Företaget får vara högst tio år gammalt." },
+    { "id": "storlek", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Högst tio anställda och högst tio miljoner kronor i nettoomsättning eller balansomslutning." },
+    { "id": "vinstutdelning", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Företaget får inte ha delat ut vinst." },
+    { "id": "eservice", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Ansökan görs i Vinnovas e-tjänst, med frågor om projektet, personerna och budgeten." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": 500000,
+    "galler": "Per ansökan",
+    "stodniva": [],
+    "total_budget_sek": null,
+    "loptid_max_manader": null
+  },
+
+  "bedomning": {
+    "typ": "ingen",
+    "kriterier": []
+  },
+
+  "tidpunkter": [
+    { "typ": "oppnar", "datum": "2026-10-12" },
+    { "typ": "informationsmote", "datum": "2026-11-02", "tid": "09:00" },
+    { "typ": "informationsmote", "datum": "2026-11-09", "tid": "09:00" },
+    { "typ": "sista_dag", "datum": "2027-01-12", "tid": "14:00" },
+    { "typ": "beslut", "datum": "2027-03-23" },
+    { "typ": "projektstart_senast", "datum": "2027-04-01" }
+  ],
+
+  "osakerheter": [
+    "Bedömningskriterierna och stödnivån i procent står inte på den kontrollerade sidan.",
+    "Om tidigare stöd från Vinnova påverkar möjligheten att söka framgår inte."
+  ]
+}
