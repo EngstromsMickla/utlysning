@@ -6,6 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
+const VERSION = "prototyp v0.1";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -107,14 +108,17 @@ function visaSteg1() {
   uppdatera();
 
   lagg(
+    el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Vilken finansiering passar din idé?"),
-    el("p", { class: "ingress" }, "Beskriv idén och svara på några frågor. Du får ett urval av utlysningar med skäl, och en färdig instruktion att klistra in i den AI-tjänst du själv använder för en djupare bedömning."),
+    el("p", { class: "lead" }, "Beskriv idén och svara på några frågor. Du får ett urval av utlysningar med skäl, och en färdig instruktion att klistra in i den AI-tjänst du själv använder för en djupare bedömning."),
+    el("p", { class: "fritt" }, "Ingen inloggning. Fritt att använda för alla. Ingen text lämnar din webbläsare."),
+    el("p", {}, "Första gången? ", el("a", { href: "#instruktion" }, "Se hur verktyget fungerar"), " innan du börjar."),
     stegLista(),
-    el("label", { for: "ide" }, "Beskriv idén"),
+    el("label", { class: "falt", for: "ide" }, "Beskriv idén"),
     el("p", { class: "hjalp", id: "ide-hjalp" }, "Skriv vad ni vill göra, för vem, och vilket resultat det ska ge. Berätta gärna vilka som är med och vad ni redan har gjort. Texten stannar i din webbläsare."),
     falt,
     raknare,
-    el("div", { class: "knappar" },
+    el("div", { class: "navrow" },
       el("button", { type: "button", onclick: () => { tillstand.steg = 2; visaIde(); fokusera(); } }, "Fortsätt till frågorna")),
   );
 }
@@ -130,7 +134,7 @@ function visaSteg2() {
     form.replaceChildren();
     for (const f of FRAGOR.fragor) {
       if (!fragaSynlig(f)) { delete tillstand.svar[f.id]; continue; }
-      const fs = el("fieldset", {}, el("legend", {}, f.fraga));
+      const fs = el("fieldset", { class: "card" }, el("legend", {}, f.fraga));
       if (f.hjalptext) fs.append(el("p", { class: "hjalp" }, f.hjalptext));
       for (const a of f.alternativ) {
         const id = `${f.id}-${a.id}`;
@@ -159,11 +163,11 @@ function visaSteg2() {
 
   lagg(
     el("h1", {}, "Några frågor om förutsättningarna"),
-    el("p", { class: "ingress" }, "Svaren används för att sortera utlysningarna. Hoppa över det du inte vet; ett obesvarat eller osäkert svar sorterar aldrig bort något."),
+    el("p", { class: "lead" }, "Svaren används för att sortera utlysningarna. Hoppa över det du inte vet; ett obesvarat eller osäkert svar sorterar aldrig bort något."),
     stegLista(),
     form,
-    el("div", { class: "knappar" },
-      el("button", { type: "button", class: "sekundar", onclick: () => { tillstand.steg = 1; visaIde(); fokusera(); } }, "Tillbaka"),
+    el("div", { class: "navrow" },
+      el("button", { type: "button", class: "ghost", onclick: () => { tillstand.steg = 1; visaIde(); fokusera(); } }, "Tillbaka"),
       el("button", { type: "button", onclick: () => { tillstand.resultat = null; tillstand.valda = null; tillstand.steg = 3; visaIde(); fokusera(); } }, "Visa urvalet")),
   );
 }
@@ -177,7 +181,7 @@ function skalLista(bedomning) {
 function postKort(post, bedomning, medVal) {
   const valt = tillstand.valda.has(post.id);
   const kort = el("article", { class: `post ${bedomning.utfall}` },
-    el("h3", {}, post.titel),
+    el("div", { class: "rubrikrad" }, el("h3", {}, post.titel), el("span", { class: `tag ${bedomning.utfall}` }, STATUS[bedomning.utfall])),
     el("p", { class: "fakta" }, [post.finansiar.namn, TYP[post.typ], nastaText(post)].filter(Boolean).join(". ") + "."),
   );
 
@@ -187,7 +191,7 @@ function postKort(post, bedomning, medVal) {
       const full = post.vagar.find((x) => x.id === v.id);
       const besked = !v.fordelning && full.fordelning && full.besked_utan_fordelning ? full.besked_utan_fordelning : v.besked;
       const vag = el("div", { class: "vag" },
-        el("h4", {}, v.namn, " ", el("span", { class: `status ${v.utfall}` }, `(${v.utfall === "passar_inte" ? "inte aktuell" : STATUS[v.utfall].toLowerCase()})`)));
+        el("div", { class: "rubrikrad" }, el("h4", {}, v.namn), el("span", { class: `tag ${v.utfall}` }, v.utfall === "passar_inte" ? "Inte aktuell" : STATUS[v.utfall])));
       if (v.utfall !== "passar_inte") {
         if (v.fordelning) vag.append(el("p", {}, `Gäller er: ${v.fordelning.namn}.`, v.fordelning.url ? [" ", lank(v.fordelning.url, "Läs mer")] : []));
         const skal = v.skal.filter((s) => s.text && s.utfall !== "passar");
@@ -238,7 +242,7 @@ function visaSteg3() {
 
   lagg(
     el("h1", {}, "Det här kan passa din idé"),
-    el("p", { class: "ingress" }, "Urvalet bygger på dina svar och enkla regler. Läs skälen, och välj vilka du vill ta med i prompten för en djupare bedömning."),
+    el("p", { class: "lead" }, "Urvalet bygger på dina svar och enkla regler. Läs skälen, och välj vilka du vill ta med i prompten för en djupare bedömning."),
     stegLista(),
   );
 
@@ -251,11 +255,11 @@ function visaSteg3() {
     const poster = aktuella.filter((r) => r.bedomning.utfall === utfall);
     if (!poster.length) continue;
     lagg(el("section", { class: "grupp" },
-      el("h2", {}, el("span", { class: `markor ${utfall}`, "aria-hidden": "true" }), rubrik),
+      el("h2", {}, rubrik),
       poster.map((r) => postKort(r.post, r.bedomning, true))));
   }
   if (!aktuella.length) {
-    lagg(el("p", { class: "varning" }, "Inget i underlaget passar dina svar just nu. Se vad som föll bort och varför, eller gå tillbaka och ändra svar som du är osäker på."));
+    lagg(el("p", { class: "note weak" }, "Inget i underlaget passar dina svar just nu. Se vad som föll bort och varför, eller gå tillbaka och ändra svar som du är osäker på."));
   }
   if (bortfallna.length) {
     lagg(el("section", { class: "grupp" },
@@ -264,10 +268,11 @@ function visaSteg3() {
         bortfallna.map((r) => postKort(r.post, r.bedomning, false)))));
   }
 
-  lagg(el("div", { class: "knappar" },
-    el("button", { type: "button", class: "sekundar", onclick: () => { tillstand.steg = 2; visaIde(); fokusera(); } }, "Ändra svaren"),
-    el("button", { type: "button", id: "skapa-prompt", onclick: () => { tillstand.steg = 4; visaIde(); fokusera(); } }, "Skapa prompten"),
-    el("span", { class: "hjalp", id: "val-info", "aria-live": "polite" })));
+  lagg(el("div", { class: "navrow" },
+    el("button", { type: "button", class: "ghost", onclick: () => { tillstand.steg = 2; visaIde(); fokusera(); } }, "Ändra svaren"),
+    el("div", { class: "hoger" },
+      el("span", { class: "hjalp", id: "val-info", "aria-live": "polite" }),
+      el("button", { type: "button", id: "skapa-prompt", onclick: () => { tillstand.steg = 4; visaIde(); fokusera(); } }, "Skapa prompten"))));
   uppdateraVal();
 }
 
@@ -294,22 +299,22 @@ function visaSteg4() {
 
   lagg(
     el("h1", {}, "Din prompt är klar"),
-    el("p", { class: "ingress" }, "Prompten innehåller din idé, dina svar och underlaget för de utlysningar du valde. Den skickas ingenstans förrän du själv klistrar in den."),
+    el("p", { class: "lead" }, "Prompten innehåller din idé, dina svar och underlaget för de utlysningar du valde. Den skickas ingenstans förrän du själv klistrar in den."),
     stegLista(),
     el("ol", { class: "instruktion" },
       el("li", {}, "Kopiera prompten."),
       el("li", {}, "Öppna en ny konversation i Claude, ChatGPT eller den AI-tjänst du använder."),
       el("li", {}, "Klistra in och skicka. Svara på AI:ns frågor; den rangordnar först när den vet vad som är viktigast för dig.")),
-    kort ? el("p", { class: "varning" }, "Din beskrivning är kort. Prompten ber därför AI:n att börja med frågor och bedöma kriterierna först när du svarat.") : null,
+    kort ? el("p", { class: "note strong" }, "Din beskrivning är kort. Prompten ber därför AI:n att börja med frågor och bedöma kriterierna först när du svarat.") : null,
     el("p", { class: "hjalp" }, "Tänk på vad du delar: din idé hamnar hos den AI-tjänst du klistrar in den i, enligt den tjänstens villkor."),
-    el("div", { class: "knappar" },
+    el("div", { class: "actions" },
       el("button", { type: "button", onclick: kopiera }, "Kopiera prompten"),
       kvitto),
     el("p", { class: "hjalp", id: "prompt-info" }, `${text.length.toLocaleString("sv-SE")} tecken. Om knappen inte fungerar: markera texten nedan och kopiera den.`),
     ruta,
-    el("div", { class: "knappar" },
-      el("button", { type: "button", class: "sekundar", onclick: () => { tillstand.steg = 3; visaIde(); fokusera(); } }, "Ändra urvalet"),
-      el("button", { type: "button", class: "sekundar", onclick: borjaOm }, "Börja om med en ny idé")),
+    el("div", { class: "navrow" },
+      el("button", { type: "button", class: "ghost", onclick: () => { tillstand.steg = 3; visaIde(); fokusera(); } }, "Ändra urvalet"),
+      el("button", { type: "button", class: "ghost", onclick: borjaOm }, "Börja om med en ny idé")),
   );
 }
 
@@ -355,8 +360,9 @@ function visaRadar() {
   };
 
   lagg(
+    el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Alla utlysningar"),
-    el("p", { class: "ingress" }, "Öppna och kommande utlysningar, löpande kanaler och vägvisare. Varje post visar när den senast kontrollerades mot källan."),
+    el("p", { class: "lead" }, "Öppna och kommande utlysningar, löpande kanaler och vägvisare. Varje post visar när den senast kontrollerades mot källan."),
     el("div", { class: "filter" },
       valj("f-finansiar", "Finansiär", [["", "Alla finansiärer"], ...finansiarer], "finansiar"),
       valj("f-typ", "Typ", [["", "Alla typer"], ["utlysning", "Utlysningar"], ["lopande", "Löpande kanaler"], ["vagvisare", "Vägvisare"]], "typ")),
@@ -403,13 +409,102 @@ function radarRad(post) {
       detaljer));
 }
 
+// ---------- Så fungerar det ----------
+
+function fas(namn, text) {
+  return el("li", { class: "fas" }, el("span", { class: "fas-namn" }, namn), el("span", { class: "fas-text" }, text));
+}
+
+function zon(klass, namn, faser) {
+  const lista = el("ol", { class: "faser" }, faser);
+  lista.style.setProperty("--antal", faser.length);
+  return el("section", { class: `zon ${klass}`, "aria-label": namn }, el("div", { class: "zon-namn" }, namn), lista);
+}
+
+function processkarta() {
+  return el("figure", { class: "karta", "aria-label": "Processkarta" },
+    zon("webblasare", "I din webbläsare: inget lämnar din dator", [
+      fas("Idé", "Du beskriver vad ni vill göra, för vem och vilket resultat det ska ge."),
+      fas("Frågor", "Ett tiotal frågor om organisation, mognad, partner, tid och pengar."),
+      fas("Urval", "Enkla regler sorterar utlysningarna och visar skälen."),
+      fas("Prompt", "Idén, svaren och underlaget sätts ihop till en färdig instruktion."),
+    ]),
+    el("p", { class: "overgang" }, "Du kopierar prompten och klistrar in den själv"),
+    zon("ai", "I den AI-tjänst du väljer", [
+      fas("Krav", "AI:n prövar behörighetskraven mot det du har berättat."),
+      fas("Passform", "Bedömning per kriterium, och frågor där underlaget är tunt."),
+      fas("Prioriteringar", "Du berättar vad som väger tyngst för dig."),
+      fas("Rangordning", "Först då rangordnas möjligheterna."),
+    ]),
+    el("p", { class: "overgang" }, "Bakom kulisserna"),
+    zon("bakom", "Så hålls underlaget aktuellt", [
+      fas("Finansiärerna", "Utlysningar från Vinnova, Formas, SBUF, Tillväxtverket med flera."),
+      fas("Varje vecka", "Sidorna gås igenom och ändringar föreslås."),
+      fas("Granskning", "Engströms Mickla AB godkänner varje ändring."),
+      fas("Radarn", "Det godkända publiceras med källa och kontrolldatum."),
+    ]),
+  );
+}
+
+function visaInstruktion() {
+  sattTitel("Så fungerar det");
+  vy.replaceChildren();
+  lagg(
+    el("div", { class: "eyebrow" }, "Utlysningsradarn"),
+    el("h1", {}, "Så fungerar verktyget"),
+    el("p", { class: "lead" }, "Utlysningsradarn gör det första sorteringsarbetet åt dig. Den djupare bedömningen gör du sedan tillsammans med den AI-tjänst du själv använder."),
+    processkarta(),
+
+    el("h2", {}, "Steg för steg"),
+    el("ol", { class: "instr-steg" },
+      el("li", {},
+        el("h3", {}, "Beskriv idén"),
+        el("p", {}, "Ju tydligare beskrivning, desto bättre bedömning. Försök få med:"),
+        el("ul", {},
+          el("li", {}, "vad ni vill göra och varför det behövs,"),
+          el("li", {}, "vem som har nytta av resultatet,"),
+          el("li", {}, "vilket resultat ni vill nå och hur ni vet att det lyckats,"),
+          el("li", {}, "vilka som är med eller behöver vara med,"),
+          el("li", {}, "vad ni redan har gjort.")),
+        el("p", { class: "hjalp" }, `Med minst ${TUNN_IDE_ORD} ord kan AI:n bedöma idén direkt. Med en kortare text börjar den med frågor, vilket också fungerar.`)),
+      el("li", {},
+        el("h3", {}, "Svara på frågorna"),
+        el("p", {}, "Frågorna gäller förutsättningar som avgör vem som kan söka: typ av organisation, storlek, län, sektor, hur långt idén har kommit, vad som ska hända med resultatet, hur mycket bidrag som behövs, när ni kan söka och vilka partner ni har."),
+        el("p", { class: "hjalp" }, "Välj \"Vet inte\" hellre än att gissa. Ett osäkert svar sorterar aldrig bort något.")),
+      el("li", {},
+        el("h3", {}, "Läs urvalet"),
+        el("p", {}, "Utlysningarna delas in i passar, kan passa och vägar att undersöka. Under varje finns skälen, till exempel ett krav ni behöver uppfylla eller en partner ni behöver hitta. Det som föll bort visas längst ner med förklaring."),
+        el("p", {}, `Välj vilka du vill ta med i prompten, högst ${MAX_POSTER}.`)),
+      el("li", {},
+        el("h3", {}, "Kopiera prompten till din AI"),
+        el("p", {}, "Öppna en ny konversation i Claude, ChatGPT eller den AI-tjänst du använder. Klistra in prompten och skicka."),
+        el("p", { class: "hjalp" }, "Din idé hamnar då hos den tjänsten, enligt dess villkor. Använd en tjänst som din organisation har godkänt om idén är känslig.")),
+      el("li", {},
+        el("h3", {}, "Svara på AI:ns frågor"),
+        el("p", {}, "AI:n återger först hur den har förstått idén. Rätta den om något är fel. Den går sedan igenom kraven, bedömer passformen mot kriterierna och frågar vad som väger tyngst för dig innan den rangordnar."),
+        el("p", { class: "hjalp" }, "Förslag som AI:n hämtar utanför underlaget hamnar i en egen del och är inte kontrollerade.")),
+      el("li", {},
+        el("h3", {}, "Kontrollera mot källan"),
+        el("p", {}, "Läs alltid finansiärens egen utlysningstext innan du söker. Varje post har länk till källan och datum för senaste kontroll."))),
+
+    el("h2", {}, "Det här gör verktyget inte"),
+    el("ul", {},
+      el("li", {}, "Det avgör inte om du är behörig eller hur en ansökan kommer att bedömas."),
+      el("li", {}, "Det täcker inte alla finansiärer. Saknas något du väntat dig, kontrollera direkt hos finansiären."),
+      el("li", {}, "Det sparar ingenting. Stänger du fliken får du börja om.")),
+
+    el("div", { class: "navrow" }, el("a", { class: "btn", href: "#ide" }, "Pröva en idé")),
+  );
+}
+
 // ---------- Om ----------
 
 function visaOm() {
   sattTitel("Om verktyget");
   vy.replaceChildren(
+    el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Om verktyget"),
-    el("p", { class: "ingress" }, "Utlysningsradarn hjälper forskare, företag och offentliga aktörer att hitta forsknings- och innovationsutlysningar som passar en idé."),
+    el("p", { class: "lead" }, "Utlysningsradarn hjälper forskare, företag och offentliga aktörer att hitta forsknings- och innovationsutlysningar som passar en idé."),
     el("h2", {}, "Det du skriver stannar hos dig"),
     el("p", {}, "Sidan anropar ingen AI och skickar ingenting någonstans. Urvalet och prompten räknas fram i din webbläsare. Inget sparas, och det finns ingen besöksstatistik. När du stänger fliken är allt borta."),
     el("p", {}, "Först när du själv klistrar in prompten i en AI-tjänst lämnar idén din dator, och då gäller den tjänstens villkor."),
@@ -419,7 +514,8 @@ function visaOm() {
     el("h2", {}, "Hur underlaget hålls aktuellt"),
     el("p", {}, "Finansiärernas sidor gås igenom varje vecka. Ändringar publiceras först efter manuell granskning. Finansiärer som inte tillåter automatisk hämtning kontrolleras för hand."),
     el("h2", {}, "Vem står bakom"),
-    el("p", {}, "Verktyget drivs av Engströms Mickla AB. Koden och underlaget är öppna på GitHub."),
+    el("p", {}, "Verktyget är utvecklat av Dan Engström, Engströms Mickla AB. Koden och underlaget är öppna på GitHub."),
+    el("p", {}, "Kontakt: ", el("a", { href: "mailto:dan@mickla.se" }, "dan@mickla.se")),
     el("p", {}, lank("https://github.com/EngstromsMickla/utlysning", "Se koden och underlaget på GitHub")),
   );
 }
@@ -433,6 +529,7 @@ function visa() {
     if (a.dataset.vy === vyNamn) a.setAttribute("aria-current", "page");
   }
   if (vyNamn === "radar") visaRadar();
+  else if (vyNamn === "instruktion") visaInstruktion();
   else if (vyNamn === "om") visaOm();
   else visaIde();
 }
@@ -446,11 +543,11 @@ async function start() {
     DATA = p;
     FRAGOR = f;
   } catch {
-    vy.replaceChildren(el("p", { class: "varning" }, "Underlaget kunde inte laddas. Ladda om sidan om en stund."));
+    vy.replaceChildren(el("p", { class: "note weak" }, "Underlaget kunde inte laddas. Ladda om sidan om en stund."));
     return;
   }
-  const byggd = document.getElementById("byggd");
-  if (byggd && DATA.byggd) byggd.textContent = `Underlaget publicerades ${datum(DATA.byggd)}.`;
+  const version = document.getElementById("version");
+  if (version) version.textContent = `Utlysningsradarn · ${VERSION}${DATA.byggd ? " · underlaget " + datum(DATA.byggd) : ""}`;
   window.addEventListener("hashchange", () => { visa(); fokusera(); });
   visa();
 }
