@@ -1,0 +1,51 @@
+name: Kontrollera och publicera
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  kontrollera:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install jsonschema
+      - name: Validera poster
+        run: python3 scripts/validera.py
+      - name: Testa filtrering
+        run: node --test test/*.mjs
+      - name: Bygg datafiler
+        run: python3 scripts/bygg.py
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: publik
+
+  publicera:
+    if: github.event_name != 'pull_request'
+    needs: kontrollera
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
