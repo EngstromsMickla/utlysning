@@ -131,6 +131,19 @@ class Bevakning(unittest.TestCase):
         rapport, antal, fynd = self.kor(self.natet(vinnova, []))
         self.assertIn("Vinnova anger sista dag 2027-02-09", rapport)
 
+    def test_checklista_for_hand_varannan_vecka(self):
+        rapport, _, _ = self.kor(self.natet([], []))
+        self.assertIn("- [ ] **Formas**", rapport)
+        self.assertIn("Finns i radarn: Driving Urban Transitions 2026", rapport)  # Formas är partner
+        self.assertIn("- [ ] **Tillväxtverket**", rapport)
+        rapport, antal, fynd = self.kor(self.natet([], []), "2026-10-26")
+        self.assertNotIn("- [ ] **Formas**", rapport)
+        self.assertIn("Nästa påminnelse om Formas: 2026-11-02", rapport)
+        rapport, antal, fynd = self.kor(self.natet([], []), "2026-11-02")
+        self.assertIn("- [ ] **Formas**", rapport)
+        self.assertNotIn("- [ ] **Horisont Europa**", rapport)  # var fjärde vecka
+        self.assertTrue(fynd)
+
     def test_nyckelord_traffar_ordborjan(self):
         self.assertEqual(bevaka.relevant("Byggnader och ombyggnad", ["bygg"]), ["bygg"])
         self.assertEqual(bevaka.relevant("Ett tidigt stadium", ["staden", "stads"]), [])

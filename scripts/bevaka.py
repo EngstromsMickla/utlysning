@@ -347,9 +347,32 @@ def gamla_kontroller(poster, idag, dagar=90):
                   if p["kontroll"]["senast"] < grans and p["status"] != "stangd")
 
 
+def checklista_for_hand(for_hand, poster, kallor, tillstand, idag):
+    """Finansiärer som inte får läsas automatiskt. Var intervall_dagar:e dag blir de en checklista
+    som Dan bockar av efter att ha tittat i sin egen webbläsare."""
+    sparat = tillstand.setdefault("for_hand", {})
+    blockerade = {k["post"] for k in kallor if k.get("for_hand")}
+    aktuella, vilande = [], []
+    for f in for_hand:
+        senast = sparat.get(f["id"])
+        nasta = (datetime.date.fromisoformat(senast) + datetime.timedelta(days=f.get("intervall_dagar", 14))).isoformat() if senast else idag
+        if nasta > idag:
+            vilande.append((f["namn"], nasta))
+            continue
+        sparat[f["id"]] = idag
+        relaterade = []
+        for _, p in poster.values():
+            partner = " ".join(p["finansiar"].get("partner", []))
+            if p["finansiar"]["id"] in f.get("finansiarer", []) or f.get("partnernamn", "\0") in partner:
+                sista = [d for d in datum_av(p, "sista_dag") if d >= idag]
+                relaterade.append((p["titel"], p["kontroll"]["senast"], sista[0] if sista else None, p["titel"] in blockerade))
+        aktuella.append({**f, "poster": sorted(relaterade)})
+    return aktuella, vilande
+
+
 # ---------- Rapport ----------
 
-def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_hand):
+def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_hand, vilande=()):
     r = [f"# Bevakning {idag}", "",
          "Veckans standardsökning på finansiärernas webbplatser. Inget av detta är publicerat. "
          "Granska, ändra och godkänn i pull requesten; när den slås ihop publiceras ändringarna i `data/poster/`. "
@@ -414,7 +437,6 @@ def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_h
             r.append(f"- **{k['post']}**: {'; '.join(delar)}. {k['url']}")
         att_gora += 1
     texter = [k for k in kallor if k.get("text_andrad") and k not in andrade]
-    kallor_for_hand = sorted({k["post"] for k in kallor if k.get("for_hand")})
     if texter:
         r.append(f"- Texten har ändrats utan att datumen ändrats på {len(texter)} sidor. Oftast småändringar; titta om du har tid:")
         r.extend(f"  - {k['post']}: {k['url']}" for k in texter)
@@ -426,12 +448,28 @@ def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_h
     r.append("")
 
     r.append("## Kontrollera för hand")
-    for f in for_hand:
-        r.append(f"- {f['namn']}: {f['url']} ({f['skal']})")
-    for titel in kallor_for_hand:
-        r.append(f"- {titel}: källorna får inte läsas automatiskt. Titta på dem om något kan ha ändrats.")
+    if for_hand:
+        r.append("De här webbplatserna får inte läsas automatiskt, men du får läsa dem i din vanliga webbläsare. "
+                 "Öppna länken, titta efter nya utlysningar och ändrade datum, och bocka av rutan. "
+                 "Hittar du något: klistra in länken eller texten hos Claude i projektet Interaktiva webbplatser "
+                 "och skriv \"Ny utlysning för radarn\" eller \"Ändring i radarn\".")
+        r.append("")
+        for f in for_hand:
+            r.append(f"- [ ] **{f['namn']}**: [{f['url']}]({f['url']}). {f['hur_hitta']}")
+            for titel, senast, sista, blockerad in f["poster"]:
+                delar = [f"senast kontrollerad {senast}"]
+                if sista:
+                    delar.append(f"nästa sista dag {sista}")
+                if blockerad:
+                    delar.append("källan får inte läsas automatiskt")
+                r.append(f"  - Finns i radarn: {titel} ({', '.join(delar)}).")
+            att_gora += 1
+    else:
+        r.append("- Inget denna vecka.")
+    for namn, nasta in vilande:
+        r.append(f"- Nästa påminnelse om {namn}: {nasta}.")
     for d, titel in gamla:
-        r.append(f"- {titel}: senast kontrollerad {d}, mer än tre månader sedan.")
+        r.append(f"- [ ] {titel}: senast kontrollerad {d}, mer än tre månader sedan.")
     r.append("")
 
     r.append("## Sista dag inom tre veckor")
@@ -456,8 +494,9 @@ def kor(idag, hamtare=None):
     listor = bevaka_listor(hamtare, konf["listor"], tillstand, konf["nyckelord"])
     kallor = bevaka_kallor(hamtare, poster, tillstand, idag)
 
+    for_hand, vilande = checklista_for_hand(konf["for_hand"], poster, kallor, tillstand, idag)
     rapport, att_gora = skriv_rapport(idag, vinnova, listor, kallor, status,
-                                      narmaste_deadlines(poster, idag), gamla_kontroller(poster, idag), konf["for_hand"])
+                                      narmaste_deadlines(poster, idag), gamla_kontroller(poster, idag), for_hand, vilande)
     tillstand["senaste_korning"] = idag
     tillstandsfil.write_text(json.dumps(tillstand, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     (BEV / "rapport.md").write_text(rapport + "\n", encoding="utf-8")

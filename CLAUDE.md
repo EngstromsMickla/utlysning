@@ -45,7 +45,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Status rättas direkt i postfilerna: sista dag passerad blir `stangd`, öppningsdag passerad blir `oppen`.
 - Resultatet blir en pull request med `bevakning/rapport.md` som beskrivning. Inget publiceras förrän Dan slagit ihop den. Utkast publiceras aldrig förrän de skrivits klart och flyttats till `data/poster/`.
 - Tillståndet mellan körningarna ligger i `bevakning/tillstand.json` (adresser, fingeravtryck och datum, ingen sidtext).
-- robots.txt respekteras. Formas och Tillväxtverket tillåter inte automatisk hämtning och kontrolleras för hand; rapporten påminner. Horisont Europa väljs också för hand.
+- robots.txt respekteras, oavsett vem som startar körningen. Formas och Tillväxtverket tillåter inte automatisk hämtning. De kontrolleras för hand av Dan i hans webbläsare: rapporten ger varannan vecka en checklista med länkar och de poster som berörs (Horisont Europa var fjärde vecka). Intervall och adresser står under `for_hand` i `bevakning/kallor.json`. Dan har frågat Formas och Tillväxtverket om lov eller öppna data; får vi skriftligt ja läggs sidan in som tillåten med en anteckning om vem som gav lov och när.
 - Nyckelorden i `bevakning/kallor.json` avgör vad som räknas som relevant. De matchas mot början av ord.
 - Tester: `python3 -m unittest discover -s test -p "test_*.py"` med påhittade svar, utan nätet.
 
