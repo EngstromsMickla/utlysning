@@ -1,0 +1,52 @@
+name: Bevakning
+
+# Veckovis standardsökning på finansiärernas webbplatser.
+# Körs på GitHubs server, aldrig i besökarens webbläsare. Publicerar ingenting:
+# resultatet blir en pull request som Dan granskar och godkänner.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # måndagar 05:00 UTC, det vill säga 06:00 eller 07:00 svensk tid
+  workflow_dispatch:       # går också att starta för hand under Actions
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: bevakning
+  cancel-in-progress: false
+
+jobs:
+  sok:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sök på finansiärernas webbplatser
+        id: bevaka
+        run: python3 scripts/bevaka.py
+
+      - name: Kontrollera att posterna fortfarande är giltiga
+        run: |
+          pip install jsonschema
+          python3 scripts/validera.py
+
+      - name: Föreslå ändringarna som pull request
+        if: steps.bevaka.outputs.fynd == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: bevakning/vecka
+          delete-branch: true
+          commit-message: "Bevakning: veckans standardsökning"
+          title: "Bevakning: ${{ steps.bevaka.outputs.antal }} saker att granska"
+          body-path: bevakning/rapport.md
+          labels: bevakning
+          add-paths: |
+            bevakning/**
+            data/poster/**
