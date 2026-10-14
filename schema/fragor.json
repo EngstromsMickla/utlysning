@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "beskrivning": "De fasta frågorna i idéverktyget. Varje fråga har ett id som poster refererar till i sitt 'filter' och vägvisare i sina 'villkor'. Svaret 'vet_ej' ger alltid utfallet 'kanske', aldrig 'passar_inte'.",
+  "fragor": [
+    {
+      "id": "organisationstyp",
+      "fraga": "Vilken typ av organisation ska söka eller leda arbetet?",
+      "typ": "ett_val",
+      "alternativ": [
+        { "id": "foretag", "text": "Företag (aktiebolag eller motsvarande)" },
+        { "id": "universitet_hogskola", "text": "Universitet eller högskola" },
+        { "id": "forskningsinstitut", "text": "Forskningsinstitut (t.ex. RISE)" },
+        { "id": "kommun_region", "text": "Kommun, region eller kommunalt bolag" },
+        { "id": "statlig_myndighet", "text": "Statlig myndighet" },
+        { "id": "ideell", "text": "Ideell organisation, förening, branschorganisation eller fackförbund" },
+        { "id": "privatperson", "text": "Privatperson eller enskild firma" },
+        { "id": "vet_ej", "text": "Vet inte än" }
+      ]
+    },
+    {
+      "id": "foretagsstorlek",
+      "fraga": "Hur stort är företaget enligt EU:s indelning?",
+      "typ": "ett_val",
+      "visas_om": { "organisationstyp": ["foretag"] },
+      "hjalptext": "EU räknar anställda och antingen omsättning eller balansomslutning. Ingår företaget i en koncern räknas ofta hela koncernen.",
+      "kalla": "https://single-market-economy.ec.europa.eu/smes/sme-fundamentals/sme-definition_en",
+      "alternativ": [
+        { "id": "mikro", "text": "Mikroföretag: färre än 10 anställda och högst 2 miljoner euro i omsättning eller balansomslutning" },
+        { "id": "liten", "text": "Litet företag: färre än 50 anställda och högst 10 miljoner euro" },
+        { "id": "medel", "text": "Medelstort företag: färre än 250 anställda och högst 50 miljoner euro i omsättning (eller 43 miljoner i balansomslutning)" },
+        { "id": "stor", "text": "Stort företag: över gränserna ovan" },
+        { "id": "vet_ej", "text": "Vet inte" }
+      ]
+    },
+    {
+      "id": "lan",
+      "fraga": "I vilket län bedrivs verksamheten som idén gäller?",
+      "typ": "ett_val",
+      "alternativ": [
+        { "id": "stockholm", "text": "Stockholms län" },
+        { "id": "uppsala", "text": "Uppsala län" },
+        { "id": "sodermanland", "text": "Södermanlands län" },
+        { "id": "ostergotland", "text": "Östergötlands län" },
+        { "id": "jonkoping", "text": "Jönköpings län" },
+        { "id": "kronoberg", "text": "Kronobergs län" },
+        { "id": "kalmar", "text": "Kalmar län" },
+        { "id": "gotland", "text": "Gotlands län" },
+        { "id": "blekinge", "text": "Blekinge län" },
+        { "id": "skane", "text": "Skåne län" },
+        { "id": "halland", "text": "Hallands län" },
+        { "id": "vastra_gotaland", "text": "Västra Götalands län" },
+        { "id": "varmland", "text": "Värmlands län" },
+        { "id": "orebro", "text": "Örebro län" },
+        { "id": "vastmanland", "text": "Västmanlands län" },
+        { "id": "dalarna", "text": "Dalarnas län" },
+        { "id": "gavleborg", "text": "Gävleborgs län" },
+        { "id": "vasternorrland", "text": "Västernorrlands län" },
+        { "id": "jamtland", "text": "Jämtlands län" },
+        { "id": "vasterbotten", "text": "Västerbottens län" },
+        { "id": "norrbotten", "text": "Norrbottens län" },
+        { "id": "flera", "text": "Flera län eller hela landet" },
+        { "id": "vet_ej", "text": "Vet inte än" }
+      ]
+    },
+    {
+      "id": "sektor",
+      "fraga": "Vilka sektorer berör idén? Välj en eller flera.",
+      "typ": "flera_val",
+      "alternativ": [
+        { "id": "bygg_fastighet", "text": "Bygg, anläggning och fastighet" },
+        { "id": "tillverkning", "text": "Tillverkning och industri" },
+        { "id": "energi", "text": "Energi" },
+        { "id": "transport", "text": "Transport och infrastruktur" },
+        { "id": "vatten_miljo", "text": "Vatten, miljö och naturresurser" },
+        { "id": "digitalisering", "text": "Digitalisering, data och AI" },
+        { "id": "halsa", "text": "Hälsa, vård och omsorg" },
+        { "id": "livsmedel_jordbruk", "text": "Livsmedel, jord- och skogsbruk" },
+        { "id": "offentlig_verksamhet", "text": "Offentlig verksamhet och samhällsplanering" },
+        { "id": "annat", "text": "Annat" }
+      ]
+    },
+    {
+      "id": "mognad",
+      "fraga": "Hur långt har idén kommit?",
+      "typ": "ett_val",
+      "alternativ": [
+        { "id": "ide", "text": "Idé: vi vet vad vi vill men har inte undersökt det" },
+        { "id": "forstudie", "text": "Förstudie: vi behöver utreda om och hur det går" },
+        { "id": "fou", "text": "Forskning eller utveckling: vi ska ta fram ny kunskap, metod eller lösning" },
+        { "id": "test_demo", "text": "Test och demonstration: lösningen finns och ska prövas i verklig miljö" },
+        { "id": "implementering", "text": "Införande eller investering: vi ska börja använda, bygga eller skala upp" },
+        { "id": "vet_ej", "text": "Vet inte" }
+      ]
+    },
+    {
+      "id": "bidragsbehov",
+      "fraga": "Ungefär hur mycket bidrag behöver ni söka? (inte projektets totala kostnad)",
+      "typ": "ett_val",
+      "alternativ": [
+        { "id": "under_0_5", "text": "Under 0,5 miljoner kronor" },
+        { "id": "0_5_till_2", "text": "0,5 till 2 miljoner kronor" },
+        { "id": "2_till_5", "text": "2 till 5 miljoner kronor" },
+        { "id": "5_till_20", "text": "5 till 20 miljoner kronor" },
+        { "id": "over_20", "text": "Över 20 miljoner kronor" },
+        { "id": "vet_ej", "text": "Vet inte än" }
+      ]
+    },
+    {
+      "id": "tidshorisont",
+      "fraga": "När kan ni tidigast lämna in en ansökan?",
+      "typ": "ett_val",
+      "berakning": "Jämförs med postens nästa sista ansökningsdag. Varje alternativ motsvarar ett antal dagar från i dag.",
+      "alternativ": [
+        { "id": "inom_1_man", "text": "Inom en månad", "dagar": 0 },
+        { "id": "1_till_3_man", "text": "Om en till tre månader", "dagar": 30 },
+        { "id": "3_till_6_man", "text": "Om tre till sex månader", "dagar": 90 },
+        { "id": "over_6_man", "text": "Om mer än sex månader", "dagar": 180 },
+        { "id": "vet_ej", "text": "Vet inte", "dagar": null }
+      ]
+    },
+    {
+      "id": "partners",
+      "fraga": "Vilka samarbetspartner har ni i dag?",
+      "typ": "ett_val",
+      "alternativ": [
+        { "id": "ensam", "text": "Inga än, vi är ensamma" },
+        { "id": "svenska", "text": "En eller flera partner i Sverige" },
+        { "id": "internationella", "text": "Partner i både Sverige och andra länder" },
+        { "id": "vet_ej", "text": "Vet inte" }
+      ]
+    },
+    {
+      "id": "branschorganisation",
+      "fraga": "Är någon i gruppen medlem i en branschorganisation? Välj alla som stämmer.",
+      "typ": "flera_val",
+      "hjalptext": "Vissa branschfonder kräver att sökande är medlemsföretag. Hoppa över om du inte vet.",
+      "alternativ": [
+        { "id": "byggforetagen", "text": "Byggföretagen" },
+        { "id": "installatorsforetagen", "text": "Installatörsföretagen" },
+        { "id": "ingen", "text": "Ingen av dessa" },
+        { "id": "vet_ej", "text": "Vet inte" }
+      ]
+    }
+  ]
+}
