@@ -1,0 +1,225 @@
+{
+ "for_hand": {
+  "formas": "2026-10-19",
+  "horizon-europe": "2026-10-19",
+  "tillvaxtverket": "2026-10-19"
+ },
+ "kallor": {
+  "https://dutpartnership.eu/calls/dut-call-2026": {
+   "avtryck": "3d9ec7268461bc24",
+   "datum": [
+    "2026-09-01",
+    "2026-11-17",
+    "2027-04-15"
+   ],
+   "last": "2026-10-19"
+  },
+  "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home": {
+   "avtryck": "25d21a6a559431d9",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.energimyndigheten.se/utlysningar/driving-urban-transitions-hallbar-urban-omstallning-inom-europeiskt-partnerskap/": {
+   "avtryck": "2fac2a6d55009952",
+   "datum": [
+    "2026-08-27",
+    "2026-09-01",
+    "2026-09-04",
+    "2026-09-09",
+    "2026-11-17",
+    "2027-04-15"
+   ],
+   "last": "2026-10-19"
+  },
+  "https://www.energimyndigheten.se/utlysningar/effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem/": {
+   "avtryck": "283d25d9c44660c7",
+   "datum": [
+    "2026-06-11",
+    "2026-08-27",
+    "2026-11-18",
+    "2027-05-01",
+    "2031-12-31"
+   ],
+   "last": "2026-10-19"
+  },
+  "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering": {
+   "avtryck": "bb60ffb05fabe547",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider": {
+   "avtryck": "f780c8c72e65c0ae",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vem-kan-soka": {
+   "avtryck": "c3b6173fcaf6768d",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vilka-projekt-kan-fa-bidrag": {
+   "avtryck": "9eda7679941ba5f5",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.vinnova.se/en/calls-for-proposals/eureka-cluster-within-sustainable-development/eureka-smart-international-2026-01106/": {
+   "avtryck": "0b77945d762baf3f",
+   "datum": [],
+   "last": "2026-10-19"
+  },
+  "https://www.vinnova.se/en/calls-for-proposals/innovative-startups/innovative-startups-2026": {
+   "avtryck": "c3f699d957666f89",
+   "datum": [
+    "2027-03-23"
+   ],
+   "last": "2026-10-19"
+  },
+  "https://www.vinnova.se/m/horisont-europa/kontakt/": {
+   "avtryck": "3e1bbbc73f6f0c9f",
+   "datum": [
+    "2026-08-25"
+   ],
+   "last": "2026-10-19"
+  }
+ },
+ "listor": {
+  "energimyndigheten": {
+   "datum": [
+    "2026-03-31",
+    "2026-04-15",
+    "2026-04-17",
+    "2026-04-24",
+    "2026-04-28",
+    "2026-04-29",
+    "2026-04-30",
+    "2026-05-05",
+    "2026-05-07",
+    "2026-05-15",
+    "2026-06-01",
+    "2026-06-02",
+    "2026-06-03",
+    "2026-06-11",
+    "2026-06-17",
+    "2026-06-23",
+    "2026-06-24",
+    "2026-07-01",
+    "2026-08-13",
+    "2026-08-27",
+    "2026-08-31",
+    "2026-09-04",
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-11",
+    "2026-09-15",
+    "2026-09-17",
+    "2026-09-22",
+    "2026-09-27",
+    "2026-09-30",
+    "2026-10-02",
+    "2026-10-06",
+    "2026-10-08",
+    "2026-10-15",
+    "2026-10-20",
+    "2026-10-22",
+    "2026-11-01",
+    "2026-11-10",
+    "2026-11-15",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-12-01",
+    "2026-12-02",
+    "2027-02-18"
+   ],
+   "lankar": [
+    "https://www.energimyndigheten.se/utlysningar/affarsmojligheter-for-svenska-foretag-nar-new-york-accelererar-energiomstallningen/",
+    "https://www.energimyndigheten.se/utlysningar/clean-energy-transition-partnership-utlysning-2026/",
+    "https://www.energimyndigheten.se/utlysningar/delta-pa-massan-e-world-energy--water-2027-i-tyskland/",
+    "https://www.energimyndigheten.se/utlysningar/driving-urban-transitions-hallbar-urban-omstallning-inom-europeiskt-partnerskap/",
+    "https://www.energimyndigheten.se/utlysningar/effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem/",
+    "https://www.energimyndigheten.se/utlysningar/energiberedskapsklivet--forsorjningsberedskap-for-gasnat/",
+    "https://www.energimyndigheten.se/utlysningar/energiberedskapsklivet--mobila-varmepannor/",
+    "https://www.energimyndigheten.se/utlysningar/energiberedskapsklivet--reservkraft-gasforsorjning/",
+    "https://www.energimyndigheten.se/utlysningar/energiberedskapsklivet--skydd-av-pumpstationer-inom-varmekyla-och-renovering-av-varmepannor/",
+    "https://www.energimyndigheten.se/utlysningar/etablera-verksamhetsnara-laddinfrastruktur-for-lastbilar-och-bussar/",
+    "https://www.energimyndigheten.se/utlysningar/expansionsmojligheter-for-svenska-batteriteknikforetag/",
+    "https://www.energimyndigheten.se/utlysningar/ffi-nollutslapp--utveckla-och-integrera-fossilfria-och-elektrifierade-fordon/",
+    "https://www.energimyndigheten.se/utlysningar/forestpathways--internationell-utlysning-for-skogssektorn/",
+    "https://www.energimyndigheten.se/utlysningar/forskarskolan-energisystem-2026/",
+    "https://www.energimyndigheten.se/utlysningar/forskning-for-en-konkurrenskraftig-och-hallbar-batterivardekedja/",
+    "https://www.energimyndigheten.se/utlysningar/forskningsmiljo-for-elmarknadsdesign-och-reglering/",
+    "https://www.energimyndigheten.se/utlysningar/framtidens-fossilfria-elproduktion-for-en-resilient-och-robust-elforsorjning/",
+    "https://www.energimyndigheten.se/utlysningar/gemensam-acceleration-mot-klimatneutrala-stader-2030/",
+    "https://www.energimyndigheten.se/utlysningar/impact-innovation-net-zero-industry-2026/",
+    "https://www.energimyndigheten.se/utlysningar/intresseanmalan-for-ipcei-projekt-inom-innovativ-karnteknik/",
+    "https://www.energimyndigheten.se/utlysningar/investerings--och-driftstod-for-bio-ccs-genom-omvand-auktion/",
+    "https://www.energimyndigheten.se/utlysningar/kompetenscentrum-for-ett-fossilfritt-energisystem/",
+    "https://www.energimyndigheten.se/utlysningar/konceptutveckling-av-innovationer-med-affarsfokus/",
+    "https://www.energimyndigheten.se/utlysningar/kraftlyftet-produktion-och-lagring/",
+    "https://www.energimyndigheten.se/utlysningar/laddinfrastruktur-for-fartyg-i-hamnar/",
+    "https://www.energimyndigheten.se/utlysningar/laddinfrastruktur-for-tunga-vagtransporter-pa-fastigheter-med-lastning-och-lossning/",
+    "https://www.energimyndigheten.se/utlysningar/lansera-i-indien-med-india-sweden-innovations-accelerator-isia/",
+    "https://www.energimyndigheten.se/utlysningar/lansera-internationellt-med-hjalp-av-global-innovation-accelerator/",
+    "https://www.energimyndigheten.se/utlysningar/mojlighet-for-svenska-foretag-att-expandera-till-ukraina/",
+    "https://www.energimyndigheten.se/utlysningar/negativa-utslapp-uppskalning-och-kommersialisering/",
+    "https://www.energimyndigheten.se/utlysningar/nya-losningar-for-en-energieffektiv-och-resilient-vardag/",
+    "https://www.energimyndigheten.se/utlysningar/nya-mojligheter-for-svenska-energiteknikforetag-i-snabbvaxande-indien/",
+    "https://www.energimyndigheten.se/utlysningar/pilot-och-demonstration-2026/",
+    "https://www.energimyndigheten.se/utlysningar/pitcha-for-investerare-pa-sweden-sustaintech-venture-day-2026/",
+    "https://www.energimyndigheten.se/utlysningar/raw-material-partnership-ramp-joint-call-2026/",
+    "https://www.energimyndigheten.se/utlysningar/robust-energisystem-genom-innovationskluster/",
+    "https://www.energimyndigheten.se/utlysningar/stod-for-forskning-for-negativa-utslapp/",
+    "https://www.energimyndigheten.se/utlysningar/stod-till-regional-samordning-av-foretagsradgivning-inom-energi--och-klimatradgivningen-2026/",
+    "https://www.energimyndigheten.se/utlysningar/swedish-german-cleantech-platform-2027/",
+    "https://www.energimyndigheten.se/utlysningar/utforska-affarsmojligheter-i-kenya-och-uganda/",
+    "https://www.energimyndigheten.se/utlysningar/verifiering-av-innovationer-med-kund/"
+   ]
+  },
+  "resource": {
+   "datum": [
+    "2026-11-04",
+    "2026-11-05"
+   ],
+   "lankar": [
+    "https://resource-sip.se/projektfinansiering/utlysningar/",
+    "https://resource-sip.se/utlysningar/",
+    "https://resource-sip.se/utlysningar/driving-urban-transitions-ny-utlysning-for-2026-om-hallbar-urban-omstallning-inom-europeiskt-partnerskap/"
+   ]
+  },
+  "sbuf": {
+   "datum": [],
+   "lankar": []
+  },
+  "shiftsweden": {
+   "datum": [],
+   "lankar": []
+  },
+  "smart-built": {
+   "datum": [
+    "2026-07-01"
+   ],
+   "lankar": [
+    "https://www.smartbuilt.se/utlysningar/"
+   ]
+  }
+ },
+ "senaste_korning": "2026-10-19",
+ "vinnova_sedda": [
+  "2025-04692",
+  "2026-00518",
+  "2026-01767",
+  "2026-01826",
+  "2026-01891",
+  "2026-01892",
+  "2026-01893",
+  "2026-01895",
+  "2026-02019",
+  "2026-02219",
+  "2026-02237",
+  "2026-02377",
+  "2026-02458",
+  "2026-02609",
+  "2026-03160",
+  "2026-03197"
+ ],
+ "vinnova_senast": "2026-10-19"
+}
