@@ -1,0 +1,57 @@
+{
+  "_utkast": "UTKAST från den veckovisa sökningen. Inte granskat. Sammanfattning, filter, krav, belopp och bedömning ska skrivas innan posten flyttas till data/poster/.",
+  "_vinnova_text": {
+    "vad": "Projekt som utvecklar, testar och verifierar lösningar med höga krav på uppkoppling och digital infrastruktur. Utgår från industrins behov och möjliggör värdeskapande tillämpningar där 5G standalone (5G SA) är en viktig komponent.",
+    "vem": "Konsortier med minst två deltagare, varav minst ett företag från svensk industri. Industrins behovsägare ska medverka i projektet. Universitet, högskolor, forskningsinstitut och andra relevanta organisationer kan också ingå i konsortiet.",
+    "hur_mycket": "Det går att söka 3-15 miljoner kronor i bidrag per projekt. Bidraget får motsvara maximalt 50 procent av projektets stödberättigade kostnader. Projekten ska vara mellan 12 till 36 månader."
+  },
+  "id": "vinnova-5g-och-automatisering-for-operativ-industrinytta",
+  "typ": "utlysning",
+  "titel": "5G och automatisering för operativ industrinytta",
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova"
+  },
+  "diarienummer": "2026-02219",
+  "sammanfattning": "",
+  "status": "oppen",
+  "kallor": [
+    {
+      "url": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/",
+      "titel": "Vinnova: hitta finansiering (sök på diarienumret)",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-26",
+      "titel": "Vinnovas öppna data, ansökningsomgång 2026-02219",
+      "roll": "kompletterande"
+    }
+  ],
+  "kontroll": {
+    "senast": "2026-10-26",
+    "metod": "automatisk",
+    "godkand_av": ""
+  },
+  "precision": "lag",
+  "tidpunkter": [
+    {
+      "typ": "oppnar",
+      "datum": "2026-10-13"
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2027-01-19",
+      "tid": "14:00"
+    },
+    {
+      "typ": "beslut",
+      "datum": "2027-03-18",
+      "preliminar": true
+    },
+    {
+      "typ": "projektstart_senast",
+      "datum": "2027-04-19"
+    }
+  ]
+}

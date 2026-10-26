@@ -1,0 +1,57 @@
+{
+  "_utkast": "UTKAST från den veckovisa sökningen. Inte granskat. Sammanfattning, filter, krav, belopp och bedömning ska skrivas innan posten flyttas till data/poster/.",
+  "_vinnova_text": {
+    "vad": "Forsknings- och innovationsprojekt som använder avancerad digital teknik för att möjliggöra mer effektiv och flexibel energianvändning hos svenska industriföretag. Projekten ska drivas av industrins behov.",
+    "vem": "Projekten ska ha minst två projektparter, varav minst en behovsägare från svensk industri. Industriföretag, elnätsbolag, små- och medelstora företag, universitet, högskolor, forskningsinstitut och andra relevanta organisationer kan ingå i konsortiet.",
+    "hur_mycket": "Mellan 2 till 8 miljoner kronor för ett forsknings- och innovationsprojekt som varar 12 till 24 månader. Vinnovas bidrag får maximalt vara 50 procent av projektets stödberättigande kostnader."
+  },
+  "id": "vinnova-industriell-flexibel-energistyrning-med-avancerad",
+  "typ": "utlysning",
+  "titel": "Industriell flexibel energistyrning med avancerad digitalisering ",
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova"
+  },
+  "diarienummer": "2026-02019",
+  "sammanfattning": "",
+  "status": "oppen",
+  "kallor": [
+    {
+      "url": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/",
+      "titel": "Vinnova: hitta finansiering (sök på diarienumret)",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-26",
+      "titel": "Vinnovas öppna data, ansökningsomgång 2026-02019",
+      "roll": "kompletterande"
+    }
+  ],
+  "kontroll": {
+    "senast": "2026-10-26",
+    "metod": "automatisk",
+    "godkand_av": ""
+  },
+  "precision": "lag",
+  "tidpunkter": [
+    {
+      "typ": "oppnar",
+      "datum": "2026-10-13"
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2027-01-19",
+      "tid": "14:00"
+    },
+    {
+      "typ": "beslut",
+      "datum": "2027-03-18",
+      "preliminar": true
+    },
+    {
+      "typ": "projektstart_senast",
+      "datum": "2027-04-15"
+    }
+  ]
+}

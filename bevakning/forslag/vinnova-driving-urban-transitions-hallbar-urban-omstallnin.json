@@ -1,0 +1,53 @@
+{
+  "_utkast": "UTKAST från den veckovisa sökningen. Inte granskat. Sammanfattning, filter, krav, belopp och bedömning ska skrivas innan posten flyttas till data/poster/.",
+  "_vinnova_text": {
+    "vad": "Forsknings- och innovationsprojekt för hållbar omställning i städer. Vinnova finansierar specifikt projekt som anknyter till konceptet 15-minutersstaden.",
+    "vem": "Aktörer från akademi, forskningsinstitut, offentlig sektor, näringsliv och civilsamhälle. Konsortiet ska omfatta minst tre partners från tre olika länder i programmet inklusive en kommun eller lokal myndighet och en aktör från privat sektor.",
+    "hur_mycket": "Svenska parter kan maximalt söka 300 000 euro per projekt."
+  },
+  "id": "vinnova-driving-urban-transitions-hallbar-urban-omstallnin",
+  "typ": "utlysning",
+  "titel": "Driving urban transitions: hållbar urban omställning inom europeiskt partnerskap",
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova"
+  },
+  "diarienummer": "2026-02458",
+  "sammanfattning": "",
+  "status": "oppen",
+  "kallor": [
+    {
+      "url": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/",
+      "titel": "Vinnova: hitta finansiering (sök på diarienumret)",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-26",
+      "titel": "Vinnovas öppna data, ansökningsomgång 2026-02458",
+      "roll": "kompletterande"
+    }
+  ],
+  "kontroll": {
+    "senast": "2026-10-26",
+    "metod": "automatisk",
+    "godkand_av": ""
+  },
+  "precision": "lag",
+  "tidpunkter": [
+    {
+      "typ": "oppnar",
+      "datum": "2026-09-01"
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-11-17",
+      "tid": "13:00"
+    },
+    {
+      "typ": "beslut",
+      "datum": "2027-07-30",
+      "preliminar": true
+    }
+  ]
+}

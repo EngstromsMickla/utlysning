@@ -1,0 +1,57 @@
+{
+  "_utkast": "UTKAST från den veckovisa sökningen. Inte granskat. Sammanfattning, filter, krav, belopp och bedömning ska skrivas innan posten flyttas till data/poster/.",
+  "_vinnova_text": {
+    "vad": "Utveckla, testa och förankra ett nytt plastlöfte eller skala upp ett befintligt. Projekten ska samla relevanta aktörer, utveckla gemensamma åtaganden och bidra till konkret bidra till cirkulära, resurseffektiva och giftfria plastflöden",
+    "vem": "Erbjudande 1: minst tre juridiska personer. Erbjudande 2: ett befintligt konsortium som utökas med minst fyra juridiska personer. Flera delar av värdekedjan bör delta så som aktörer inom design, tillverkning, användning, försäljning eller återvinning",
+    "hur_mycket": "Högst 500 000 kronor per projekt. Vinnova kan finansiera upp till 100 procent av de stödberättigande kostnaderna. Projekt får pågå i högst sex månader i erbjudande 1 och tolv månader i erbjudande 2"
+  },
+  "id": "vinnova-plastloften-for-en-mer-hallbar-plastanvandning",
+  "typ": "utlysning",
+  "titel": "Plastlöften för en mer hållbar plastanvändning",
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova"
+  },
+  "diarienummer": "2026-03197",
+  "sammanfattning": "",
+  "status": "oppen",
+  "kallor": [
+    {
+      "url": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/",
+      "titel": "Vinnova: hitta finansiering (sök på diarienumret)",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-26",
+      "titel": "Vinnovas öppna data, ansökningsomgång 2026-03197",
+      "roll": "kompletterande"
+    }
+  ],
+  "kontroll": {
+    "senast": "2026-10-26",
+    "metod": "automatisk",
+    "godkand_av": ""
+  },
+  "precision": "lag",
+  "tidpunkter": [
+    {
+      "typ": "oppnar",
+      "datum": "2026-09-24"
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2026-11-04",
+      "tid": "14:00"
+    },
+    {
+      "typ": "beslut",
+      "datum": "2026-11-27",
+      "preliminar": true
+    },
+    {
+      "typ": "projektstart_senast",
+      "datum": "2026-11-30"
+    }
+  ]
+}
