@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.2";
+const VERSION = "prototyp v0.3";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -516,7 +516,7 @@ function visaOm() {
     el("p", {}, "Förhandsurvalet bygger på enkla regler. Ett osäkert svar sorterar aldrig bort något, och skälen visas alltid."),
     el("h2", {}, "Hur underlaget hålls aktuellt"),
     el("p", {}, "Varje måndag gör en GitHub-server en standardsökning på finansiärernas webbplatser och i Vinnovas öppna data, efter nya utlysningar och ändrade datum. Sökningen har ingenting med dig som besökare att göra; den görs oavsett om någon använder verktyget, och inget du skriver ingår i den."),
-    el("p", {}, "Resultatet publiceras inte automatiskt. Det blir ett förslag som Engströms Mickla AB granskar och godkänner innan det läggs ut. Formas och Tillväxtverket tillåter inte automatisk hämtning från sina webbplatser, så deras utlysningar kontrolleras för hand. Varje post visar datum för senaste kontroll."),
+    el("p", {}, "Resultatet publiceras inte automatiskt. Det blir ett förslag som Engströms Mickla AB granskar och godkänner innan det läggs ut. Tillväxtverket har gett lov att deras sidor med utlysningar läses en gång i veckan. Formas tillåter inte automatisk hämtning, så deras utlysningar kontrolleras för hand utifrån Formas nyhetsbrev. Varje post visar datum för senaste kontroll."),
     el("h2", {}, "Vem står bakom"),
     el("p", {}, "Verktyget är utvecklat av Dan Engström, Engströms Mickla AB. Koden och underlaget är öppna på GitHub."),
     el("p", {}, "Kontakt: ", el("a", { href: "mailto:dan@mickla.se" }, "dan@mickla.se")),

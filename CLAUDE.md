@@ -17,7 +17,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.2.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.3.
 
 ## Struktur
 
@@ -45,7 +45,10 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Status rättas direkt i postfilerna: sista dag passerad blir `stangd`, öppningsdag passerad blir `oppen`.
 - Resultatet blir en pull request med `bevakning/rapport.md` som beskrivning. Inget publiceras förrän Dan slagit ihop den. Utkast publiceras aldrig förrän de skrivits klart och flyttats till `data/poster/`.
 - Tillståndet mellan körningarna ligger i `bevakning/tillstand.json` (adresser, fingeravtryck och datum, ingen sidtext).
-- robots.txt respekteras, oavsett vem som startar körningen. Formas och Tillväxtverket tillåter inte automatisk hämtning. De kontrolleras för hand av Dan i hans webbläsare: rapporten ger varannan vecka en checklista med länkar och de poster som berörs (Horisont Europa var fjärde vecka). Intervall och adresser står under `for_hand` i `bevakning/kallor.json`. Dan har frågat Formas och Tillväxtverket om lov eller öppna data; får vi skriftligt ja läggs sidan in som tillåten med en anteckning om vem som gav lov och när.
+- robots.txt respekteras, oavsett vem som startar körningen. Undantag görs bara när finansiären skriftligt har gett lov, och då bara för de exakta adresserna (fältet `tillstand` under `listor` i `bevakning/kallor.json`, med vem som gav lov och när).
+- Tillväxtverket gav 2026-10-26 lov att läsa sidan med utlysningar en gång i veckan. Sidorna med utlysningar och planerade utlysningar läses därför automatiskt; övriga sidor på tillvaxtverket.se läses inte.
+- Formas tillåter inte automatisk hämtning och publicerar sina utlysningar i ett nyhetsbrev som Dan prenumererar på. Rapporten ger varannan vecka en checklista med länk till nyhetsbrevet och de poster som berörs; Horisont Europa var fjärde vecka. Intervall och adresser står under `for_hand`.
+- Det bevakningen minns sparas bara när pull requesten slås ihop. Slås den inte ihop börjar nästa körning om från förra sammanslagna läget.
 - Nyckelorden i `bevakning/kallor.json` avgör vad som räknas som relevant. De matchas mot början av ord.
 - Tester: `python3 -m unittest discover -s test -p "test_*.py"` med påhittade svar, utan nätet.
 
@@ -61,4 +64,4 @@ Kör `python3 scripts/validera.py`, `node --test test/*.mjs` och `python3 -m uni
 
 ## Publicering
 
-Dan laddar upp filer via GitHubs webbgränssnitt. Mappar som börjar med punkt (`.github`) följer inte med vid uppladdning och skapas i stället med Add file > Create new file.
+Claude publicerar direkt till repot när Dan skriver "publicera"; kontroller och tester körs i GitHub Actions före varje publicering. Laddar Dan upp filer själv via GitHubs webbgränssnitt följer mappar som börjar med punkt (`.github`) inte med; de skapas i stället med Add file > Create new file.
