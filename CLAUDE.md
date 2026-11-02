@@ -6,7 +6,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 
 - Publikt verktyg som hjälper forskare, företag och offentliga aktörer att hitta forsknings- och innovationsutlysningar som passar en idé.
 - Upphov: Dan Engström, Engströms Mickla AB. Dan äger allt innehåll; Claude föreslår, Dan beslutar.
-- Tre delar: idéverktyget (`#ide`), radarn (`#radar`) och användarinstruktionen med processkarta (`#instruktion`). Om-sidan ligger i `#om`.
+- Tre delar: idéverktyget (`#ide`), radarn (`#radar`) och användarinstruktionen med processkarta (`#instruktion`). Om-sidan ligger i `#om`. Handledningen för redaktören (hur veckans bevakning granskas och slås ihop) ligger i `#redaktor` och länkas från Om-sidan och sidfoten.
 - Version 1 är helt statisk. Sidan anropar ingen AI. Användaren får ett urval med skäl och en färdig prompt att klistra in i sin egen AI-tjänst. Inbyggd analys kan komma i version 2, men löftet att idén inte lämnar webbläsaren förrän användaren själv kopierar den ska behållas som val.
 
 ## Fasta principer
@@ -17,7 +17,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.3.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.4.
 
 ## Struktur
 
