@@ -92,8 +92,12 @@ class Bevakning(unittest.TestCase):
         self.assertEqual(utkast["tidpunkter"][1], {"typ": "sista_dag", "datum": "2027-02-01", "tid": "14:00"})
         self.assertIn("UTKAST", utkast["_utkast"])
         self.assertIn("första genomgången", rapport)
-        # Formas och Tillväxtverket läses aldrig.
-        self.assertFalse(any("tillvaxtverket.se/" in u and not u.endswith("robots.txt") for u in natet.anrop))
+        # Formas läses aldrig. Hos Tillväxtverket läses bara sidorna de har gett skriftligt lov för.
+        tillatna = {l["url"] for l in json.loads((self.tmp / "bevakning/kallor.json").read_text())["listor"] if l.get("tillstand")}
+        self.assertTrue(tillatna)
+        self.assertFalse(any("tillvaxtverket.se/" in u and not u.endswith("robots.txt") and u not in tillatna for u in natet.anrop))
+        self.assertTrue(tillatna <= set(natet.anrop))
+        self.assertIn("Tillväxtverket: utlysningar: första genomgången", rapport)
         self.assertFalse(any(u.startswith("https://formas.se/") and not u.endswith("robots.txt") for u in natet.anrop))
         self.assertIn("Tillväxtverket", rapport)
 
@@ -135,7 +139,7 @@ class Bevakning(unittest.TestCase):
         rapport, _, _ = self.kor(self.natet([], []))
         self.assertIn("- [ ] **Formas**", rapport)
         self.assertIn("Finns i radarn: Driving Urban Transitions 2026", rapport)  # Formas är partner
-        self.assertIn("- [ ] **Tillväxtverket**", rapport)
+        self.assertNotIn("- [ ] **Tillväxtverket**", rapport)  # läses automatiskt med tillstånd
         rapport, antal, fynd = self.kor(self.natet([], []), "2026-10-26")
         self.assertNotIn("- [ ] **Formas**", rapport)
         self.assertIn("Nästa påminnelse om Formas: 2026-11-02", rapport)
@@ -151,6 +155,15 @@ class Bevakning(unittest.TestCase):
     def test_datum_hittas_i_svensk_och_iso_form(self):
         self.assertEqual(bevaka.hitta_datum("Senast 4 november 2026 eller 2027-01-12. Ogiltigt 2026-02-31."),
                          ["2026-11-04", "2027-01-12"])
+
+    def test_skriftligt_tillstand_galler_bara_exakt_adress(self):
+        natet = Natet({"https://exempel.se/robots.txt": "User-agent: *\nDisallow: /",
+                       "https://exempel.se/utlysningar": "<p>ok</p>", "https://exempel.se/annat": "<p>nej</p>"})
+        h = bevaka.Hamtare("test", hamta_ra=natet, paus=0, tillatna=["https://exempel.se/utlysningar"])
+        self.assertEqual(h.hamta("https://exempel.se/utlysningar"), ("<p>ok</p>", None))
+        text, fel = h.hamta("https://exempel.se/annat")
+        self.assertIsNone(text)
+        self.assertIn("robots.txt", fel)
 
     def test_robots_fel_tolkas_som_forbud(self):
         def trasigt(url):

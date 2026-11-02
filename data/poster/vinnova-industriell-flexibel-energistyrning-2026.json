@@ -1,0 +1,154 @@
+{
+  "id": "vinnova-industriell-flexibel-energistyrning-2026",
+  "typ": "utlysning",
+  "titel": "Industriell flexibel energistyrning med avancerad digitalisering",
+  "finansiar": { "id": "vinnova", "namn": "Vinnova" },
+  "program": "Avancerad digitalisering",
+  "diarienummer": "2026-02019",
+  "sammanfattning": "Samverkansprojekt som med avancerad digital teknik gör elanvändningen i svensk industri mer flexibel och effektiv, så att industrin kan elektrifieras utan att elnätet behöver byggas ut i samma takt. Två inriktningar: industriell forskning (ny kunskap, metoder, modeller och beslutsstöd) och experimentell utveckling (pröva och demonstrera lösningar i industriell miljö). Minst två parter, varav minst en behovsägare från svensk industri. Industri tolkas brett och omfattar till exempel energi, logistik, vatten, ventilation och återvinning.",
+  "status": "oppen",
+
+  "kallor": [
+    { "url": "https://www.vinnova.se/en/calls-for-proposals/advanced-digitalization-industrial-2024-04161/industrial-flexible-energy-control-with-2026-02019/", "titel": "Vinnova: Industrial flexible energy control with advanced digitalisation (engelsk sida)", "roll": "primar", "sprak": "en", "anmarkning": "Vinnovas engelska sidor är maskinöversatta från svenska; den svenska texten har företräde." },
+    { "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-10-26", "titel": "Vinnovas öppna data, ansökningsomgång 2026-02019", "roll": "kompletterande" }
+  ],
+
+  "kontroll": {
+    "senast": "2026-11-02",
+    "metod": "automatisk",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Föreslagen av den veckovisa bevakningen och kompletterad från Vinnovas utlysningssida."
+  },
+
+  "precision": "hog",
+  "precision_motivering": "Behörighet, belopp, datum och viktade bedömningskriterier står på utlysningssidan.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["foretag", "universitet_hogskola", "forskningsinstitut"],
+      "kanske": ["kommun_region", "statlig_myndighet", "ideell", "vet_ej"],
+      "skal": {
+        "kommun_region": "Andra relevanta organisationer kan delta, men projektet ska drivas av behov hos svensk industri.",
+        "statlig_myndighet": "Andra relevanta organisationer kan delta, men projektet ska drivas av behov hos svensk industri.",
+        "ideell": "Andra relevanta organisationer kan delta, men projektet ska drivas av behov hos svensk industri.",
+        "privatperson": "Privatpersoner och enskilda firmor kan inte delta."
+      }
+    },
+    "sektor": {
+      "passar": ["tillverkning", "energi"],
+      "kanske": ["digitalisering", "transport", "vatten_miljo", "bygg_fastighet", "livsmedel_jordbruk", "annat"],
+      "skal": {
+        "bygg_fastighet": "Passar om idén gäller energistyrning i en industriell verksamhet, till exempel produktion av byggmaterial. Byggnaders energi täcks bättre av Energimyndighetens utlysning om bebyggelsen.",
+        "transport": "Elektrifiering av fordon och laddinfrastruktur ingår bara i ett tydligt industriellt sammanhang, till exempel maskiner i gruvor eller hamnar.",
+        "ovrigt": "Utlysningen gäller flexibel elanvändning i industrin."
+      }
+    },
+    "mognad": {
+      "passar": ["fou", "test_demo"],
+      "kanske": ["forstudie", "vet_ej"],
+      "skal": {
+        "forstudie": "Projekten är forsknings- och innovationsprojekt på 12 till 24 månader, inte förstudier.",
+        "ide": "Projekten är forsknings- och innovationsprojekt på 12 till 24 månader och kräver en konkret plan och en behovsägare i industrin.",
+        "implementering": "Rutinmässiga ändringar och införande finansieras inte."
+      }
+    },
+    "resultat": {
+      "passar": ["blandat", "oppet", "egen_produkt"],
+      "kanske": ["vet_ej"],
+      "skal": {}
+    },
+    "bidragsbehov": {
+      "passar": ["2_till_5", "5_till_20"],
+      "kanske": ["0_5_till_2", "vet_ej"],
+      "skal": {
+        "under_0_5": "Bidraget är 2 till 8 miljoner kronor per projekt.",
+        "0_5_till_2": "Bidraget är minst 2 miljoner kronor per projekt.",
+        "5_till_20": "Högst 8 miljoner kronor per projekt.",
+        "over_20": "Högst 8 miljoner kronor per projekt."
+      }
+    },
+    "partners": {
+      "passar": ["svenska", "internationella"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "ensam": "Minst två parter krävs, varav minst en behovsägare från svensk industri.",
+        "internationella": "Bara svenska juridiska personer (eller svenska filialer) kan få stöd."
+      }
+    }
+  },
+
+  "kombinationer": [
+    { "nar": { "partners": ["ensam"], "mognad": ["ide"] }, "utfall": "passar_inte", "skal": "Utan partner och med en idé i tidigt skede hinner ni knappast bygga ett konsortium med en industriell behovsägare före 19 januari 2027." }
+  ],
+
+  "krav": [
+    { "id": "tva-parter", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "Minst två parter, varav minst en behovsägare från svensk industri." },
+    { "id": "svensk-juridisk-person", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Varje part som söker stöd ska vara en svensk juridisk person, eller en utländsk organisation med filial eller fast driftställe i Sverige. Koordinatorn ska vara en svensk juridisk person med verksamhet i Sverige." },
+    { "id": "ej-enskild-firma", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Privatpersoner och enskilda firmor kan inte delta." },
+    { "id": "ekonomi", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Parterna får inte vara på obestånd, i likvidation eller rekonstruktion, och aktiebolag får inte ha förbrukat hälften eller mer av aktiekapitalet." },
+    { "id": "undantag", "kategori": "formalia", "skede": "behorighet", "skarpt": true, "text": "Finansierar inte projekt som bara gynnar en aktör, rutinmässiga ändringar, projekt som främst gäller elproduktion eller batteriteknik, eller elektrifiering av fordon och laddinfrastruktur utanför ett tydligt industriellt sammanhang." },
+    { "id": "cybersakerhet", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Projektet ska visa en heltäckande och trovärdig riskanalys för cybersäkerhet." },
+    { "id": "bilagor", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Projektbeskrivning på högst tio A4-sidor, sammanfattning på en sida och CV på en sida per projektledare och nyckelperson, enligt Vinnovas mallar. Ansökan skrivs på svenska eller engelska." },
+    { "id": "inriktning", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Ansökan ska ange en av två inriktningar: industriell forskning eller experimentell utveckling." },
+    { "id": "projekttid", "kategori": "tid", "skede": "ansokan", "skarpt": true, "text": "Projektet ska vara 12 till 24 månader, starta senast 15 april 2027 och vara avslutat senast 13 april 2029. Arbetet får inte påbörjas före ansökan." }
+  ],
+
+  "belopp": {
+    "min_sek": 2000000,
+    "max_sek": 8000000,
+    "galler": "Bidrag per projekt",
+    "stodniva": [
+      { "aktor": "Universitet, högskolor och andra utan ekonomisk verksamhet", "max_andel": 1.0 },
+      { "aktor": "Små företag, industriell forskning", "max_andel": 0.7, "anmarkning": "80 procent med tillägg för till exempel effektivt samarbete eller bred spridning." },
+      { "aktor": "Medelstora företag, industriell forskning", "max_andel": 0.6, "anmarkning": "75 procent med tillägg." },
+      { "aktor": "Stora företag, industriell forskning", "max_andel": 0.5, "anmarkning": "65 procent med tillägg." },
+      { "aktor": "Små företag, experimentell utveckling", "max_andel": 0.45, "anmarkning": "60 procent med tillägg." },
+      { "aktor": "Medelstora företag, experimentell utveckling", "max_andel": 0.35, "anmarkning": "50 procent med tillägg." },
+      { "aktor": "Stora företag, experimentell utveckling", "max_andel": 0.25, "anmarkning": "40 procent med tillägg." }
+    ],
+    "total_budget_sek": 20000000,
+    "loptid_max_manader": 24,
+    "anmarkning": "Vinnovas bidrag får vara högst 50 procent av projektets stödberättigande kostnader. Total budget är preliminär."
+  },
+
+  "bedomning": {
+    "typ": "viktade_kriterier",
+    "oversattning": "Egen översättning till svenska från Vinnovas engelska sida.",
+    "kriterier": [
+      { "id": "potential", "rubrik": "Potential", "vikt": 0.4, "aspekter": [
+        "Bidrag till avancerad digitalisering och förnyelse av svensk industri.",
+        "Nyhetshöjd i förhållande till befintliga lösningar och större satsningar.",
+        "Hur trovärdig analysen av problemet och de väntade resultaten är.",
+        "Sannolikhet att projektet ger kunskap, kompetens och lösningar som kan införas.",
+        "Bidrag till jämställdhet genom köns- och genusperspektiv."
+      ] },
+      { "id": "aktorer", "rubrik": "Aktörer", "vikt": 0.3, "aspekter": [
+        "Hur väl konsortiets sammansättning, kompetens och förmåga passar.",
+        "Parternas förmåga att sprida, använda, kommersialisera och vidareutveckla resultaten.",
+        "Hur projektet bygger vidare på tidigare arbete och resultat.",
+        "Projektledarens och nyckelpersonernas lämplighet.",
+        "Jämn fördelning av pengar, deltagande och inflytande mellan kvinnor och män."
+      ] },
+      { "id": "genomforbarhet", "rubrik": "Genomförbarhet", "vikt": 0.3, "aspekter": [
+        "Hur väl projektplan och budget räcker för att nå resultaten.",
+        "Hur trovärdig riskanalysen och åtgärdsplanen är.",
+        "Planer för att förankra och sprida resultaten, och könsfördelningen i projektgruppen.",
+        "Motivering av konsult- och licenskostnader över 20 procent av en organisations budget."
+      ] }
+    ]
+  },
+
+  "tidpunkter": [
+    { "typ": "oppnar", "datum": "2026-10-13" },
+    { "typ": "informationsmote", "datum": "2026-10-23", "tid": "11:00", "beskrivning": "Har varit. Presentationen finns på utlysningssidan." },
+    { "typ": "sista_dag", "datum": "2027-01-19", "tid": "14:00" },
+    { "typ": "beslut", "datum": "2027-03-18" },
+    { "typ": "projektstart_senast", "datum": "2027-04-15" },
+    { "typ": "projektslut_senast", "datum": "2029-04-13" }
+  ],
+
+  "osakerheter": [
+    "Uppgifterna kommer från Vinnovas engelska, maskinöversatta sida. Stäm av mot den svenska utlysningstexten.",
+    "Den totala budgeten på 20 miljoner kronor är preliminär, vilket ger plats för ett fåtal projekt."
+  ]
+}

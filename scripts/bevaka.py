@@ -35,8 +35,10 @@ DATUM_SV = re.compile(r"\b(\d{1,2})\s+(" + "|".join(MANADER) + r")\s+(20\d\d)\b"
 class Hamtare:
     """Hämtar sidor artigt: robots.txt, egen användaragent, paus mellan anrop till samma värd."""
 
-    def __init__(self, agent, hamta_ra=None, paus=PAUS_SEK):
+    def __init__(self, agent, hamta_ra=None, paus=PAUS_SEK, tillatna=()):
         self.agent = agent
+        # Adresser där finansiären skriftligt har gett lov. Gäller bara exakt dessa adresser.
+        self.tillatna = set(tillatna)
         self.paus = paus
         self._ra = hamta_ra or self._hamta_natet
         self._robots = {}
@@ -51,6 +53,8 @@ class Hamtare:
             return data.decode(svar.headers.get_content_charset() or "utf-8", errors="replace")
 
     def tillats(self, url):
+        if url in self.tillatna:
+            return True
         delar = urllib.parse.urlsplit(url)
         vard = f"{delar.scheme}://{delar.netloc}"
         if vard not in self._robots:
@@ -483,6 +487,7 @@ def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_h
 def kor(idag, hamtare=None):
     konf = json.loads((BEV / "kallor.json").read_text(encoding="utf-8"))
     hamtare = hamtare or Hamtare(konf["anvandaragent"])
+    hamtare.tillatna |= {l["url"] for l in konf["listor"] if l.get("tillstand")}
     (BEV / "forslag").mkdir(parents=True, exist_ok=True)
     tillstandsfil = BEV / "tillstand.json"
     tillstand = json.loads(tillstandsfil.read_text(encoding="utf-8")) if tillstandsfil.exists() else {}

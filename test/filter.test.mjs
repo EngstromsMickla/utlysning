@@ -108,3 +108,11 @@ test("utlysning vars sista dag passerat passar inte", () => {
   const r = bedomPost(post("energimyndigheten-energieffektiv-bebyggelse-2026"), {}, "2026-12-01");
   assert.equal(r.utfall, "passar_inte");
 });
+
+test("Vinnova energistyrning: industriföretag med partner passar, ensam idé passar inte", () => {
+  const p = post("vinnova-industriell-flexibel-energistyrning-2026");
+  const bas = { organisationstyp: "foretag", sektor: ["tillverkning"], mognad: "fou", bidragsbehov: "2_till_5", tidshorisont: "1_till_3_man", partners: "svenska" };
+  assert.equal(bedomPost(p, bas, IDAG).utfall, "passar");
+  assert.equal(bedomPost(p, { ...bas, sektor: ["bygg_fastighet"] }, IDAG).utfall, "kanske");
+  assert.equal(bedomPost(p, { ...bas, partners: "ensam", mognad: "ide" }, IDAG).utfall, "passar_inte");
+});

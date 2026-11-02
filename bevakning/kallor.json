@@ -12,7 +12,6 @@
     "staden",
     "urban",
     "samhällsbygg",
-    "infrastruktur",
     "anläggning",
     "energi",
     "klimat",
@@ -58,32 +57,44 @@
       "namn": "ShiftSweden",
       "url": "https://shiftsweden.se/",
       "lankmonster": "utlysning|call"
+    },
+    {
+      "id": "tillvaxtverket",
+      "namn": "Tillväxtverket: utlysningar",
+      "url": "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html",
+      "lankmonster": "utlysning",
+      "tillstand": {
+        "givet_av": "Tillväxtverket, kommunikationsavdelningen",
+        "datum": "2026-10-26",
+        "omfattning": "Läsa sidan med utlysningar en gång i veckan, med användaragenten Utlysningsradarn.",
+        "hur": "Mejl till Dan Engström 2026-10-26."
+      }
+    },
+    {
+      "id": "tillvaxtverket-planerade",
+      "namn": "Tillväxtverket: planerade utlysningar",
+      "url": "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar.1954.html",
+      "lankmonster": "utlysning",
+      "tillstand": {
+        "givet_av": "Tillväxtverket, kommunikationsavdelningen",
+        "datum": "2026-10-26",
+        "omfattning": "Läsa sidan med utlysningar en gång i veckan, med användaragenten Utlysningsradarn.",
+        "hur": "Mejl till Dan Engström 2026-10-26."
+      }
     }
   ],
   "for_hand": [
     {
       "id": "formas",
       "namn": "Formas",
-      "url": "https://formas.se/",
-      "hur_hitta": "Välj Hitta finansiering (eller Utlysningar) i menyn och filtrera på öppna och kommande utlysningar.",
+      "url": "https://formas.se/kunskap-och-fordjupning/nyheter/nyhetsbrev.html",
+      "hur_hitta": "Formas publicerar sina utlysningar i nyhetsbrevet. Titta i det senaste nyhetsbrevet, eller på sidan med nyhetsbrev, efter nya och kommande utlysningar.",
       "skal": "Formas robots.txt tillåter inte automatisk hämtning.",
       "intervall_dagar": 14,
       "finansiarer": [
         "formas"
       ],
       "partnernamn": "Formas"
-    },
-    {
-      "id": "tillvaxtverket",
-      "namn": "Tillväxtverket",
-      "url": "https://tillvaxtverket.se/",
-      "hur_hitta": "Välj Sök finansiering och stöd. Titta också på Regionalfonden och utlysningarna för ditt programområde.",
-      "skal": "Tillväxtverkets robots.txt tillåter inte automatisk hämtning.",
-      "intervall_dagar": 14,
-      "finansiarer": [
-        "tillvaxtverket"
-      ],
-      "partnernamn": "Tillväxtverket"
     },
     {
       "id": "horizon-europe",
@@ -99,5 +110,6 @@
     }
   ],
   "_nyckelord": "Ett förslag från Vinnova eller en ny länk markeras som relevant om ett nyckelord står i början av ett ord i titeln eller texten. Ändra listan för att vidga eller smalna av bevakningen.",
-  "_for_hand": "Finansiärer vars webbplatser inte får läsas automatiskt. Rapporten ger en checklista med intervall_dagar mellanrum. Ändra url till den exakta sidan med utlysningar när du har hittat den."
+  "_for_hand": "Finansiärer vars webbplatser inte får läsas automatiskt. Rapporten ger en checklista med intervall_dagar mellanrum. Ändra url till den exakta sidan med utlysningar när du har hittat den.",
+  "_tillstand": "En sida med 'tillstand' får läsas även om robots.txt säger nej, eftersom finansiären skriftligt har gett lov. Undantaget gäller bara just den adressen."
 }
