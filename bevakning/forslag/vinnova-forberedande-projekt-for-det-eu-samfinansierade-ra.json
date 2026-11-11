@@ -1,0 +1,48 @@
+{
+  "_utkast": "UTKAST från den veckovisa sökningen. Inte granskat. Sammanfattning, filter, krav, belopp och bedömning ska skrivas innan posten flyttas till data/poster/.",
+  "_vinnova_text": {
+    "vad": "Förberedande projekt som syftar till att bygga eller stärka nordiska konsortier och utveckla konkurrenskraftiga ansökningar till RAMP-utlysningar eller andra utlysningar inom Horisont Europa och liknande program inom gruv-och mineralområdet.",
+    "vem": "Nordiska konsortier bestående av parter från minst tre olika nordiska länder. Nordiska länder definieras här som Danmark, Finland, Island, Norge, Sverige, Färöarna, Grönland och Åland. Projektkoordinatorn måste vara en forskningsorganisation från ett nordiskt land (se detaljer på NordForsks utlysningssida).",
+    "hur_mycket": "Max bidrag per projekt är 1 000 000 NOK (cirka 1 000 000 SEK). Projektkoordinatorn finansieras av NordForsk och kan söka bidrag om max 400 000 NOK. Projektparter från SE/NO/FI kan söka bidrag om max 300 000 NOK från deras respektive nationella finansiär (Vinnova, Forskningsrådet och Business Finland)."
+  },
+  "id": "vinnova-forberedande-projekt-for-det-eu-samfinansierade-ra",
+  "typ": "utlysning",
+  "titel": "Förberedande projekt för det EU-samfinansierade Raw Materials Partnership (RAMP)",
+  "finansiar": {
+    "id": "vinnova",
+    "namn": "Vinnova"
+  },
+  "diarienummer": "2026-01806",
+  "sammanfattning": "",
+  "status": "oppen",
+  "kallor": [
+    {
+      "url": "https://www.vinnova.se/sok-finansiering/hitta-finansiering/",
+      "titel": "Vinnova: hitta finansiering (sök på diarienumret)",
+      "roll": "primar",
+      "sprak": "sv"
+    },
+    {
+      "url": "https://data.vinnova.se/api/ansokningsomgangar/2026-11-09",
+      "titel": "Vinnovas öppna data, ansökningsomgång 2026-01806",
+      "roll": "kompletterande"
+    }
+  ],
+  "kontroll": {
+    "senast": "2026-11-09",
+    "metod": "automatisk",
+    "godkand_av": ""
+  },
+  "precision": "lag",
+  "tidpunkter": [
+    {
+      "typ": "oppnar",
+      "datum": "2026-06-15"
+    },
+    {
+      "typ": "sista_dag",
+      "datum": "2028-06-14",
+      "tid": "14:00"
+    }
+  ]
+}

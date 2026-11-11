@@ -12,12 +12,12 @@
     "2026-11-17",
     "2027-04-15"
    ],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home": {
    "avtryck": "25d21a6a559431d9",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.energimyndigheten.se/utlysningar/driving-urban-transitions-hallbar-urban-omstallning-inom-europeiskt-partnerskap/": {
    "avtryck": "07431641af52f876",
@@ -29,7 +29,7 @@
     "2026-11-17",
     "2027-04-15"
    ],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.energimyndigheten.se/utlysningar/effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem/": {
    "avtryck": "69164657f9788508",
@@ -40,46 +40,54 @@
     "2027-05-01",
     "2031-12-31"
    ],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering": {
    "avtryck": "bb60ffb05fabe547",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider": {
    "avtryck": "771e567d3a92f984",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vem-kan-soka": {
    "avtryck": "c3b6173fcaf6768d",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vilka-projekt-kan-fa-bidrag": {
-   "avtryck": "9eda7679941ba5f5",
+   "avtryck": "8dc65fe007dca9ba",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
+  },
+  "https://www.vinnova.se/en/calls-for-proposals/advanced-digitalization-industrial-2024-04161/industrial-flexible-energy-control-with-2026-02019/": {
+   "avtryck": "0108ddae61ddf5f3",
+   "datum": [
+    "2027-03-19",
+    "2027-04-15"
+   ],
+   "last": "2026-11-09"
   },
   "https://www.vinnova.se/en/calls-for-proposals/eureka-cluster-within-sustainable-development/eureka-smart-international-2026-01106/": {
-   "avtryck": "37e1e704ad18c93a",
+   "avtryck": "b97cb3b2802a071d",
    "datum": [],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.vinnova.se/en/calls-for-proposals/innovative-startups/innovative-startups-2026": {
-   "avtryck": "ebfff1ab50fad129",
+   "avtryck": "b1b7f2e6822351ff",
    "datum": [
     "2027-03-23"
    ],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   },
   "https://www.vinnova.se/m/horisont-europa/kontakt/": {
    "avtryck": "0adac479ca638c79",
    "datum": [
     "2026-08-25"
    ],
-   "last": "2026-11-02"
+   "last": "2026-11-09"
   }
  },
  "listor": {
@@ -176,8 +184,8 @@
   },
   "resource": {
    "datum": [
-    "2026-11-04",
-    "2026-11-05"
+    "2026-11-17",
+    "2026-12-01"
    ],
    "lankar": [
     "https://resource-sip.se/projektfinansiering/utlysningar/",
@@ -200,11 +208,56 @@
    "lankar": [
     "https://www.smartbuilt.se/utlysningar/"
    ]
+  },
+  "tillvaxtverket": {
+   "datum": [],
+   "lankar": [
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar.1954.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=1",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=2",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=3",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=4",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=5",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=6",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=7",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=8",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillbredbandsutvecklingen.13079.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillenergieffektiviseringiskaneblekingesnaringsliv.13120.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillengronomstallninggenomfornybarenergi.13121.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/cirkularekonomiimellerstanorrland.13067.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/forbattraindustriellkapacitetforattframjaforsvarsformagan.13065.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/framjafornybarenergi.13066.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/framjaforskningochinnovationiskaneblekinge.13124.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/innovationsstodtillforetagforencirkularekonomi.13123.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/innovationsstodtillforetaginomregionalastyrkeomraden.13127.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/sokfinansieringforforstudierinomgronomstallning.13128.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/starkforetagskompetensforsorjning.13125.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/villnibidratillencirkularekonomi.13122.html"
+   ]
+  },
+  "tillvaxtverket-planerade": {
+   "datum": [],
+   "lankar": [
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar.1954.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringfranfondenforenrattvisomstallning.1700.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringfrannationellaregionalfondsprogrammet.1697.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringimellerstanorrland.1690.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringinorramellansverige.1691.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringiostramellansverige.1692.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringiovrenorrland.1689.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringiskaneblekinge.1696.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringismalandochoarna.1695.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringistockholm.1693.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar/planeradfinansieringivastsverige.1694.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html"
+   ]
   }
  },
- "senaste_korning": "2026-11-02",
+ "senaste_korning": "2026-11-09",
  "vinnova_sedda": [
   "2026-00518",
+  "2026-01806",
   "2026-01891",
   "2026-01892",
   "2026-01895",
@@ -213,7 +266,8 @@
   "2026-02377",
   "2026-02609",
   "2026-03160",
-  "2026-03197"
+  "2026-03197",
+  "2026-03975"
  ],
- "vinnova_senast": "2026-11-02"
+ "vinnova_senast": "2026-11-09"
 }
