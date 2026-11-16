@@ -84,7 +84,7 @@ class Bevakning(unittest.TestCase):
         self.assertTrue(fynd)
         self.assertIn("Energieffektiva byggnader 2026", rapport)
         self.assertNotIn("Rymdteknik", rapport)
-        self.assertIn("1 nya ansökningsomgångar utan träff", rapport)
+        self.assertIn("1 nya ansökningsomgångar hos Vinnova utan träff", rapport)
         self.assertNotIn("Gammal utlysning", rapport)
         self.assertNotIn("Intern bygg", rapport)
         utkast = json.loads((self.tmp / "bevakning/forslag/vinnova-energieffektiva-byggnader-2026.json").read_text())
@@ -147,6 +147,27 @@ class Bevakning(unittest.TestCase):
         self.assertIn("- [ ] **Formas**", rapport)
         self.assertNotIn("- [ ] **Horisont Europa**", rapport)  # var fjärde vecka
         self.assertTrue(fynd)
+
+    def test_sista_dag_flyttas_automatiskt_i_post_med_ett_steg(self):
+        vinnova = [vinnova_omg("2026-02019", "Industriell flexibel energistyrning", "2027-01-26T15:00:00")]
+        rapport, antal, fynd = self.kor(self.natet(vinnova, []))
+        self.assertTrue(fynd)
+        gjort = rapport.split("## Gjort")[1].split("## Frågor")[0]
+        self.assertIn("sista dag flyttad från 2027-01-19 till 2027-01-26 kl. 15:00", gjort)
+        fil = self.tmp / "data/poster/vinnova-industriell-flexibel-energistyrning-2026.json"
+        post = json.loads(fil.read_text())
+        sista = [t for t in post["tidpunkter"] if t["typ"] == "sista_dag"]
+        self.assertEqual(sista, [{"typ": "sista_dag", "datum": "2027-01-26", "tid": "15:00"}])
+        self.assertEqual(post["kontroll"]["senast"], IDAG)
+        self.assertIn('\n\n  "kallor"', fil.read_text())  # övrig formatering orörd
+
+    def test_post_med_flera_steg_blir_en_fraga(self):
+        vinnova = [vinnova_omg("2026-01106", "Eureka SMART Call 10", "2027-02-09T11:00:00")]
+        rapport, antal, fynd = self.kor(self.natet(vinnova, []))
+        fragor = rapport.split("## Frågor")[1]
+        self.assertIn("Vinnova anger sista dag 2027-02-09", fragor)
+        post = json.loads((self.tmp / "data/poster/vinnova-eureka-smart-call10.json").read_text())
+        self.assertIn("2027-01-26", [t["datum"] for t in post["tidpunkter"]])
 
     def test_nyckelord_traffar_ordborjan(self):
         self.assertEqual(bevaka.relevant("Byggnader och ombyggnad", ["bygg"]), ["bygg"])

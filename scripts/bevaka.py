@@ -1,7 +1,8 @@
 """Veckovis standardsökning på finansiärernas webbplatser.
 
 Körs av GitHub Actions varje måndag (.github/workflows/bevakning.yml), aldrig i besökarens webbläsare.
-Skriptet publicerar ingenting. Det skriver en rapport och förslag som Dan granskar i en pull request.
+Mekaniska ändringar (status och sista dag från Vinnovas öppna data) görs direkt i posterna och publiceras
+automatiskt efter kontroller och tester. Allt som kräver en bedömning blir frågor i veckorapporten.
 
 Vad det gör:
   1. Läser Vinnovas öppna data och föreslår nya utlysningar som verkar relevanta (utkast i bevakning/forslag/).
@@ -174,7 +175,7 @@ def datum_av(post, typ):
 
 
 def ratta_status(poster, idag):
-    """Ändrar status direkt i postfilerna. Ändringen syns i pull requesten och granskas där."""
+    """Ändrar status direkt i postfilerna. Ändringen publiceras automatiskt och redovisas under Gjort."""
     andringar = []
     for pid, (fil, post) in poster.items():
         if post["typ"] != "utlysning":
@@ -194,6 +195,31 @@ def ratta_status(poster, idag):
                 andringar.append((post["titel"], post["status"], ny))
                 post["status"] = ny
     return andringar
+
+
+def flytta_sista_dag(fil, post, gammal, ny, ny_tid, idag):
+    """Byter sista dag i en post som har exakt en sista dag. Lämnar filens övriga formatering orörd."""
+    text = fil.read_text(encoding="utf-8")
+    monster = re.compile(r'\{[^{}]*"typ":\s*"sista_dag"[^{}]*"datum":\s*"' + re.escape(gammal) + r'"[^{}]*\}')
+    m = monster.search(text)
+    if not m:
+        return False
+    obj = re.sub(r'("datum":\s*")' + re.escape(gammal) + '"', r'\g<1>' + ny + '"', m.group(0), count=1)
+    if ny_tid:
+        if re.search(r'"tid":\s*"[0-9:]+"', obj):
+            obj = re.sub(r'("tid":\s*")[0-9:]+"', r'\g<1>' + ny_tid + '"', obj, count=1)
+        else:
+            obj = obj.replace('"datum": "' + ny + '"', '"datum": "' + ny + '", "tid": "' + ny_tid + '"', 1)
+    text = text[:m.start()] + obj + text[m.end():]
+    text = re.sub(r'("senast":\s*")\d{4}-\d{2}-\d{2}"', r'\g<1>' + idag + '"', text, count=1)
+    if post["status"] == "stangd" and ny >= idag:
+        text = re.sub(r'"status":\s*"stangd"', '"status": "oppen"', text, count=1)
+        post["status"] = "oppen"
+    fil.write_text(text, encoding="utf-8")
+    for t in post.get("tidpunkter", []):
+        if t["typ"] == "sista_dag" and t["datum"] == gammal:
+            t["datum"] = ny
+    return True
 
 
 # ---------- Vinnova ----------
@@ -241,7 +267,7 @@ def vinnova_utkast(omg, idag, webb):
 
 
 def bevaka_vinnova(hamtare, konf, tillstand, poster, idag, nyckelord):
-    fynd = {"nya": [], "ovriga": 0, "andrade": [], "fel": None}
+    fynd = {"nya": [], "ovriga": 0, "andrade": [], "uppdaterade": [], "fel": None}
     fran = tillstand.get("vinnova_senast") or (datetime.date.fromisoformat(idag) - datetime.timedelta(days=60)).isoformat()
     text, fel = hamtare.hamta(konf["api"] + fran)
     if fel:
@@ -252,7 +278,7 @@ def bevaka_vinnova(hamtare, konf, tillstand, poster, idag, nyckelord):
     except ValueError:
         fynd["fel"] = "svaret gick inte att tolka"
         return fynd
-    kanda_dnr = {p.get("diarienummer"): (pid, p) for pid, (_, p) in poster.items() if p.get("diarienummer")}
+    kanda_dnr = {p.get("diarienummer"): (fil, p) for pid, (fil, p) in poster.items() if p.get("diarienummer")}
     tidigare = set(tillstand.get("vinnova_sedda", []))
     sedda = set(tidigare)
     for o in omgangar:
@@ -261,9 +287,15 @@ def bevaka_vinnova(hamtare, konf, tillstand, poster, idag, nyckelord):
             continue
         dnr = o["Diarienummer"]
         if dnr in kanda_dnr:
-            pid, post = kanda_dnr[dnr]
-            if stang not in datum_av(post, "sista_dag"):
-                fynd["andrade"].append((post["titel"], f"Vinnova anger sista dag {stang}, posten har {', '.join(datum_av(post, 'sista_dag')) or 'ingen'}."))
+            fil, post = kanda_dnr[dnr]
+            sista = datum_av(post, "sista_dag")
+            if stang not in sista:
+                tid = (o.get("Stangningsdatum") or "")[11:16]
+                tid = "" if tid in ("", "00:00") else tid
+                if len(sista) == 1 and flytta_sista_dag(fil, post, sista[0], stang, tid, idag):
+                    fynd["uppdaterade"].append((post["titel"], sista[0], stang + (f" kl. {tid}" if tid else "")))
+                else:
+                    fynd["andrade"].append((post["titel"], f"Vinnova anger sista dag {stang}, posten har {', '.join(sista) or 'ingen'}. Posten har flera steg, så den ändras inte automatiskt."))
             continue
         if dnr in tidigare:
             continue
@@ -383,109 +415,86 @@ def checklista_for_hand(for_hand, poster, kallor, tillstand, idag):
 # ---------- Rapport ----------
 
 def skriv_rapport(idag, vinnova, listor, kallor, status, deadlines, gamla, for_hand, vilande=()):
-    r = [f"# Bevakning {idag}", "",
-         "Veckans standardsökning på finansiärernas webbplatser. Inget av detta är publicerat. "
-         "Granska, ändra och godkänn i pull requesten; när den slås ihop publiceras ändringarna i `data/poster/`. "
-         "Utkast i `bevakning/forslag/` publiceras aldrig förrän de flyttats till `data/poster/`.", ""]
-    att_gora = 0
+    """Veckorapporten: Gjort (redan publicerat), Frågor (väntar på Dans beslut) och Att känna till."""
+    gjort, fragor, info = [], [], []
 
-    r.append("## Statusändringar som redan gjorts i posterna")
-    if status:
-        for titel, fran, till in status:
-            r.append(f"- {titel}: `{fran}` blir `{till}`.")
-            att_gora += 1
-    else:
-        r.append("- Inga.")
-    r.append("")
+    # Gjort
+    for titel, fran, till in status:
+        gjort.append(f"- {titel}: status `{fran}` blir `{till}`.")
+    for titel, gammal, ny in vinnova["uppdaterade"]:
+        gjort.append(f"- {titel}: sista dag flyttad från {gammal} till {ny}, enligt Vinnovas öppna data.")
 
-    r.append("## Nya utlysningar hos Vinnova")
+    # Frågor
     if vinnova["fel"]:
-        r.append(f"- Vinnovas öppna data kunde inte läsas: {vinnova['fel']}.")
-    elif vinnova["nya"]:
-        for titel, dnr, stang, traffar, fil in vinnova["nya"]:
-            r.append(f"- **{titel}** ({dnr}), sista dag {stang}. Träfford: {', '.join(traffar)}. Utkast: `{fil}`")
-            att_gora += 1
-    else:
-        r.append("- Inga nya som verkar relevanta.")
-    if vinnova["ovriga"]:
-        r.append(f"- Dessutom {vinnova['ovriga']} nya ansökningsomgångar utan träff på nyckelorden (inte listade).")
+        fragor.append(f"- Vinnovas öppna data kunde inte läsas: {vinnova['fel']}. Vill du att jag tittar på det?")
+    for titel, dnr, stang, traffar, fil in vinnova["nya"]:
+        fragor.append(f"- **Ny utlysning hos Vinnova: {titel}** ({dnr}), sista dag {stang}. Träffade på: {', '.join(traffar)}. "
+                      f"Ska den in i radarn? Utkastet ligger i `{fil}`.")
     for titel, text in vinnova["andrade"]:
-        r.append(f"- Ändrat datum i **{titel}**: {text}")
-        att_gora += 1
-    r.append("")
-
-    r.append("## Finansiärernas utlysningssidor")
+        fragor.append(f"- **Ändrat datum i {titel}**: {text} Vilket datum gäller?")
     for l in listor:
         if l.get("fel"):
-            r.append(f"- {l['namn']}: {l['fel']}. Kontrollera {l['url']} för hand, eller rätta adressen i `bevakning/kallor.json`.")
-            att_gora += 1
-        elif l["baslinje"]:
-            r.append(f"- {l['namn']}: första genomgången. Sidan är sparad som utgångsläge.")
-        elif l["nya_lankar"] or l["nya_datum"]:
-            r.append(f"- {l['namn']} ({l['url']}):")
+            fragor.append(f"- {l['namn']}: {l['fel']}. Har adressen ändrats? Kontrollera {l['url']}.")
+        elif not l["baslinje"] and (l["nya_lankar"] or l["nya_datum"]):
+            fragor.append(f"- **Nytt hos {l['namn']}** ({l['url']}). Är något av detta en utlysning för radarn?")
             for namn, url, traffar in sorted(l["nya_lankar"], key=lambda x: not x[2]):
                 markering = f" (träfford: {', '.join(traffar[:3])})" if traffar else ""
-                r.append(f"  - Ny länk: [{namn}]({url}){markering}")
+                fragor.append(f"  - Ny länk: [{namn}]({url}){markering}")
             if l["nya_datum"]:
-                r.append(f"  - Nya datum på sidan: {', '.join(l['nya_datum'])}")
-            att_gora += 1
-        else:
-            r.append(f"- {l['namn']}: inget nytt.")
-    r.append("")
-
-    r.append("## Källor till befintliga poster")
+                fragor.append(f"  - Nya datum på sidan: {', '.join(l['nya_datum'])}")
     andrade = [k for k in kallor if (k.get("fel") and not k.get("for_hand")) or k.get("nya_datum") or k.get("borta_datum")]
     for k in andrade:
         if k.get("fel"):
-            r.append(f"- {k['post']}: {k['url']} {k['fel']}.")
+            fragor.append(f"- {k['post']}: {k['url']} {k['fel']}. Har sidan flyttat?")
         else:
             delar = []
             if k["nya_datum"]:
                 delar.append("nya datum " + ", ".join(k["nya_datum"]))
             if k["borta_datum"]:
                 delar.append("borttagna datum " + ", ".join(k["borta_datum"]))
-            r.append(f"- **{k['post']}**: {'; '.join(delar)}. {k['url']}")
-        att_gora += 1
-    texter = [k for k in kallor if k.get("text_andrad") and k not in andrade]
-    if texter:
-        r.append(f"- Texten har ändrats utan att datumen ändrats på {len(texter)} sidor. Oftast småändringar; titta om du har tid:")
-        r.extend(f"  - {k['post']}: {k['url']}" for k in texter)
-    baslinje = sum(1 for k in kallor if k.get("baslinje"))
-    if baslinje:
-        r.append(f"- {baslinje} källor lästes för första gången och är sparade som utgångsläge.")
-    if not andrade and not texter and not baslinje:
-        r.append("- Inga ändringar.")
-    r.append("")
-
-    r.append("## Kontrollera för hand")
+            fragor.append(f"- **{k['post']}**: {'; '.join(delar)} på källsidan. Stämmer posten fortfarande? {k['url']}")
     if for_hand:
-        r.append("De här webbplatserna får inte läsas automatiskt, men du får läsa dem i din vanliga webbläsare. "
-                 "Öppna länken, titta efter nya utlysningar och ändrade datum, och bocka av rutan. "
-                 "Hittar du något: klistra in länken eller texten hos Claude i projektet Interaktiva webbplatser "
-                 "och skriv \"Ny utlysning för radarn\" eller \"Ändring i radarn\".")
-        r.append("")
+        fragor.append("- **Kontrollera för hand.** Läs sidorna i din vanliga webbläsare och bocka av rutan. "
+                      "Hittar du något: klistra in länken eller texten hos Claude och skriv \"Ny utlysning för radarn\" eller \"Ändring i radarn\".")
         for f in for_hand:
-            r.append(f"- [ ] **{f['namn']}**: [{f['url']}]({f['url']}). {f['hur_hitta']}")
+            fragor.append(f"  - [ ] **{f['namn']}**: [{f['url']}]({f['url']}). {f['hur_hitta']}")
             for titel, senast, sista, blockerad in f["poster"]:
                 delar = [f"senast kontrollerad {senast}"]
                 if sista:
                     delar.append(f"nästa sista dag {sista}")
                 if blockerad:
                     delar.append("källan får inte läsas automatiskt")
-                r.append(f"  - Finns i radarn: {titel} ({', '.join(delar)}).")
-            att_gora += 1
-    else:
-        r.append("- Inget denna vecka.")
-    for namn, nasta in vilande:
-        r.append(f"- Nästa påminnelse om {namn}: {nasta}.")
+                fragor.append(f"    - Finns i radarn: {titel} ({', '.join(delar)}).")
     for d, titel in gamla:
-        r.append(f"- [ ] {titel}: senast kontrollerad {d}, mer än tre månader sedan.")
-    r.append("")
+        fragor.append(f"- [ ] {titel}: senast kontrollerad {d}, mer än tre månader sedan. Stämmer posten fortfarande?")
+    antal_fragor = sum(1 for x in fragor if x.startswith("- "))
 
-    r.append("## Sista dag inom tre veckor")
-    r.extend([f"- {d}: {t}" for d, t in deadlines] or ["- Ingen."])
-    r.append("")
-    return "\n".join(r), att_gora
+    # Att känna till
+    if vinnova["ovriga"]:
+        info.append(f"- {vinnova['ovriga']} nya ansökningsomgångar hos Vinnova utan träff på nyckelorden (inte listade).")
+    for l in listor:
+        if not l.get("fel") and l["baslinje"]:
+            info.append(f"- {l['namn']}: första genomgången. Sidan är sparad som utgångsläge.")
+    texter = [k for k in kallor if k.get("text_andrad") and k not in andrade]
+    if texter:
+        info.append(f"- Texten har ändrats utan att datumen ändrats på {len(texter)} sidor. Oftast småändringar:")
+        info.extend(f"  - {k['post']}: {k['url']}" for k in texter)
+    baslinje = sum(1 for k in kallor if k.get("baslinje"))
+    if baslinje:
+        info.append(f"- {baslinje} källor lästes för första gången och är sparade som utgångsläge.")
+    for namn, nasta in vilande:
+        info.append(f"- Nästa påminnelse om {namn}: {nasta}.")
+    for d, t in deadlines:
+        info.append(f"- Sista dag {d}: {t}")
+
+    r = [f"# Veckorapport {idag}", "",
+         "Bevakningen har redan publicerat det som står under Gjort, efter kontroller och tester. "
+         "Det som står under Frågor väntar på ditt beslut: klistra in rapporten hos Claude i projektet "
+         "Interaktiva webbplatser och svara på frågorna. Stäng ärendet när du är klar.", "",
+         "## Gjort", *(gjort or ["- Inget denna vecka."]), "",
+         "## Frågor", *(fragor or ["- Inga denna vecka."]), "",
+         "## Att känna till", *(info or ["- Inget särskilt."]), ""]
+    return "\n".join(r), antal_fragor, len(gjort)
 
 
 # ---------- Huvudprogram ----------
@@ -506,16 +515,16 @@ def kor(idag, hamtare=None):
     kallor = bevaka_kallor(hamtare, poster, tillstand, idag)
 
     for_hand, vilande = checklista_for_hand(konf["for_hand"], poster, kallor, tillstand, idag)
-    rapport, att_gora = skriv_rapport(idag, vinnova, listor, kallor, status,
-                                      narmaste_deadlines(poster, idag), gamla_kontroller(poster, idag), for_hand, vilande)
+    rapport, fragor, gjort = skriv_rapport(idag, vinnova, listor, kallor, status,
+                                           narmaste_deadlines(poster, idag), gamla_kontroller(poster, idag), for_hand, vilande)
     tillstand["senaste_korning"] = idag
     tillstandsfil.write_text(json.dumps(tillstand, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     (BEV / "rapport.md").write_text(rapport + "\n", encoding="utf-8")
-    fynd = att_gora > 0 or forsta
+    fynd = fragor > 0 or gjort > 0 or forsta
     if os.environ.get("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
-            f.write(f"fynd={'true' if fynd else 'false'}\nantal={att_gora}\n")
-    return rapport, att_gora, fynd
+            f.write(f"fynd={'true' if fynd else 'false'}\nfragor={fragor}\ngjort={gjort}\n")
+    return rapport, fragor, fynd
 
 
 if __name__ == "__main__":
@@ -524,4 +533,4 @@ if __name__ == "__main__":
     a = ap.parse_args()
     rapport, antal, fynd = kor(a.idag)
     print(rapport)
-    print(f"\n{antal} saker att granska." if fynd else "\nInget att granska denna vecka.")
+    print(f"\n{antal} frågor." if fynd else "\nInget att rapportera denna vecka.")

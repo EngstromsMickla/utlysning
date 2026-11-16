@@ -1,8 +1,10 @@
 name: Bevakning
 
 # Veckovis standardsökning på finansiärernas webbplatser.
-# Körs på GitHubs server, aldrig i besökarens webbläsare. Publicerar ingenting:
-# resultatet blir en pull request som Dan granskar och godkänner.
+# Körs på GitHubs server, aldrig i besökarens webbläsare.
+# Nivå 1: mekaniska ändringar (status och sista dag från Vinnovas öppna data) förs in och publiceras
+# automatiskt efter validering och tester. Allt som kräver en bedömning blir frågor i en veckorapport,
+# som skapas som ett ärende (issue) och därmed kommer som mejl.
 
 on:
   schedule:
@@ -10,8 +12,9 @@ on:
   workflow_dispatch:       # går också att starta för hand under Actions
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write   # föra in ändringarna i main
+  issues: write     # skapa veckorapporten och stänga förra veckans
+  actions: write    # starta publiceringen
 
 concurrency:
   group: bevakning
@@ -21,6 +24,8 @@ jobs:
   sok:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,25 +33,51 @@ jobs:
         with:
           python-version: "3.12"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Sök på finansiärernas webbplatser
         id: bevaka
         run: python3 scripts/bevaka.py
 
-      - name: Kontrollera att posterna fortfarande är giltiga
+      - name: Kontrollera ändringarna innan något förs in
         run: |
           pip install jsonschema
           python3 scripts/validera.py
+          node --test test/*.mjs
+          python3 -m unittest discover -s test -p "test_*.py"
 
-      - name: Föreslå ändringarna som pull request
+      - name: För in ändringarna i main
+        id: spara
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add bevakning data/poster
+          if git diff --cached --quiet; then
+            echo "poster=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git diff --cached --quiet -- data/poster; then
+            echo "poster=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "poster=true" >> "$GITHUB_OUTPUT"
+          fi
+          git commit -m "Bevakning $(date -u +%F): veckans standardsökning"
+          git push
+
+      - name: Publicera sajten på nytt
+        if: steps.spara.outputs.poster == 'true'
+        run: gh workflow run publicera.yml --ref main
+
+      - name: Skicka veckorapporten
         if: steps.bevaka.outputs.fynd == 'true'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          branch: bevakning/vecka
-          delete-branch: true
-          commit-message: "Bevakning: veckans standardsökning"
-          title: "Bevakning: ${{ steps.bevaka.outputs.antal }} saker att granska"
-          body-path: bevakning/rapport.md
-          labels: bevakning
-          add-paths: |
-            bevakning/**
-            data/poster/**
+        run: |
+          gh label create veckorapport --color 2f6b5e --description "Veckorapport från bevakningen" --force
+          for nr in $(gh issue list --label veckorapport --state open --json number --jq '.[].number'); do
+            gh issue close "$nr" --comment "Ersätts av veckans nya rapport."
+          done
+          gh issue create \
+            --title "Veckorapport $(date -u +%F): ${{ steps.bevaka.outputs.fragor }} frågor, ${{ steps.bevaka.outputs.gjort }} ändringar" \
+            --label veckorapport \
+            --body-file bevakning/rapport.md

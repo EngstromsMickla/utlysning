@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.4";
+const VERSION = "prototyp v0.5";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -425,8 +425,8 @@ function processkarta() {
   return el("figure", { class: "karta", "aria-label": "Processkarta" },
     zon("bakom", "Varje måndag, på GitHubs server: standardsökning", [
       fas("Sökning", "Finansiärernas webbplatser och Vinnovas öppna data läses efter nya och ändrade utlysningar."),
-      fas("Förslag", "Nyheter och ändrade datum samlas i en rapport. Inget publiceras automatiskt."),
-      fas("Granskning", "Engströms Mickla AB granskar och godkänner varje ändring."),
+      fas("Uppdatering", "Status och flyttade datum från Vinnovas öppna data förs in automatiskt, efter kontroller och tester."),
+      fas("Granskning", "Nya utlysningar och allt som kräver en bedömning granskas av Engströms Mickla AB innan det läggs in."),
       fas("Radarn", "Det godkända publiceras med källa och kontrolldatum."),
     ]),
     el("p", { class: "overgang" }, "Det granskade underlaget används i ditt urval"),
@@ -492,7 +492,7 @@ function visaInstruktion() {
     el("ul", {},
       el("li", {}, "Det avgör inte om du är behörig eller hur en ansökan kommer att bedömas."),
       el("li", {}, "Det täcker inte alla finansiärer. Saknas något du väntat dig, kontrollera direkt hos finansiären."),
-      el("li", {}, "Det söker inte på webben medan du använder det. Sökningen görs en gång i veckan, och resultatet granskas innan det publiceras."),
+      el("li", {}, "Det söker inte på webben medan du använder det. Sökningen görs en gång i veckan. Status och datum uppdateras automatiskt; nya utlysningar granskas innan de läggs in."),
       el("li", {}, "Det sparar ingenting. Stänger du fliken får du börja om.")),
 
     el("div", { class: "navrow" }, el("a", { class: "btn", href: "#ide" }, "Pröva en idé")),
@@ -516,7 +516,7 @@ function visaOm() {
     el("p", {}, "Förhandsurvalet bygger på enkla regler. Ett osäkert svar sorterar aldrig bort något, och skälen visas alltid."),
     el("h2", {}, "Hur underlaget hålls aktuellt"),
     el("p", {}, "Varje måndag gör en GitHub-server en standardsökning på finansiärernas webbplatser och i Vinnovas öppna data, efter nya utlysningar och ändrade datum. Sökningen har ingenting med dig som besökare att göra; den görs oavsett om någon använder verktyget, och inget du skriver ingår i den."),
-    el("p", {}, "Resultatet publiceras inte automatiskt. Det blir ett förslag som Engströms Mickla AB granskar och godkänner innan det läggs ut. Tillväxtverket har gett lov att deras sidor med utlysningar läses en gång i veckan. Formas tillåter inte automatisk hämtning, så deras utlysningar kontrolleras för hand utifrån Formas nyhetsbrev. Varje post visar datum för senaste kontroll."),
+    el("p", {}, "Det som är mekaniskt uppdateras automatiskt: status när en utlysning öppnar eller stänger, och sista dag när Vinnovas öppna data anger ett nytt datum. Allt som kräver en bedömning, som nya utlysningar och ändringar på finansiärernas sidor, granskas av Engströms Mickla AB innan det läggs in. Tillväxtverket har gett lov att deras sidor med utlysningar läses en gång i veckan. Formas tillåter inte automatisk hämtning, så deras utlysningar kontrolleras för hand utifrån Formas nyhetsbrev. Varje post visar datum för senaste kontroll."),
     el("p", {}, el("a", { href: "#redaktor" }, "Så går granskningen till: handledning för redaktören")),
     el("h2", {}, "Vem står bakom"),
     el("p", {}, "Verktyget är utvecklat av Dan Engström, Engströms Mickla AB. Koden och underlaget är öppna på GitHub."),
@@ -535,38 +535,34 @@ function visaRedaktor() {
   lagg(
     el("div", { class: "eyebrow" }, "Utlysningsradarn"),
     el("h1", {}, "Handledning för redaktören"),
-    el("p", { class: "lead" }, "Så granskas och godkänns veckans bevakning. Sidan är till för den som sköter underlaget, men visas öppet så att alla kan se hur det går till."),
-    el("p", { class: "note" }, "Varje måndag morgon söker en GitHub-server igenom finansiärernas webbplatser. Hittar den något blir resultatet ett ändringsförslag, en pull request, i repot. Inget publiceras förrän förslaget har slagits ihop. Det bevakningen minns sparas också först då, så slå ihop förslaget varje vecka, även när du inte ändrar något."),
+    el("p", { class: "lead" }, "Så tar du hand om veckans bevakning. Sidan är till för den som sköter underlaget, men visas öppet så att alla kan se hur det går till."),
+    el("p", { class: "note" }, "Varje måndag morgon söker en GitHub-server igenom finansiärernas webbplatser. Det som är mekaniskt, som status och flyttade datum från Vinnovas öppna data, förs in och publiceras automatiskt efter kontroller och tester. Allt som kräver en bedömning blir frågor i en veckorapport, som kommer som ett ärende i repot och ett mejl."),
 
     el("h2", {}, "Varje måndag"),
     el("ol", { class: "instr-steg" },
       el("li", {},
-        el("h3", {}, "Öppna förslaget"),
-        el("p", {}, "Klicka på länken i mejlet från GitHub med ämnet \"Bevakning: N saker att granska\". Eller gå till repot, välj fliken Pull requests och öppna den som heter \"Bevakning: …\"."),
-        el("p", {}, lank(REPO + "/pulls", "Öppna listan med pull requests"))),
+        el("h3", {}, "Öppna veckorapporten"),
+        el("p", {}, "Klicka på länken i mejlet från GitHub med ämnet \"Veckorapport …\". Eller gå till repot, välj fliken Issues och öppna den senaste veckorapporten."),
+        el("p", {}, lank(REPO + "/issues", "Öppna listan med ärenden"))),
       el("li", {},
-        el("h3", {}, "Läs rapporten"),
-        el("p", {}, "Rapporten står överst. Den visar statusändringar, nya utlysningar hos Vinnova med utkast, nyheter på finansiärernas sidor, ändrade datum i befintliga poster och vilka deadlines som närmar sig."),
-        el("p", { class: "hjalp" }, "I checklistan Kontrollera för hand finns Formas (varannan vecka) och Horisont Europa (var fjärde vecka). Öppna länkarna i din vanliga webbläsare, titta och bocka av rutan.")),
+        el("h3", {}, "Läs Gjort"),
+        el("p", {}, "Under Gjort står det som redan är publicerat, till exempel en utlysning som har stängt eller en sista dag som har flyttats. Ser något fel ut, säg till Claude så rättas det.")),
       el("li", {},
-        el("h3", {}, "Bestäm vad som ska göras"),
-        el("ul", {},
-          el("li", {}, "Inget att ändra: gå vidare till nästa steg."),
-          el("li", {}, "Ett utkast ska med eller något ska rättas: klistra in länken till pull requesten hos Claude i projektet Interaktiva webbplatser och skriv vad du vill. Claude gör ändringarna i förslaget. Skriver du \"publicera\" slår Claude också ihop det åt dig."),
-          el("li", {}, "Något nytt hos Formas: klistra in länken eller texten hos Claude och skriv \"Ny utlysning för radarn\"."))),
+        el("h3", {}, "Svara på Frågor"),
+        el("p", {}, "Under Frågor står det som väntar på ditt beslut: nya utlysningar hos Vinnova, nyheter på finansiärernas sidor och ändrade datum som bevakningen inte kan tolka själv. Klistra in rapporten hos Claude i projektet Interaktiva webbplatser och svara, till exempel \"ta med den första, hoppa över resten\". Skriv \"publicera\" när du har sett ändringarna."),
+        el("p", { class: "hjalp" }, "Under Frågor finns också checklistan Kontrollera för hand: Formas (varannan vecka) och Horisont Europa (var fjärde vecka). Öppna länkarna i din vanliga webbläsare, titta och bocka av rutan.")),
       el("li", {},
-        el("h3", {}, "Slå ihop"),
-        el("p", {}, "Längst ned i pull requesten finns den gröna knappen Merge pull request. Klicka på den och sedan på Confirm merge. Visas knappen Delete branch efteråt kan du klicka på den, men det behövs inte.")),
+        el("h3", {}, "Stäng ärendet"),
+        el("p", {}, "När frågorna är besvarade klickar du Close issue längst ned. Gör du det inte stänger bevakningen det själv nästa måndag.")),
       el("li", {},
-        el("h3", {}, "Kontrollera publiceringen"),
-        el("p", {}, "Efter någon minut har sajten publicerats på nytt. Under fliken Actions får Kontrollera och publicera en grön bock. Ett rött kryss betyder att kontrollerna stoppade publiceringen och att sajten är oförändrad."),
+        el("h3", {}, "Kontrollera publiceringen vid behov"),
+        el("p", {}, "Under fliken Actions får Kontrollera och publicera en grön bock när sajten har publicerats på nytt. Ett rött kryss betyder att kontrollerna stoppade publiceringen och att sajten är oförändrad."),
         el("p", {}, lank(REPO + "/actions", "Öppna Actions")))),
 
     el("h2", {}, "Om något ser annorlunda ut"),
     el("ul", {},
-      el("li", {}, "Knappen är grå och det står This branch has conflicts: skicka länken till Claude."),
-      el("li", {}, "Ingen pull request en måndag: bevakningen hittade inget att rapportera. Du behöver inte göra något."),
-      el("li", {}, "Mejl om att en körning har misslyckats: öppna körningen, läs felraden och skicka en skärmbild till Claude."),
+      el("li", {}, "Ingen veckorapport en måndag: bevakningen hittade inget och gjorde inget. Du behöver inte göra något."),
+      el("li", {}, "Mejl om att en körning har misslyckats: då har ingenting publicerats. Öppna körningen, läs felraden och skicka en skärmbild till Claude."),
       el("li", {}, "En sida svarar inte i rapporten: adressen kan ha ändrats. Skicka den nya adressen till Claude.")),
 
     el("div", { class: "navrow" }, el("a", { class: "btn ghost", href: "#om" }, "Tillbaka till Om verktyget")),

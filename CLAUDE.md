@@ -6,7 +6,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 
 - Publikt verktyg som hjälper forskare, företag och offentliga aktörer att hitta forsknings- och innovationsutlysningar som passar en idé.
 - Upphov: Dan Engström, Engströms Mickla AB. Dan äger allt innehåll; Claude föreslår, Dan beslutar.
-- Tre delar: idéverktyget (`#ide`), radarn (`#radar`) och användarinstruktionen med processkarta (`#instruktion`). Om-sidan ligger i `#om`. Handledningen för redaktören (hur veckans bevakning granskas och slås ihop) ligger i `#redaktor` och länkas från Om-sidan och sidfoten.
+- Tre delar: idéverktyget (`#ide`), radarn (`#radar`) och användarinstruktionen med processkarta (`#instruktion`). Om-sidan ligger i `#om`. Handledningen för redaktören (hur veckorapporten tas om hand) ligger i `#redaktor` och länkas från Om-sidan och sidfoten.
 - Version 1 är helt statisk. Sidan anropar ingen AI. Användaren får ett urval med skäl och en färdig prompt att klistra in i sin egen AI-tjänst. Inbyggd analys kan komma i version 2, men löftet att idén inte lämnar webbläsaren förrän användaren själv kopierar den ska behållas som val.
 
 ## Fasta principer
@@ -17,7 +17,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.4.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.5.
 
 ## Struktur
 
@@ -42,13 +42,15 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 
 - `.github/workflows/bevakning.yml` kör `scripts/bevaka.py` varje måndag 05:00 UTC och kan startas för hand. Den körs på GitHubs server och har inget med besökarna att göra.
 - Skriptet läser Vinnovas öppna data (`data.vinnova.se/api`), finansiärernas utlysningssidor (listan i `bevakning/kallor.json`) och de primära källorna till befintliga poster. Det rapporterar nya länkar, nya och borttagna datum och föreslår relevanta Vinnova-utlysningar som utkast i `bevakning/forslag/`.
-- Status rättas direkt i postfilerna: sista dag passerad blir `stangd`, öppningsdag passerad blir `oppen`.
-- Resultatet blir en pull request med `bevakning/rapport.md` som beskrivning. Inget publiceras förrän Dan slagit ihop den. Utkast publiceras aldrig förrän de skrivits klart och flyttats till `data/poster/`.
+- Nivå 1 av automatik (beslutat 2026-11-16): det mekaniska görs och publiceras automatiskt. Status rättas direkt i postfilerna (sista dag passerad blir `stangd`, öppningsdag passerad blir `oppen`). Sista dag flyttas när Vinnovas öppna data anger ett nytt datum för en post med exakt en sista dag; poster med flera steg blir en fråga. Kontrolldatum sätts då till körningsdagen.
+- Före varje automatisk ändring körs validering och alla tester i arbetsflödet. Fallerar något pushas ingenting och Dan får GitHubs mejl om misslyckad körning.
+- Ändringarna committas direkt till `main`. Ändras något i `data/poster/` startar arbetsflödet publiceringen (`publicera.yml` via workflow_dispatch, eftersom pushar med GITHUB_TOKEN inte startar andra arbetsflöden).
+- Veckorapporten (`bevakning/rapport.md`) har tre delar: Gjort (redan publicerat), Frågor (väntar på Dans beslut) och Att känna till. Den skapas som ett ärende (issue) med etiketten `veckorapport`, vilket ger Dan ett mejl. Förra veckans ärende stängs automatiskt. Ingen rapport när inget har hänt.
+- Nya utlysningar publiceras aldrig automatiskt. Utkast hamnar i `bevakning/forslag/` och skrivs klart av Claude när Dan har svarat ja. Nivå 2 (AI-ifyllda poster som publiceras automatiskt) är avvaktad.
 - Tillståndet mellan körningarna ligger i `bevakning/tillstand.json` (adresser, fingeravtryck och datum, ingen sidtext).
 - robots.txt respekteras, oavsett vem som startar körningen. Undantag görs bara när finansiären skriftligt har gett lov, och då bara för de exakta adresserna (fältet `tillstand` under `listor` i `bevakning/kallor.json`, med vem som gav lov och när).
 - Tillväxtverket gav 2026-10-26 lov att läsa sidan med utlysningar en gång i veckan. Sidorna med utlysningar och planerade utlysningar läses därför automatiskt; övriga sidor på tillvaxtverket.se läses inte.
 - Formas tillåter inte automatisk hämtning och publicerar sina utlysningar i ett nyhetsbrev som Dan prenumererar på. Rapporten ger varannan vecka en checklista med länk till nyhetsbrevet och de poster som berörs; Horisont Europa var fjärde vecka. Intervall och adresser står under `for_hand`.
-- Det bevakningen minns sparas bara när pull requesten slås ihop. Slås den inte ihop börjar nästa körning om från förra sammanslagna läget.
 - Nyckelorden i `bevakning/kallor.json` avgör vad som räknas som relevant. De matchas mot början av ord.
 - Tester: `python3 -m unittest discover -s test -p "test_*.py"` med påhittade svar, utan nätet.
 
