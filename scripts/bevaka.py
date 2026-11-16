@@ -284,6 +284,11 @@ def bevaka_vinnova(hamtare, konf, tillstand, poster, idag, nyckelord):
 
 # ---------- Listor och källor ----------
 
+def ar_sidnumrering(url, namn):
+    """Länkar till nästa sida i en lista, till exempel "9" eller ?page=9, är inga utlysningar."""
+    return namn.strip().isdigit() or bool(re.search(r"[?&][^=]*page[^=]*=", url, re.I))
+
+
 def bevaka_listor(hamtare, listor, tillstand, nyckelord):
     resultat = []
     sparat = tillstand.setdefault("listor", {})
@@ -294,7 +299,8 @@ def bevaka_listor(hamtare, listor, tillstand, nyckelord):
             continue
         sida = tolka_sida(text, lista["url"])
         monster = re.compile(lista["lankmonster"], re.I) if lista.get("lankmonster") else None
-        lankar = {u: n for u, n in sida["lankar"].items() if monster and monster.search(u)}
+        lankar = {u: n for u, n in sida["lankar"].items()
+                  if monster and monster.search(u) and not ar_sidnumrering(u, n)}
         datum = hitta_datum(sida["text"])
         forra = sparat.get(lista["id"])
         post = {"namn": lista["namn"], "url": lista["url"], "baslinje": forra is None,

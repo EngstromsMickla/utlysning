@@ -165,6 +165,11 @@ class Bevakning(unittest.TestCase):
         self.assertIsNone(text)
         self.assertIn("robots.txt", fel)
 
+    def test_sidnumrering_raknas_inte_som_ny_utlysning(self):
+        self.assertTrue(bevaka.ar_sidnumrering("https://x.se/utlysningar.html?page12_2a2=9", "9"))
+        self.assertTrue(bevaka.ar_sidnumrering("https://x.se/utlysningar?page=2", "Nästa"))
+        self.assertFalse(bevaka.ar_sidnumrering("https://x.se/utlysningar/vatten.12702.html", "Främja tillgång till vatten"))
+
     def test_robots_fel_tolkas_som_forbud(self):
         def trasigt(url):
             raise urllib.error.HTTPError(url, 500, "fel", {}, None)
