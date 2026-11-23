@@ -6,21 +6,21 @@
  },
  "kallor": {
   "https://dutpartnership.eu/calls/dut-call-2026": {
-   "avtryck": "3d9ec7268461bc24",
+   "avtryck": "1e80d8c7dd92a187",
    "datum": [
     "2026-09-01",
     "2026-11-17",
     "2027-04-15"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home": {
    "avtryck": "25d21a6a559431d9",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.energimyndigheten.se/utlysningar/driving-urban-transitions-hallbar-urban-omstallning-inom-europeiskt-partnerskap/": {
-   "avtryck": "07431641af52f876",
+   "avtryck": "fa9e08c87d16ca30",
    "datum": [
     "2026-08-27",
     "2026-09-01",
@@ -29,10 +29,10 @@
     "2026-11-17",
     "2027-04-15"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.energimyndigheten.se/utlysningar/effektiv-energianvandning-i-bebyggelsen-for-ett-hallbart-energisystem/": {
-   "avtryck": "69164657f9788508",
+   "avtryck": "afe833fcba932a7a",
    "datum": [
     "2026-06-11",
     "2026-08-27",
@@ -40,61 +40,59 @@
     "2027-05-01",
     "2031-12-31"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering": {
-   "avtryck": "bb60ffb05fabe547",
+   "avtryck": "20e3017aca7ebfd7",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/ansokningstider": {
    "avtryck": "e613aab7d0d9a3b5",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vem-kan-soka": {
    "avtryck": "c3b6173fcaf6768d",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.sbuf.se/projektprocess-rapportering/1-sok-finansiering/vilka-projekt-kan-fa-bidrag": {
-   "avtryck": "8dc65fe007dca9ba",
+   "avtryck": "3db1f103dd8f887d",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.vinnova.se/en/calls-for-proposals/advanced-digitalization-industrial-2024-04161/industrial-flexible-energy-control-with-2026-02019/": {
-   "avtryck": "fb4d060d76b9d08c",
+   "avtryck": "bdbd9772873fe240",
    "datum": [
     "2027-03-19",
     "2027-04-15"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.vinnova.se/en/calls-for-proposals/eureka-cluster-within-sustainable-development/eureka-smart-international-2026-01106/": {
-   "avtryck": "89edfd1ececc4db2",
+   "avtryck": "76d935dc2ed35a8d",
    "datum": [],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.vinnova.se/en/calls-for-proposals/innovative-startups/innovative-startups-2026": {
-   "avtryck": "d044054bfc7935d2",
+   "avtryck": "884ac5004adc8af9",
    "datum": [
     "2027-03-23"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   },
   "https://www.vinnova.se/m/horisont-europa/kontakt/": {
-   "avtryck": "3ae4c9513e84d7f8",
+   "avtryck": "7ed1d1545b5989f7",
    "datum": [
     "2026-08-25"
    ],
-   "last": "2026-11-16"
+   "last": "2026-11-23"
   }
  },
  "listor": {
   "energimyndigheten": {
    "datum": [
-    "2026-04-17",
-    "2026-04-24",
     "2026-04-28",
     "2026-04-29",
     "2026-04-30",
@@ -103,12 +101,10 @@
     "2026-05-15",
     "2026-06-01",
     "2026-06-03",
-    "2026-06-11",
     "2026-06-17",
     "2026-06-23",
     "2026-07-01",
     "2026-08-13",
-    "2026-08-27",
     "2026-08-31",
     "2026-09-04",
     "2026-09-09",
@@ -131,8 +127,8 @@
     "2026-11-15",
     "2026-11-17",
     "2026-11-18",
-    "2026-12-01",
     "2026-12-02",
+    "2026-12-04",
     "2026-12-08",
     "2026-12-09",
     "2026-12-15",
@@ -154,7 +150,6 @@
     "https://www.energimyndigheten.se/utlysningar/forskning-for-en-konkurrenskraftig-och-hallbar-batterivardekedja/",
     "https://www.energimyndigheten.se/utlysningar/forskningsmiljo-for-elmarknadsdesign-och-reglering/",
     "https://www.energimyndigheten.se/utlysningar/framtidens-fossilfria-elproduktion-for-en-resilient-och-robust-elforsorjning/",
-    "https://www.energimyndigheten.se/utlysningar/gemensam-acceleration-mot-klimatneutrala-stader-2030/",
     "https://www.energimyndigheten.se/utlysningar/impact-innovation-net-zero-industry-2026/",
     "https://www.energimyndigheten.se/utlysningar/intresseanmalan-for-ipcei-projekt-inom-innovativ-karnteknik/",
     "https://www.energimyndigheten.se/utlysningar/investerings--och-driftstod-for-bio-ccs-genom-omvand-auktion/",
@@ -164,7 +159,6 @@
     "https://www.energimyndigheten.se/utlysningar/laddinfrastruktur-for-tunga-vagtransporter-pa-fastigheter-med-lastning-och-lossning/",
     "https://www.energimyndigheten.se/utlysningar/lansera-i-indien-med-india-sweden-innovations-accelerator-isia/",
     "https://www.energimyndigheten.se/utlysningar/lansera-internationellt-med-hjalp-av-global-innovation-accelerator/",
-    "https://www.energimyndigheten.se/utlysningar/mojlighet-for-svenska-foretag-att-expandera-till-ukraina/",
     "https://www.energimyndigheten.se/utlysningar/negativa-utslapp-uppskalning-och-kommersialisering/",
     "https://www.energimyndigheten.se/utlysningar/nya-losningar-for-en-energieffektiv-och-resilient-vardag/",
     "https://www.energimyndigheten.se/utlysningar/nya-mojligheter-for-svenska-energiteknikforetag-i-snabbvaxande-indien/",
@@ -183,14 +177,13 @@
   },
   "resource": {
    "datum": [
-    "2026-11-17",
     "2026-12-01",
-    "2026-12-08"
+    "2026-12-08",
+    "2027-01-27"
    ],
    "lankar": [
     "https://resource-sip.se/projektfinansiering/utlysningar/",
-    "https://resource-sip.se/utlysningar/",
-    "https://resource-sip.se/utlysningar/driving-urban-transitions-ny-utlysning-for-2026-om-hallbar-urban-omstallning-inom-europeiskt-partnerskap/"
+    "https://resource-sip.se/utlysningar/"
    ]
   },
   "sbuf": {
@@ -206,27 +199,19 @@
    "lankar": [
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/planeradeutlysningar.1954.html",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=1",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=2",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=3",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=4",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=5",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=6",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=7",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=8",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?page12_2a2ae249185be5f310ffb1d=9",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar.1139.html?sv.target=12.2a2ae249185be5f310ffb1d&sv.12.2a2ae249185be5f310ffb1d.route=%2F",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillbredbandsutvecklingen.13079.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillenergieffektiviseringiskaneblekingesnaringsliv.13120.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/bidratillengronomstallninggenomfornybarenergi.13121.html",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/cirkularekonomiimellerstanorrland.13067.html",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/forbattraindustriellkapacitetforattframjaforsvarsformagan.13065.html",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/framjafornybarenergi.13066.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/framjatillgangtillvattenochenhallbarvattenforvaltning.12702.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/insatserforokadkonkurrenskraft.13077.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/okaforskningsochinnovationskapaciteten.12701.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/framjaforskningochinnovationiskaneblekinge.13124.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/innovationsstodtillforetagforencirkularekonomi.13123.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/innovationsstodtillforetaginomregionalastyrkeomraden.13127.html",
     "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/sokfinansieringforforstudierinomgronomstallning.13128.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/starksmaochmedelstoraforetagstillvaxtochkonkurrenskraft.12707.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/utvecklafardigheterforsmartspecialiseringimellerstanorrland.13078.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/varmedochbidratillokadinnovationskapacitet.13076.html",
-    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/varmedochkraftsamlaforokadspetskompetensinomomradetsgemensammatematiskakunskapsomraden.12700.html"
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/starkforetagskompetensforsorjning.13125.html",
+    "https://tillvaxtverket.se/tillvaxtverket/sokfinansiering/utlysningar/utlysningar/villnibidratillencirkularekonomi.13122.html"
    ]
   },
   "tillvaxtverket-planerade": {
@@ -247,7 +232,7 @@
    ]
   }
  },
- "senaste_korning": "2026-11-16",
+ "senaste_korning": "2026-11-23",
  "vinnova_sedda": [
   "2026-00518",
   "2026-01806",
@@ -260,7 +245,8 @@
   "2026-02609",
   "2026-03160",
   "2026-03197",
+  "2026-03892",
   "2026-03975"
  ],
- "vinnova_senast": "2026-11-16"
+ "vinnova_senast": "2026-11-23"
 }
