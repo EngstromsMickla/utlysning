@@ -116,3 +116,11 @@ test("Vinnova energistyrning: industriföretag med partner passar, ensam idé pa
   assert.equal(bedomPost(p, { ...bas, sektor: ["bygg_fastighet"] }, IDAG).utfall, "kanske");
   assert.equal(bedomPost(p, { ...bas, partners: "ensam", mognad: "ide" }, IDAG).utfall, "passar_inte");
 });
+
+test("Formas Effekt: forskare med partner passar, företag utan partner passar inte", () => {
+  const p = post("formas-effekt-2026");
+  const bas = { organisationstyp: "universitet_hogskola", sektor: ["bygg_fastighet"], mognad: "test_demo", resultat: "oppet", bidragsbehov: "0_5_till_2", tidshorisont: "1_till_3_man", partners: "svenska" };
+  assert.equal(bedomPost(p, bas, IDAG).utfall, "passar");
+  assert.equal(bedomPost(p, { ...bas, organisationstyp: "foretag", partners: "ensam" }, IDAG).utfall, "passar_inte");
+  assert.equal(bedomPost(p, { ...bas, bidragsbehov: "5_till_20" }, IDAG).utfall, "passar_inte");
+});

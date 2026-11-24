@@ -1,0 +1,115 @@
+{
+  "id": "formas-effekt-2026",
+  "typ": "utlysning",
+  "titel": "Effekt! Från forskning till nytta 2026",
+  "finansiar": { "id": "formas", "namn": "Formas" },
+  "program": "Effekt! Från forskning till nytta",
+  "diarienummer": null,
+  "sammanfattning": "Pengar för att ta tillvara befintlig forskningsbaserad kunskap, innovationer och lösningar så att de kommer till nytta och får genomslag i samhället, till exempel som nya arbetssätt, metoder, produkter, tjänster eller processer. Gäller Formas områden: miljö, areella näringar och samhällsbyggande. Projektet görs av minst en forskningsutförare tillsammans med minst en part från en annan sektor, som näringsliv, offentlig sektor eller civilsamhälle.",
+  "status": "oppen",
+
+  "kallor": [
+    { "url": "https://formas.se/soka-finansiering/alla-utlysningar/utlysningar/2026-07-08-effekt-fran-forskning-till-nytta-2026.html", "titel": "Formas: Effekt! Från forskning till nytta 2026", "roll": "primar", "sprak": "sv", "anmarkning": "Formas sida får inte läsas automatiskt och har kontrollerats via Formas nyhetsbrev och sekundära källor." },
+    { "url": "https://formas.se/kunskap-och-fordjupning/nyheter/nyhetsbrev.html", "titel": "Formas nyhetsbrev, november 2026", "roll": "primar", "sprak": "sv", "anmarkning": "Anger att utlysningen öppnar i november och att sista dag är 2027-02-11." },
+    { "url": "https://app.bidragsportalen.se/bidrag/effekt-fran-forskning-till-nytta-2026", "titel": "Bidragsportalen: Effekt! Från forskning till nytta 2026", "roll": "sekundar", "sprak": "sv", "anmarkning": "Belopp, projekttid, öppningsdag och kravet på doktorsexamen." },
+    { "url": "https://forskningsanslag.se/grants/f1ca4258-9ae9-4f7d-abbc-626e8e4329e1", "titel": "Forskningsanslag.se: Effekt! Från forskning till nytta 2026", "roll": "sekundar", "sprak": "sv", "anmarkning": "Uppgiften om två till fyra projektparter." }
+  ],
+
+  "kontroll": {
+    "senast": "2026-11-24",
+    "metod": "manuell",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Från Formas nyhetsbrev 2026-11. Detaljerna kommer från sekundära källor eftersom Formas webbplats inte får läsas automatiskt."
+  },
+
+  "precision": "lag",
+  "precision_motivering": "Behörighet, belopp och datum är kända, men bedömningskriterierna är inte inlagda och flera uppgifter kommer från sekundära källor.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["universitet_hogskola", "forskningsinstitut", "foretag", "kommun_region", "statlig_myndighet", "ideell"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "foretag": "Företag deltar som part från en annan sektor; minst en forskningsutförare måste också vara med.",
+        "privatperson": "Projekten görs av organisationer: minst en forskningsutförare och en part från en annan sektor."
+      }
+    },
+    "sektor": {
+      "passar": ["bygg_fastighet", "vatten_miljo", "livsmedel_jordbruk", "offentlig_verksamhet"],
+      "kanske": ["energi", "transport", "digitalisering", "tillverkning", "halsa", "annat"],
+      "skal": {
+        "ovrigt": "Utlysningen gäller Formas områden: miljö, areella näringar och samhällsbyggande."
+      }
+    },
+    "mognad": {
+      "passar": ["fou", "test_demo", "implementering"],
+      "kanske": ["forstudie", "ide", "vet_ej"],
+      "skal": {
+        "ide": "Utlysningen gäller att omsätta forskningsresultat som redan finns. En ny idé utan forskningsgrund passar sämre.",
+        "forstudie": "Utlysningen gäller att omsätta forskningsresultat som redan finns, inte att utreda om en idé håller."
+      }
+    },
+    "resultat": {
+      "passar": ["oppet", "blandat"],
+      "kanske": ["egen_produkt", "vet_ej"],
+      "skal": {
+        "egen_produkt": "Syftet är genomslag och nytta i samhället. Resultat som bara gynnar en aktör passar sämre."
+      }
+    },
+    "bidragsbehov": {
+      "passar": ["under_0_5", "0_5_till_2"],
+      "kanske": ["2_till_5", "vet_ej"],
+      "skal": {
+        "2_till_5": "Högst 4 miljoner kronor per projekt.",
+        "5_till_20": "Högst 4 miljoner kronor per projekt.",
+        "over_20": "Högst 4 miljoner kronor per projekt."
+      }
+    },
+    "partners": {
+      "passar": ["svenska", "internationella"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "ensam": "Kräver minst en forskningsutförare och minst en part från en annan sektor."
+      }
+    }
+  },
+
+  "kombinationer": [
+    { "nar": { "organisationstyp": ["foretag", "kommun_region", "statlig_myndighet", "ideell"], "partners": ["ensam"] }, "utfall": "passar_inte", "skal": "Utan en forskningsutförare i projektet uppfyller ni inte kravet på samverkan mellan forskning och en annan sektor." }
+  ],
+
+  "krav": [
+    { "id": "samverkan", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "Projektet görs i samverkan mellan minst en forskningsutförare och minst en part från en annan sektor, som näringsliv, offentlig sektor eller civilsamhälle." },
+    { "id": "doktorsexamen", "kategori": "sokande", "skede": "behorighet", "skarpt": true, "text": "Minst en medverkande forskare från forskningsutföraren ska ha doktorsexamen." },
+    { "id": "antal-parter", "kategori": "konsortium", "skede": "ansokan", "skarpt": false, "text": "Projektgruppen ska bestå av två till fyra projektparter, enligt en sekundär källa." },
+    { "id": "befintlig-forskning", "kategori": "formalia", "skede": "ansokan", "skarpt": false, "text": "Projektet ska bygga på forskningsbaserad kunskap, innovationer eller lösningar som redan finns och föra dem till användning." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": 4000000,
+    "galler": "Per projekt",
+    "stodniva": [],
+    "total_budget_sek": null,
+    "loptid_max_manader": 24,
+    "anmarkning": "Total budget framgår inte av de källor som kontrollerats. I 2025 års omgång beviljades 55 av 307 ansökningar enligt en sekundär källa."
+  },
+
+  "bedomning": {
+    "typ": "ingen",
+    "galler_steg": "Bedömningskriterierna står i Formas utlysningstext och är inte inlagda här.",
+    "kriterier": []
+  },
+
+  "tidpunkter": [
+    { "typ": "informationsmote", "datum": "2026-09-29", "beskrivning": "Har varit." },
+    { "typ": "oppnar", "datum": "2026-11-19" },
+    { "typ": "sista_dag", "datum": "2027-02-11", "beskrivning": "Klockslag framgår inte av de kontrollerade källorna. Formas brukar ha sista tid kl. 14.00; kontrollera i utlysningstexten." }
+  ],
+
+  "osakerheter": [
+    "Bedömningskriterierna, besluts- och startdatum och total budget är inte inlagda; läs Formas utlysningstext.",
+    "Kravet på två till fyra projektparter kommer från en sekundär källa.",
+    "Formas webbplats får inte läsas automatiskt, så posten bevakas via nyhetsbrevet och kontrolleras för hand."
+  ]
+}

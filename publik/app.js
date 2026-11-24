@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.5";
+const VERSION = "prototyp v0.6";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -206,7 +206,7 @@ function postKort(post, bedomning, medVal) {
     kort.append(el("p", {}, post.sammanfattning));
     const skal = skalLista(bedomning);
     if (skal) kort.append(el("p", { class: "hjalp" }, "Att tänka på:"), skal);
-    if (post.precision === "lag") kort.append(el("p", { class: "hjalp" }, "Finansiären publicerar inga bedömningskriterier, så bedömningen blir grövre."));
+    if (post.precision === "lag") kort.append(el("p", { class: "hjalp" }, "Bedömningskriterierna finns inte i underlaget, så bedömningen blir grövre. Läs finansiärens utlysningstext."));
     kort.append(el("details", {}, el("summary", {}, "Källor och kontroll"),
       el("p", { class: "hjalp" }, `Senast kontrollerad ${datum(post.kontroll.senast)}.`), kallLista(post)));
   }

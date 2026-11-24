@@ -17,7 +17,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.5.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.6.
 
 ## Struktur
 
