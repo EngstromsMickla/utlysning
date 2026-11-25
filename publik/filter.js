@@ -61,6 +61,9 @@ function bedomTid(post, svar, idag) {
     if (post.typ === "lopande") {
       return { utfall: "kanske", text: "Nästa inlämningstid är inte publicerad än." };
     }
+    if (post.status === "kommande") {
+      return { utfall: "kanske", text: "Utlysningen har inte öppnat och sista dag är inte publicerad än." };
+    }
     return { utfall: "passar_inte", text: "Det finns ingen kommande sista ansökningsdag." };
   }
   const dagar = TIDSHORISONT_DAGAR[svar];

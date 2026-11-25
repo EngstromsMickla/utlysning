@@ -124,3 +124,10 @@ test("Formas Effekt: forskare med partner passar, företag utan partner passar i
   assert.equal(bedomPost(p, { ...bas, organisationstyp: "foretag", partners: "ensam" }, IDAG).utfall, "passar_inte");
   assert.equal(bedomPost(p, { ...bas, bidragsbehov: "5_till_20" }, IDAG).utfall, "passar_inte");
 });
+
+test("Kommande utlysning utan sista dag blir kanske, inte passar inte", () => {
+  const p = post("vinnova-omstallningslabb-2026");
+  const r = bedomPost(p, { organisationstyp: "kommun_region", sektor: ["bygg_fastighet"], mognad: "test_demo", bidragsbehov: "2_till_5", tidshorisont: "1_till_3_man", partners: "svenska" }, IDAG);
+  assert.equal(r.utfall, "kanske");
+  assert.equal(bedomPost(p, { partners: "ensam" }, IDAG).utfall, "passar_inte");
+});

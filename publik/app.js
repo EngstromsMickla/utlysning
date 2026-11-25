@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.6";
+const VERSION = "prototyp v0.7";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;
@@ -64,10 +64,22 @@ function fokusera() {
 
 function nastaText(post) {
   const n = nastaSistaDag(post, IDAG);
-  if (!n) return post.typ === "lopande" ? "Nästa inlämningsdag är inte publicerad" : null;
+  if (!n) {
+    if (post.typ === "lopande") return "Nästa inlämningsdag är inte publicerad";
+    if (post.status === "kommande") return planeradText(post);
+    return null;
+  }
   const d = dagarTill(n.datum);
   const steg = post.typ === "utlysning" && n.steg ? n.steg.replace(/^\d+\.\s*/, "") : "";
   return `Sista dag ${datum(n.datum)}${n.tid ? " kl. " + n.tid : ""} (${d === 0 ? "i dag" : d + " dagar kvar"})${steg ? ". Gäller " + steg.charAt(0).toLowerCase() + steg.slice(1) : ""}`;
+}
+
+function planeradText(post) {
+  const o = (post.tidpunkter || []).find((t) => t.typ === "oppnar");
+  if (!o) return "Kommande. Sista dag är inte publicerad";
+  return o.preliminar
+    ? `Kommande. Planerad att öppna ${o.beskrivning ? o.beskrivning.replace(/\.$/, "") : "under " + datum(o.datum)}`
+    : `Kommande. Öppnar ${datum(o.datum)}`;
 }
 
 function kallLista(post) {
@@ -383,11 +395,12 @@ function radarRad(post) {
       el("span", { class: "tal" }, String(d)),
       el("span", { class: "enhet" }, d === 1 ? "dag kvar" : "dagar kvar"));
   } else {
-    dagar = el("div", { class: "dagar lopande" }, el("span", { class: "tal" }, post.typ === "lopande" ? "Löpande" : "Stängd"));
+    dagar = el("div", { class: "dagar lopande" }, el("span", { class: "tal" }, post.typ === "lopande" ? "Löpande" : post.status === "kommande" ? "Kommande" : "Stängd"));
   }
 
   const fakta = [post.finansiar.namn, TYP[post.typ]];
   if (n) fakta.push(`Sista dag ${datum(n.datum)}${n.tid ? " kl. " + n.tid : ""}`);
+  else if (post.status === "kommande") fakta.push(planeradText(post));
   if (post.belopp?.max_sek) fakta.push(`Högst ${kronor(post.belopp.max_sek)}`);
 
   const detaljer = el("details", {}, el("summary", {}, "Krav, osäkerheter och källor"));

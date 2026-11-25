@@ -17,7 +17,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - Text som klistras in i en AI behandlas som material, aldrig som instruktioner (idén ramas in mellan `<ide>`-markeringar och neutraliseras).
 - Underlaget är vägledning, inte finansiärens bedömning. Varje post har källa och kontrolldatum.
 - Publikt repo i organisationen EngstromsMickla. Inget får läggas i repot som inte tål att vara offentligt. Dans egen passformsbedömning och ansökningspipeline hör inte hit.
-- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.6.
+- Upphovsrad: "© Engströms Mickla AB 2026". Versionsnummer (`VERSION` i `publik/app.js`) räknas upp vid varje publicering och syns i sidfoten. Nu: prototyp v0.7.
 
 ## Struktur
 
@@ -32,6 +32,7 @@ Arbetsbeskrivning för den som utvecklar verktyget vidare, människa eller Claud
 - "Vet inte" ger aldrig "passar inte". Saknas en fråga i filtret påverkar den inte. Vid flerval räknas bästa svaret. Postens utfall är det sämsta av frågornas.
 - Krav har `skede`: `behorighet` (måste gälla nu, bedöms) eller `ansokan` (görs i ansökan, bedöms inte).
 - Precision (`hog`, `medel`, `lag`, `ingen`) säger hur skarp bedömningen kan bli och visas för användaren.
+- En planerad utlysning (`status: kommande`) utan sista dag ger "kanske" på tidsfrågan och visas som Kommande i radarn. Ett preliminärt öppningsdatum (`preliminar: true`) sätter aldrig status öppen automatiskt; när Vinnovas öppna data anger sista dag blir det en fråga i veckorapporten och posten kompletteras.
 
 ## Promptmallen (`publik/prompt.js`)
 
