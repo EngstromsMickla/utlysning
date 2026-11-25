@@ -169,6 +169,17 @@ class Bevakning(unittest.TestCase):
         post = json.loads((self.tmp / "data/poster/vinnova-eureka-smart-call10.json").read_text())
         self.assertIn("2027-01-26", [t["datum"] for t in post["tidpunkter"]])
 
+    def test_preliminart_oppningsdatum_andrar_inte_status(self):
+        self.kor(self.natet([], []), "2026-12-07")
+        post = json.loads((self.tmp / "data/poster/vinnova-omstallningslabb-2026.json").read_text())
+        self.assertEqual(post["status"], "kommande")
+
+    def test_kommande_post_far_datum_blir_fraga(self):
+        vinnova = [vinnova_omg("2026-04251", "Innovationsprojekt i omställningslabb", "2027-03-10T14:00:00")]
+        rapport, antal, fynd = self.kor(self.natet(vinnova, []))
+        fragor = rapport.split("## Frågor")[1]
+        self.assertIn("Vinnova anger nu sista dag 2027-03-10", fragor)
+
     def test_nyckelord_traffar_ordborjan(self):
         self.assertEqual(bevaka.relevant("Byggnader och ombyggnad", ["bygg"]), ["bygg"])
         self.assertEqual(bevaka.relevant("Ett tidigt stadium", ["staden", "stads"]), [])

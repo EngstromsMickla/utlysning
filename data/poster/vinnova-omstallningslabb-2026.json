@@ -1,0 +1,95 @@
+{
+  "id": "vinnova-omstallningslabb-2026",
+  "typ": "utlysning",
+  "titel": "Innovationsprojekt i omställningslabb för framtidens livsmiljöer",
+  "finansiar": { "id": "vinnova", "namn": "Vinnova (Impact Innovation ShiftSweden)", "partner": ["ShiftSweden"] },
+  "program": "Impact Innovation: ShiftSweden",
+  "diarienummer": "2026-04251",
+  "sammanfattning": "Innovationsprojekt inom samhällsbyggnad och mobilitet i nya eller befintliga omställningslabb, för attraktiva och tillgängliga livsmiljöer som är fossilfria och resursmedvetna. Teman är bland annat planering, affärs- och verksamhetsmodeller, digitala verktyg, flerbostadshusområden, trafikmiljöer, återbruk, kollektivtrafik och flexibel nybyggnation. Både utforskande projekt och projekt som testar och skalar upp kan söka. Utlysningen är planerad att öppna i december 2026.",
+  "status": "kommande",
+
+  "kallor": [
+    { "url": "https://www.vinnova.se/e/utlysning-2024-01497/innovationsprojekt-i-omstallningslabb-2026-04251/", "titel": "Vinnova: Innovationsprojekt i omställningslabb för framtidens livsmiljöer", "roll": "primar", "sprak": "sv", "anmarkning": "Planerad utlysning. Fullständig utlysningstext publiceras när den öppnar." }
+  ],
+
+  "kontroll": {
+    "senast": "2026-11-25",
+    "metod": "manuell",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Sidan för den planerade utlysningen. Datum, kriterier och villkor kompletteras när utlysningen öppnar; bevakningen frågar då."
+  },
+
+  "precision": "lag",
+  "precision_motivering": "Utlysningen har inte öppnat. Belopp, behörighet och teman är kända, men datum, bedömningskriterier, stödnivåer och projekttid är inte publicerade.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["kommun_region", "statlig_myndighet", "foretag", "ideell", "universitet_hogskola", "forskningsinstitut"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "privatperson": "Projekten görs av aktörer från offentlig sektor, näringsliv, civilsamhälle och forskning."
+      }
+    },
+    "sektor": {
+      "passar": ["bygg_fastighet", "transport", "offentlig_verksamhet"],
+      "kanske": ["digitalisering", "energi", "vatten_miljo", "annat"],
+      "skal": {
+        "digitalisering": "Passar om de digitala verktygen gäller livsmiljöer, samhällsbyggnad eller mobilitet.",
+        "ovrigt": "Utlysningen gäller samhällsbyggnad och mobilitet för framtidens livsmiljöer."
+      }
+    },
+    "mognad": {
+      "passar": ["forstudie", "fou", "test_demo", "implementering"],
+      "kanske": ["ide", "vet_ej"],
+      "skal": {
+        "ide": "Utforskande projekt kan söka, men idén behöver en behovsägare och ett omställningslabb att genomföras i."
+      }
+    },
+    "bidragsbehov": {
+      "passar": ["under_0_5", "0_5_till_2", "2_till_5"],
+      "kanske": ["5_till_20", "vet_ej"],
+      "skal": {
+        "5_till_20": "Högst 6 miljoner kronor, och bara för projekt som testar och skalar upp i ett nytt labb.",
+        "over_20": "Högst 6 miljoner kronor per projekt."
+      }
+    },
+    "partners": {
+      "passar": ["svenska", "internationella"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "ensam": "Minst två aktörer ska medverka, varav en med tydligt behov och nytta av resultaten."
+      }
+    }
+  },
+
+  "krav": [
+    { "id": "tva-aktorer", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "Minst två aktörer ska medverka, varav en med tydligt behov och nytta av resultaten." },
+    { "id": "omstallningslabb", "kategori": "formalia", "skede": "ansokan", "skarpt": false, "text": "Projektet genomförs i ett nytt eller befintligt omställningslabb inom samhällsbyggnad och mobilitet." },
+    { "id": "lang-ansokan", "kategori": "formalia", "skede": "ansokan", "skarpt": false, "text": "Ansökan är en längre ansökan som bedöms i konkurrens. Villkoren publiceras när utlysningen öppnar." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": 6000000,
+    "galler": "Per projekt, beroende på labb och projekttyp",
+    "stodniva": [],
+    "total_budget_sek": 125000000,
+    "loptid_max_manader": null,
+    "anmarkning": "Nya labb: utforskande projekt högst 3 miljoner kronor, projekt som testar och skalar upp högst 6 miljoner. Befintliga labb: utforskande projekt högst 2 miljoner, testa och skala upp högst 3 miljoner."
+  },
+
+  "bedomning": {
+    "typ": "ingen",
+    "galler_steg": "Bedömningskriterierna publiceras när utlysningen öppnar.",
+    "kriterier": []
+  },
+
+  "tidpunkter": [
+    { "typ": "oppnar", "datum": "2026-12-01", "preliminar": true, "beskrivning": "i december 2026" }
+  ],
+
+  "osakerheter": [
+    "Utlysningen har inte öppnat. Sista dag, bedömningskriterier, stödnivåer och projekttid är inte publicerade.",
+    "Öppningsdatumet är bara angivet som december 2026."
+  ]
+}

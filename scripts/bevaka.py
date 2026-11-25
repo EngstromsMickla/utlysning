@@ -181,7 +181,8 @@ def ratta_status(poster, idag):
         if post["typ"] != "utlysning":
             continue
         sista = datum_av(post, "sista_dag")
-        oppnar = datum_av(post, "oppnar")
+        # Ett preliminärt öppningsdatum (till exempel "december") räcker inte för att sätta status öppen.
+        oppnar = sorted(t["datum"] for t in post.get("tidpunkter", []) if t["typ"] == "oppnar" and not t.get("preliminar"))
         ny = post["status"]
         if sista and all(d < idag for d in sista):
             ny = "stangd"
@@ -295,7 +296,11 @@ def bevaka_vinnova(hamtare, konf, tillstand, poster, idag, nyckelord):
                 if len(sista) == 1 and flytta_sista_dag(fil, post, sista[0], stang, tid, idag):
                     fynd["uppdaterade"].append((post["titel"], sista[0], stang + (f" kl. {tid}" if tid else "")))
                 else:
-                    fynd["andrade"].append((post["titel"], f"Vinnova anger sista dag {stang}, posten har {', '.join(sista) or 'ingen'}. Posten har flera steg, så den ändras inte automatiskt."))
+                    if sista:
+                        text = f"Vinnova anger sista dag {stang}, posten har {', '.join(sista)}. Posten har flera steg, så den ändras inte automatiskt."
+                    else:
+                        text = f"Vinnova anger nu sista dag {stang}. Utlysningen har öppnat eller fått datum, och posten behöver kompletteras med datum, krav och kriterier."
+                    fynd["andrade"].append((post["titel"], text))
             continue
         if dnr in tidigare:
             continue
