@@ -6,7 +6,7 @@ import { filtrera, nastaSistaDag } from "./filter.js";
 import { byggPrompt, MAX_POSTER, arTunnIde, TUNN_IDE_ORD } from "./prompt.js";
 
 const vy = document.getElementById("vy");
-const VERSION = "prototyp v0.7";
+const VERSION = "prototyp v0.8";
 const IDAG = new Date().toLocaleDateString("sv-SE");
 
 let DATA = null;

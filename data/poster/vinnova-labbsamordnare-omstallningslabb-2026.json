@@ -1,0 +1,92 @@
+{
+  "id": "vinnova-labbsamordnare-omstallningslabb-2026",
+  "typ": "utlysning",
+  "titel": "Labbsamordnare till omställningslabb för framtidens livsmiljöer",
+  "finansiar": { "id": "vinnova", "namn": "Vinnova (Impact Innovation ShiftSweden)", "partner": ["ShiftSweden"] },
+  "program": "Impact Innovation: ShiftSweden",
+  "diarienummer": "2026-04252",
+  "sammanfattning": "Finansiering för att samordna ett av fem nya omställningslabb inom samhällsbyggnad och mobilitet. Labbsamordnaren utvecklar metodik för labbets gemensamma arbete och genomför kompletterande innovationsinsatser som stärker projektens resultat och labbets påverkan på systemnivå. Rollen kräver erfarenhet av att leda och driva utveckling och innovation i bred samverkan. Finns i samma utlysningssamling hos Vinnova som utlysningen om innovationsprojekt i omställningslabb. Planerad att öppna i december 2026.",
+  "status": "kommande",
+
+  "kallor": [
+    { "url": "https://www.vinnova.se/e/utlysning-2024-01497/labbsamordnare-till-omstallningslabb-2026-04252/", "titel": "Vinnova: Labbsamordnare till omställningslabb för framtidens livsmiljöer", "roll": "primar", "sprak": "sv", "anmarkning": "Planerad utlysning. Fullständig utlysningstext publiceras när den öppnar." }
+  ],
+
+  "kontroll": {
+    "senast": "2026-11-27",
+    "metod": "manuell",
+    "godkand_av": "Dan Engström",
+    "anmarkning": "Sidan för den planerade utlysningen. Datum, kriterier och villkor kompletteras när utlysningen öppnar; bevakningen frågar då."
+  },
+
+  "precision": "lag",
+  "precision_motivering": "Utlysningen har inte öppnat. Rollen, beloppet och kravet på en eller två aktörer är kända, men datum, bedömningskriterier och projekttid är inte publicerade.",
+
+  "filter": {
+    "organisationstyp": {
+      "passar": ["kommun_region", "statlig_myndighet", "foretag", "ideell", "universitet_hogskola", "forskningsinstitut"],
+      "kanske": ["vet_ej"],
+      "skal": {
+        "privatperson": "En eller två aktörer från offentlig sektor, näringsliv, civilsamhälle eller forskningsorganisation kan söka."
+      }
+    },
+    "sektor": {
+      "passar": ["bygg_fastighet", "transport", "offentlig_verksamhet"],
+      "kanske": ["digitalisering", "energi", "vatten_miljo", "annat"],
+      "skal": {
+        "ovrigt": "Labben gäller samhällsbyggnad och mobilitet. Samordnaren ska ha tematisk relevans för det labb som söks."
+      }
+    },
+    "bidragsbehov": {
+      "passar": ["under_0_5", "0_5_till_2"],
+      "kanske": ["2_till_5", "vet_ej"],
+      "skal": {
+        "2_till_5": "Högst 3,5 miljoner kronor per projekt, och högst 2,5 miljoner för labbet Bygga nytt, hållbart och flexibelt.",
+        "5_till_20": "Högst 3,5 miljoner kronor per projekt.",
+        "over_20": "Högst 3,5 miljoner kronor per projekt."
+      }
+    },
+    "partners": {
+      "passar": ["ensam", "svenska"],
+      "kanske": ["internationella", "vet_ej"],
+      "skal": {
+        "svenska": "Högst två aktörer kan söka tillsammans.",
+        "internationella": "Högst två aktörer kan söka tillsammans, och samordningen gäller labb i Sverige."
+      }
+    }
+  },
+
+  "krav": [
+    { "id": "en-eller-tva", "kategori": "konsortium", "skede": "behorighet", "skarpt": true, "text": "En eller två aktörer från offentlig sektor, näringsliv, civilsamhälle eller forskningsorganisation." },
+    { "id": "erfarenhet", "kategori": "sokande", "skede": "behorighet", "skarpt": false, "text": "Erfarenhet av att leda, koordinera och driva utveckling och innovation i bred samverkan, med tematisk relevans för det valda labbet." },
+    { "id": "ett-labb", "kategori": "formalia", "skede": "ansokan", "skarpt": true, "text": "Ansökan gäller samordning av ett av de fem nya omställningslabben." },
+    { "id": "lang-ansokan", "kategori": "formalia", "skede": "ansokan", "skarpt": false, "text": "Ansökan är en längre ansökan som bedöms i konkurrens. Villkoren publiceras när utlysningen öppnar." }
+  ],
+
+  "belopp": {
+    "min_sek": null,
+    "max_sek": 3500000,
+    "galler": "Per projekt",
+    "stodniva": [
+      { "aktor": "Alla stödmottagare", "max_andel": 1.0, "anmarkning": "Upp till 100 procent av projektets stödberättigande kostnader." }
+    ],
+    "total_budget_sek": null,
+    "loptid_max_manader": null,
+    "anmarkning": "För labbet Bygga nytt, hållbart och flexibelt är taket 2,5 miljoner kronor."
+  },
+
+  "bedomning": {
+    "typ": "ingen",
+    "galler_steg": "Bedömningskriterierna publiceras när utlysningen öppnar.",
+    "kriterier": []
+  },
+
+  "tidpunkter": [
+    { "typ": "oppnar", "datum": "2026-12-01", "preliminar": true, "beskrivning": "i december 2026" }
+  ],
+
+  "osakerheter": [
+    "Utlysningen har inte öppnat. Sista dag, bedömningskriterier, projekttid och total budget är inte publicerade.",
+    "Sidan namnger bara ett av de fem labben (Bygga nytt, hållbart och flexibelt)."
+  ]
+}

@@ -131,3 +131,9 @@ test("Kommande utlysning utan sista dag blir kanske, inte passar inte", () => {
   assert.equal(r.utfall, "kanske");
   assert.equal(bedomPost(p, { partners: "ensam" }, IDAG).utfall, "passar_inte");
 });
+
+test("Labbsamordnare: en aktör passar inte bara med stora konsortier eller stora belopp", () => {
+  const p = post("vinnova-labbsamordnare-omstallningslabb-2026");
+  assert.equal(bedomPost(p, { organisationstyp: "foretag", partners: "ensam", bidragsbehov: "0_5_till_2", sektor: ["bygg_fastighet"] }, IDAG).utfall, "kanske");
+  assert.equal(bedomPost(p, { bidragsbehov: "5_till_20" }, IDAG).utfall, "passar_inte");
+});
